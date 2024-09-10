@@ -1,0 +1,122 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% This is the main file of the Msc thesis template.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% Author:   René Widmer
+%           Institute for Surgical Technology and Biomechanics ISTB
+%           University of Bern
+%           rene.widmer@istb.unibe.ch
+%
+% Date:     10/28/2009
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\pdfminorversion=6
+\documentclass[a4paper,10pt,openright]{unibe-msc}
+% Some regulary used packages
+\usepackage{etex}
+\usepackage[T1]{fontenc}
+\usepackage{textcomp}
+\usepackage{bm}
+\usepackage[utf8]{inputenc}
+\usepackage[pdftex,final]{graphicx}
+\usepackage{amssymb}
+\usepackage{amsmath}                    
+\usepackage{amsfonts}
+\usepackage{mathtools}
+\usepackage{ulem}
+\usepackage[english]{babel}
+\usepackage{url}
+\usepackage{color}
+\usepackage{unibe-msc}
+\usepackage[caption=off]{subfig}
+\usepackage{hyperref}
+
+
+% Default graphics path
+%\graphicspath{{Images/}{Logos/}}
+
+% Document metadata
+\unibelogo{ub_16pt_192}  % Don't change this
+\htilogo{TI_e} % Don't change this
+\faculty{Faculty of Medicine} % Don't change this
+\discipline{Biomedical Engineering} % Don't change this
+\subtitle{Master of Science Thesis} % Don't change this
+\title{Title: Development of a Deep Learning-Based Model for the Detection of Extracapsular Extensions in Head and Neck}
+\author{Léandre Cuenot}
+\origin{(Heimatort or country of origin)}
+\date{\today}
+\supervisor{Prof. Dr. Mauricio Reyes and Dr. Daniel Schanne}
+\affiliation{Institute for Surgical Technology \& Biomechanics, Universit\"{a}t Bern Universit\"{a}tsklinik f\"{u}r Orthopedie und Traumatologie, Universit\"{a}t Bern}
+
+\examiner{Prof. Dr. Mauricio Reyes and Dr. Daniel Schanne}
+\place{Bern}
+\frontsignature{\theplace, October 2024}
+\date{October 27\textsuperscript{th} 2024}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Hyperref setup
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Appearance of hyper links
+\definecolor{lc}{rgb}{0,0,0}
+\hypersetup{colorlinks=true, breaklinks=true, linkcolor=lc, 
+                  menucolor=lc, urlcolor=lc, anchorcolor=lc,
+                  citecolor=lc, filecolor=lc,
+                  pdftitle=\thetitle,
+                  pdfauthor=\theauthor,
+                  pdfsubject=Master Thesis,
+                  pdfkeywords={Keyword 1, Keyword 2, Keyword 3},
+                  pdfpagelayout=SinglePage}
+                  
+% Bibliography style file
+\bibliographystyle{ieee}
+
+\begin{document}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Titlepage, abstract table of contents etc.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\frontmatter
+\maketitle
+\input{Abstract}
+\clearpage
+\input{Acknowledgments}
+\clearpage
+\input{Conformity}
+\cleardoublepage
+\tableofcontents
+
+\mainmatter
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Main text body
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\include{Introduction}
+\include{Chapter_2}
+\include{Chapter_3}
+\include{Conclusion}
+\include{Outlook}
+
+% Uncomment this if you'd like to suppress the numbering of the
+% appendices.
+%\backmatter
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Bibliography
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Force every reference to show up (demo)
+\nocite{*}
+\bibliography{References}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Appendices
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\part*{Appendices}
+\begin{appendix}
+	\include{Appendix_1}
+	\include{Appendix_2}
+\end{appendix}
+
+\end{document}
+
+\endinput

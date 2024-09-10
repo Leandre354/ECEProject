@@ -34,8 +34,8 @@ import time
 from torch.cuda.amp import autocast, GradScaler
 
 
+#Weight and Bias configuration
 wandb.login(key='9d5812a471d8d3122966d9d3bb7b41e4d2ff2e3d')
-
 wandb.init(project='ece-thesis',
 config={
     'learning_rate': 1e-4,
@@ -54,7 +54,41 @@ config={
 })
 config = wandb.config
 
+
 class JointTransform:
+    """
+        A class to apply a series of random data augmentation during training
+
+        Attributes:
+            device (str): The device (e.g., 'cpu' or 'cuda') where the transformations will be applied.
+            rand_flip (tf.RandFlip): Random flipping transformation.
+            rand_affine (tf.RandAffine): Random affine transformation including rotation, scaling, and translation.
+            rand_adjust_contrast (tf.RandAdjustContrast): Random contrast adjustment transformation.
+            rand_shift_intensity (tf.RandShiftIntensity): Random intensity shifting transformation.
+            rand_gaussian_noise (tf.RandGaussianNoise): Random Gaussian noise addition transformation.
+            rand_gaussian_smooth (tf.RandGaussianSmooth): Random Gaussian smoothing transformation.
+            rand_crop (tf.RandCropByLabelClasses): Random cropping transformation based on label classes.
+            rand_crop2 (tf.RandCropByLabelClasses): Alternative random cropping transformation for cases with only label 2
+            rand_crop3 (tf.RandCropByLabelClasses): Another alternative random cropping transformation for cases with only label 1
+
+        Args:
+            augmentation_proba (float): The probability of applying each augmentation transformation.
+            device (str): The device to perform the transformations on (e.g., 'cpu', 'cuda').
+
+        Methods:
+            __call__(img, lbl):
+                Applies a series of transformations to the input image and label. The transformations include:
+                - Cropping based on label classes.
+                - Flipping and affine transformations.
+                - Contrast adjustment, intensity shifting, Gaussian noise addition, and Gaussian smoothing.
+
+                Args:
+                    img (np.ndarray): The input image to be transformed.
+                    lbl (np.ndarray): The corresponding label image to be transformed.
+
+                Returns:
+                    Tuple[np.ndarray, np.ndarray]: The transformed image and label.
+        """
     def __init__(self, augmentation_proba, device):
         self.device = device
         self.rand_flip = tf.RandFlip(spatial_axis=1, prob=augmentation_proba)
@@ -91,7 +125,32 @@ class JointTransform:
 
         return img, lbl
 
+
 class JointTransformVal:
+    """
+        A class for applying a random cropping transformations during validation to speed up
+
+        Attributes:
+            device (str): The device (e.g., 'cpu' or 'cuda') where the transformations will be applied.
+            rand_crop (tf.RandCropByLabelClasses): Random cropping transformation based on label classes.
+            rand_crop2 (tf.RandCropByLabelClasses): Alternative random cropping transformation for cases with only label 2.
+            rand_crop3 (tf.RandCropByLabelClasses): Another alternative random cropping transformation for cases with only label 1.
+
+        Args:
+            device (str): Device to perform the transformations on (e.g., 'cpu', 'cuda').
+
+        Methods:
+            __call__(img, lbl):
+                Applies a series of cropping transformations to the input image and label, including:
+                - Cropping based on label classes.
+
+                Args:
+                    img (np.ndarray): Input image to be transformed.
+                    lbl (np.ndarray): Corresponding label image to be transformed.
+
+                Returns:
+                    Tuple[np.ndarray, np.ndarray]: The transformed image and label.
+    """
     def __init__(self, device):
         self.device = device
         self.rand_crop = tf.RandCropByLabelClasses(spatial_size=(192, 192, 192), num_classes=3, ratios=[0.33, 0.33, 0.33], warn=False)
@@ -113,19 +172,72 @@ class JointTransformVal:
 
         return img, lbl
 
+
 def zero_mean(pet_image):
+    """
+        Normalize with zero mean the PET images
+
+        Args:
+            pet_image : The PET image of the patient
+
+        Returns:
+            np.ndarray: The zero mean normalized PET image
+    """
     pet_mean = np.mean(pet_image)
     pet_std = np.std(pet_image)
     pet_image_normalized = (pet_image - pet_mean) / pet_std
     return pet_image_normalized
 
-def rescale_ct_image(ct_image):
+
+def min_max(ct_image):
+    """
+        Normalize with min max the CT images
+
+        Args:
+            ct_image : The CT image of the patient
+
+        Returns:
+            np.ndarray: The min max normalized PET image
+    """
     min_val = np.min(ct_image)
     max_val = np.max(ct_image)
     ct_image_rescaled = (ct_image - min_val) / (max_val - min_val)
     return ct_image_rescaled
 
+
 class MedicalSlicesDataset(Dataset):
+    """
+        A dataset class for loading and processing medical imaging data.
+
+        Attributes:
+            device (str): The device (e.g., 'cpu' or 'cuda') where the data will be processed.
+            transforms (Callable, optional): A function or transform to apply to the data.
+            path (str): Path to the directory containing the data files.
+            names_ct (List[str]): List of paths to the CT image files.
+            names_pt (List[str]): List of paths to the PET image files.
+            names_seg (List[str]): List of paths to the segmentation files.
+
+        Args:
+            files_path (str): Path to the directory containing the data files.
+            device (str): Device to perform the transformations on ('cpu', 'cuda').
+            transforms (Callable, optional): A function or transform to apply to the data.
+            fold_idx (int, optional): Index of the fold to use for training/validation split.
+            is_train (bool, optional): Whether to load training data (`True`) or validation data (`False`).
+            n_splits (int, optional): Number of folds for cross-validation.
+
+        Methods:
+            __len__():
+                Returns the number of items in the dataset.
+
+            __getitem__(idx):
+                Loads and processes the data for the given index.
+
+                Args:
+                    idx (int): Index of the data item to retrieve.
+
+                Returns:
+                    dict: A dictionary containing the image (`'img'`), segmentation (`'seg'`), and file name (`'name'`).
+    """
     def __init__(self, files_path, device, transforms=None, fold_idx=None, is_train=True, n_splits=5):
         self.device = device
         self.transforms = transforms
@@ -162,7 +274,7 @@ class MedicalSlicesDataset(Dataset):
         seg = nib.load(self.names_seg[idx]).get_fdata()
         print(self.names_seg[idx])
         #pt = zero_mean(pt)
-        #ct = rescale_ct_image(ct)
+        #ct = min_max(ct)
         img = np.stack((ct, pt), axis=0).astype(np.float32)
         seg = np.expand_dims(seg, axis=0).astype(np.float32)
 
@@ -180,7 +292,36 @@ class MedicalSlicesDataset(Dataset):
 
         return {'img': img, 'seg': seg, 'name': self.names_seg[idx]}
 
+
 class CombinedLossWithDeepSupervision(nn.Module):
+    """
+        A class for combining multiple loss functions with deep supervision.
+
+        Attributes:
+            dice_loss (Callable): Dice loss function.
+            ce_loss (Callable): Cross-entropy loss function.
+            deep_supervision_weights (List[float]): Weights for deep supervision losses.
+            lambda_dice (float): Weighting factor for Dice loss.
+            lambda_ce (float): Weighting factor for cross-entropy loss.
+
+        Args:
+            dice_loss (Callable): Dice loss function.
+            ce_loss (Callable): Cross-entropy loss function.
+            deep_supervision_weights (List[float]): Weights for deep supervision losses.
+            lambda_dice (float, optional): Weight for Dice loss (default: 0.5).
+            lambda_ce (float, optional): Weight for cross-entropy loss (default: 0.5).
+
+        Methods:
+            forward(outputs, target):
+                Computes the combined loss based on the outputs and target.
+
+                Args:
+                    outputs (Tensor): Model outputs.
+                    target (Tensor): Ground truth labels.
+
+                Returns:
+                    Tensor: The total combined loss.
+    """
     def __init__(self, dice_loss, ce_loss, deep_supervision_weights, lambda_dice=0.5, lambda_ce=0.5):
         super(CombinedLossWithDeepSupervision, self).__init__()
         self.dice_loss = dice_loss
@@ -213,7 +354,33 @@ class CombinedLossWithDeepSupervision(nn.Module):
 
         return total_loss
 
+
 class MonitoringLoss(nn.Module):
+    """
+        A class to monitor the losses during training
+
+        Attributes:
+            dice_loss : Dice loss
+            ce_loss : Cross-entropy loss
+
+        Args:
+            dice_loss:
+            ce_loss:
+
+        Methods:
+            __call__(img, lbl):
+                Applies a series of transformations to the input image and label. The transformations include:
+                - Cropping based on label classes.
+                - Flipping and affine transformations.
+                - Contrast adjustment, intensity shifting, Gaussian noise addition, and Gaussian smoothing.
+
+                Args:
+                    img (np.ndarray): The input image to be transformed.
+                    lbl (np.ndarray): The corresponding label image to be transformed.
+
+                Returns:
+                    Tuple[np.ndarray, np.ndarray]: The transformed image and label.
+    """
     def __init__(self, dice_loss, ce_loss):
         super(MonitoringLoss, self).__init__()
         self.dice_loss = dice_loss

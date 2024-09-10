@@ -1,0 +1,62 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% This is the sample chapter file.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% Author:   René Widmer
+%           Institute for Surgical Technology and Biomechanics ISTB
+%           University of Bern
+%           rene.widmer@istb.unibe.ch
+%
+% Date:     10/28/2009
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\chapter{A Sample Chapter}
+
+\section{A Sample Section with a Table}
+
+\subsection{Porosity Estimation}
+
+To parametrize the computational model the porosity of each foam type needs to be estimated from representative $\mu\text{CT}$ data. Remember the definition of porosity as the ratio of the void volume and the total volume. $\mu\text{CT}$ data is present in the form of binary data, i.e.
+
+\begin{equation}
+   v_{m,n,p}\in\left\{0,1\right\}\qquad\forall m,n,p\,.
+\end{equation}
+
+\noindent $v_{m,n,p}$ refers to the voxel value at instant position $\left(m,n,p\right)$ in the three-dimensional $\mu\text{CT}$ data array ${\mathbf V}$. Hence the porosity can be estimated as the ratio of voxels with an associated value of 0 and the overall number of voxels. Let
+
+\begin{align*}
+   V&=\left\{v_{m,n,p}\right\} & \forall & v_{m,n,p}\in {\mathbf V} \\
+   V_0&=\left\{v_{m,n,p}\right\} & \forall & v_{m,n,p}\in {\mathbf V}\wedge v_{m,n,p}=0 \\
+   V_1&=\left\{v_{m,n,p}\right\} & \forall & v_{m,n,p}\in {\mathbf V}\wedge v_{m,n,p}=1 \\
+   & & & V_0 \subseteq V\,,\quad V_1 \subseteq V\,.
+\end{align*}
+
+\noindent $V$ is the set of all voxels, $V_0$ the set of voxels with an associated value of $0$ and $V_1$ the set of voxels with an associated value of $1$ in the binary data array ${\mathbf V}$. Therefore $V=V_0\cup V_1$. The porosity measure is then given by
+
+\begin{equation}
+   \overline{\beta} = \frac{\left|V_0\right|}{\left|V\right|}=1-\frac{\left|V_1\right|}{\left|V\right|}\,.
+\end{equation}
+
+\noindent $\left|S\right|$ is the \textit{cardinality}, i.e. the size or number of members of the set $S$. Notice that $\left|V\right|=M\cdot N\cdot P$, meaning the size of the set $V$ is equal to the number of voxels stored in the array ${\mathbf V}$.
+
+\begin{table}[htbp]
+   \centering
+   \caption[Aluminum foam porosity levels.]{\textit{All numbers are dimensionless} -- Aluminum foam porosity levels estimated from representative $\mu\text{CT}$ data.}
+   \begin{tabular}{l*{3}{r}}
+      \toprule
+       & 20 PPI & 30 PPI & 40 PPI \\
+      \midrule
+      $\left|V\right|$: & \multicolumn{3}{c}{78094368} \\
+      $\left|V_0\right|$: & 73224007 &  68342720 & 59401544 \\
+      $\left|V_1\right|$: & 4870361 & 9751648 & 18692824 \\
+      \midrule
+      Porosity $\overline{\beta}$: & 0.938 & 0.875 & 0.761 \\
+      \bottomrule
+   \end{tabular}
+   \label{tab:FoamPorosities}
+\end{table}
+
+The different porosity levels for the foams with $\left\{20,\, 30,\,40\right\}\,\text{PPI}$ pore density are presented in Tab.~\ref{tab:FoamPorosities}.
+
+\endinput

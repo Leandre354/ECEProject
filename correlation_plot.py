@@ -4,10 +4,10 @@ import matplotlib.pyplot as plt
 import scipy.stats as stats
 import numpy as np
 
-Modality = 'PET'
-Label = 'Nodal'
+Modality = 'PET' #Modality which is perturbed (CT or PET)
+Label = 'Nodal' #Select label for the computation (Primary or Nodal)
 
-#all csv files of each perturbation
+#all csv files of each perturbation and each degree
 files = {
     'BLUR1': pd.read_csv(f'Inference/Image200/Analysis/{Modality}/Blur1/results_Blur1_pymia.csv', delimiter=';'),
     'BLUR2': pd.read_csv(f'Inference/Image200/Analysis/{Modality}/Blur2/results_Blur2_pymia.csv', delimiter=';'),
@@ -38,9 +38,9 @@ correlation = []
 correlation2d = []
 
 #Properties used
-titles = ['Volume','Surface Area','Compactness', 'Distance from Center','Boundary Length','CT Intensity Var',
-            'PET Intensity Var','CT F/B Contrast','PET F/B Contrast',
-            'SUVmax','CT Number (HU)', 'Regions','Entropy']
+titles = ['Volume', 'Surface Area', 'Compactness', 'Distance from Center', 'Boundary Length', 'CT Intensity Var',
+            'PET Intensity Var', 'CT F/B Contrast', 'PET F/B Contrast',
+            'SUVmax', 'CT Number (HU)', 'Regions', 'Entropy']
 
 #Go through the files
 for name, df in files.items():

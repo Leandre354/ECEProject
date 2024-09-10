@@ -1,0 +1,59 @@
+\begin{thebibliography}{1}
+
+\bibitem{Andrearczyk2023}
+V.~Andrearczyk, V.~Oreiller, and et~al.
+\newblock Overview of the hecktor challenge at miccai 2022: Automatic head and
+  neck tumor segmentation and outcome prediction in pet/ct.
+\newblock {\em Lecture Notes in Computer Science}, 13626(2):1--30, March 2023.
+
+\bibitem{Kann2018}
+B.~H. Kann, S.~Aneja, G.~V. Loganadane, J.~R. Kelly, S.~M. Smith, R.~H. Decker,
+  J.~B. Yu, H.~S. Park, W.~G. Yarbrough, A.~Malhotra, B.~A. Burtness, and Z.~A.
+  Husain.
+\newblock Pretreatment identification of head and neck cancer nodal metastasis
+  and extranodal extension using deep learning neural networks.
+\newblock {\em Scientific Reports}, 8(5):14036, Sept. 2018.
+
+\bibitem{Kann2023}
+B.~H. Kann and J.~L. et~al.
+\newblock Screening for extranodal extension in hpv-associated oropharyngeal
+  carcinoma: evaluation of a ct-based deep learning algorithm in patient data
+  from a multicentre, randomised de-escalation trial.
+\newblock {\em Lancet Digital Health}, 5(8):e360--e369, 2023.
+
+\bibitem{Kelly2017}
+H.~R. Kelly and H.~D. Curtin.
+\newblock Squamous cell carcinoma of the head and neck: Imaging evaluation of
+  regional lymph nodes and implications for management.
+\newblock {\em Seminars in Ultrasound, CT, and MR}, 38(1):466--478, Oct. 2017.
+
+\bibitem{Krstevska2015}
+V.~Krstevska.
+\newblock Evolution of treatment and high-risk features in resectable locally
+  advanced head and neck squamous cell carcinoma with special reference to
+  extracapsular extension of nodal disease.
+\newblock {\em Journal of BUON}, 20(6):943--953, July 2015.
+
+\bibitem{Prabhu2014}
+R.~S. Prabhu and K.~R.~M. et~al.
+\newblock Accuracy of computed tomography for predicting pathologic nodal
+  extracapsular extension in patients with head-and-neck cancer undergoing
+  initial surgical resection.
+\newblock {\em International Journal of Radiation Oncology Biology Physics},
+  88(3):122--129, Jan. 2014.
+
+\bibitem{Thomas2021}
+T.~V. Thomas, M.~R. Kanakamedala, E.~Bhanat, A.~Abraham, E.~Mundra, A.~A.
+  Albert, S.~Giri, R.~Bhandari, and S.~Vijayakumar.
+\newblock Predictors of extracapsular extension in patients with squamous cell
+  carcinoma of the head and neck and outcome analysis.
+\newblock {\em Cureus}, 13(4):e16680, July 2021.
+
+\bibitem{Ariji2020}
+Y.~S. e.~a. Yoshiko~Ariji.
+\newblock Ct evaluation of extranodal extension of cervical lymph node
+  metastases in patients with oral squamous cell carcinoma using deep learning
+  classification.
+\newblock {\em Oral Radiology}, 36(7):148--155, Apr. 2020.
+
+\end{thebibliography}

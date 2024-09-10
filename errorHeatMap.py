@@ -5,19 +5,19 @@ from matplotlib.widgets import Slider
 import cv2
 from matplotlib import colors
 
-
+#Select the case
 name = 'CHUM-014'
 
 #Paths of ground truth and perturbed predictions
-gt_path = f'Inference/Image256/Inputs/{name}.nii.gz'
+gt_path = f'Inference/Image200/Inputs/{name}.nii.gz'
 prediction_paths = [
-    f'Inference/Image256/Analysis/Baseline/{name}.nii.gz',  # Baseline
-    f'Inference/Image256/Analysis/CT/Noise/{name}.nii.gz',  # Noise
-    f'Inference/Image256/Analysis/CT/Blur/{name}.nii.gz',   # Blur
-    f'Inference/Image256/Analysis/CT/Ghost/{name}.nii.gz',  # Ghost
-    f'Inference/Image256/Analysis/CT/Spike/{name}.nii.gz',  # Spike
-    f'Inference/Image256/Analysis/CT/Bias/{name}.nii.gz',   # Bias
-    f'Inference/Image256/Analysis/CT/Motion/{name}.nii.gz'  # Motion
+    f'Inference/Image200/Analysis/Baseline/{name}.nii.gz',  # Baseline
+    f'Inference/Image200/Analysis/CT/Noise1/{name}.nii.gz',  # Noise
+    f'Inference/Image200/Analysis/CT/Blur1/{name}.nii.gz',   # Blur
+    f'Inference/Image200/Analysis/CT/Ghost1/{name}.nii.gz',  # Ghost
+    f'Inference/Image200/Analysis/CT/Spike1/{name}.nii.gz',  # Spike
+    f'Inference/Image200/Analysis/CT/Bias1/{name}.nii.gz',   # Bias
+    f'Inference/Image200/Analysis/CT/Motion1/{name}.nii.gz'  # Motion
 ]
 
 #Load the Nifti image
@@ -61,9 +61,9 @@ for i, (ax_gt, ax_pred, ax_err, pred_img, error_map) in enumerate(
 
     # Error map
     color = np.zeros((*error_map[:, :, slice_sel].shape, 3), dtype=np.uint8)
-    color[error_map[:, :, slice_sel] == 1] = [255, 0, 0]  # Green for error 1
-    color[error_map[:, :, slice_sel] == 2] = [255, 0, 0]  # Red for error 2
-    color[error_map[:, :, slice_sel] == -1] = [255, 0, 255]  # Green for error 1
+    color[error_map[:, :, slice_sel] == 1] = [255, 0, 0]  # Red for false negative
+    color[error_map[:, :, slice_sel] == 2] = [255, 0, 0]
+    color[error_map[:, :, slice_sel] == -1] = [255, 0, 255]  # Purple for false positive
     color[error_map[:, :, slice_sel] == -2] = [255, 0, 255]
     im_err = ax_err.imshow(color)
     ax_err.set_title(f'Error {titles[i]}')

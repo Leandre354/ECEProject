@@ -1,10 +1,10 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.24 (MiKTeX 23.1) (preloaded format=pdflatex 2023.3.6)  10 SEP 2024 14:25
+This is pdfTeX, Version 3.141592653-2.6-1.40.24 (MiKTeX 23.1) (preloaded format=pdflatex 2023.3.6)  11 SEP 2024 09:38
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
  %&-line parsing enabled.
-**"c:/Users/Léandre/Downloads/Master's Thesis Template LaTeX/Master's Thesis Template LaTeX/MscThesis.tex"
-(c:/Users/Léandre/Downloads/Master's Thesis Template LaTeX/Master's Thesis Template LaTeX/MscThesis.tex
+**c:/Users/Léandre/Documents/ECEProject/Doc/MscThesis.tex
+(c:/Users/Léandre/Documents/ECEProject/Doc/MscThesis.tex
 LaTeX2e <2022-11-01> patch level 1
 L3 programming layer <2023-02-07> (unibe-msc.cls
 Document Class: unibe-msc 2009/10/28 v2.1 Document Class for UniBE MSc Theses
@@ -856,17 +856,17 @@ Package rerunfilecheck Info: File `MscThesis.out' has not changed.
 (rerunfilecheck)             Checksum: E370E3831DFDEB6E2BFD08501CD42D5D;2549.
  ) 
 Here is how much of TeX's memory you used:
- 17008 strings out of 476339
- 278317 string characters out of 5786704
- 1864340 words of memory out of 5000000
- 37045 multiletter control sequences out of 15000+600000
+ 17010 strings out of 476339
+ 276599 string characters out of 5786704
+ 1865340 words of memory out of 5000000
+ 37046 multiletter control sequences out of 15000+600000
  550381 words of font info for 93 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 99i,12n,104p,1054b,595s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 99i,12n,104p,1005b,595s stack positions out of 10000i,1000n,20000p,200000b,200000s
  <C:\Users\Léandre\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecrm0800.pk> <C:\Users\Léandre\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecti0800.pk> <C:\Users\Léandre\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecbx0800.pk>{C:/Users/Léandre/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-ec.enc} <C:\Users\Léandre\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecrm0700.pk> <C:\Users\Léandre\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecbx1000.pk> <C:\Users\Léandre\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecrm1000.pk> <C:\Users\Léandre\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecti1000.pk> <C:\Users\Léandre\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecti0900.pk> <C:\Users\Léandre\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecbx0900.pk> <C:\Users\Léandre\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecrm0900.pk> <C:\Users\Léandre\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecrm0600.pk> <C:\Users\Léandre\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecbx1440.pk> <C:\Users\Léandre\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecbx1728.pk> <C:\Users\Léandre\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecrm1200.pk> <C:\Users\Léandre\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecrm1095.pk><C:/Users/Léandre/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmbx10.pfb><C:/Users/Léandre/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi10.pfb><C:/Users/Léandre/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi7.pfb><C:/Users/Léandre/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi8.pfb><C:/Users/Léandre/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Users/Léandre/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr7.pfb><C:/Users/Léandre/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Users/Léandre/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmss10.pfb><C:/Users/Léandre/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmss12.pfb><C:/Users/Léandre/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmss17.pfb>
-Output written on MscThesis.pdf (25 pages, 347119 bytes).
+Output written on MscThesis.pdf (25 pages, 347738 bytes).
 PDF statistics:
- 815 PDF objects out of 1000 (max. 8388607)
- 62 named destinations out of 1000 (max. 500000)
+ 817 PDF objects out of 1000 (max. 8388607)
+ 63 named destinations out of 1000 (max. 500000)
  163 words of extra memory for PDF output out of 10000 (max. 10000000)
 

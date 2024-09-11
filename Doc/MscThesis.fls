@@ -1,6 +1,6 @@
-PWD c:\Users\Léandre\Downloads\Master's Thesis Template LaTeX\Master's Thesis Template LaTeX
+PWD c:\Users\Léandre\Documents\ECEProject\Doc
 INPUT C:\Users\Léandre\AppData\Local\MiKTeX\miktex\data\le\pdftex\pdflatex.fmt
-INPUT c:\Users\Léandre\Downloads\Master's Thesis Template LaTeX\Master's Thesis Template LaTeX\MscThesis.tex
+INPUT c:\Users\Léandre\Documents\ECEProject\Doc\MscThesis.tex
 OUTPUT MscThesis.log
 INPUT .\unibe-msc.cls
 INPUT .\unibe-msc.cls

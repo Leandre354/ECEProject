@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.24 (MiKTeX 23.1) (preloaded format=pdflatex 2023.3.6)  11 SEP 2024 09:38
+This is pdfTeX, Version 3.141592653-2.6-1.40.24 (MiKTeX 23.1) (preloaded format=pdflatex 2023.3.6)  12 SEP 2024 14:59
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -694,33 +694,33 @@ Package: memhfixc 2023/07/28 v1.21 hyperref package fixes for memoir class
 \c@memhycontfloat=\count346
 \c@Hpagenote=\count347
 )
-Package hyperref Info: Option `colorlinks' set `true' on input line 69.
-Package hyperref Info: Option `breaklinks' set `true' on input line 69.
- (MscThesis.aux (Introduction.aux) (Chapter_2.aux) (Chapter_3.aux
+Package hyperref Info: Option `colorlinks' set `true' on input line 70.
+Package hyperref Info: Option `breaklinks' set `true' on input line 70.
+ (MscThesis.aux (Introduction.aux) (Methods.aux
 
-LaTeX Warning: Label `tab:FoamPorosities' multiply defined.
+LaTeX Warning: Label `fig:three_subfigures' multiply defined.
 
-) (Conclusion.aux) (Outlook.aux) (Appendix_1.aux) (Appendix_2.aux))
+) (Results.aux) (Conclusion.aux) (Outlook.aux) (Appendix_1.aux) (Appendix_2.aux))
 \openout1 = `MscThesis.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 74.
-LaTeX Font Info:    ... okay on input line 74.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 74.
-LaTeX Font Info:    ... okay on input line 74.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 74.
-LaTeX Font Info:    ... okay on input line 74.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 74.
-LaTeX Font Info:    ... okay on input line 74.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 74.
-LaTeX Font Info:    ... okay on input line 74.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 74.
-LaTeX Font Info:    ... okay on input line 74.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 74.
-LaTeX Font Info:    ... okay on input line 74.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 74.
-LaTeX Font Info:    ... okay on input line 74.
-LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 74.
-LaTeX Font Info:    ... okay on input line 74.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 75.
+LaTeX Font Info:    ... okay on input line 75.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 75.
+LaTeX Font Info:    ... okay on input line 75.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 75.
+LaTeX Font Info:    ... okay on input line 75.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 75.
+LaTeX Font Info:    ... okay on input line 75.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 75.
+LaTeX Font Info:    ... okay on input line 75.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 75.
+LaTeX Font Info:    ... okay on input line 75.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 75.
+LaTeX Font Info:    ... okay on input line 75.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 75.
+LaTeX Font Info:    ... okay on input line 75.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 75.
+LaTeX Font Info:    ... okay on input line 75.
  (C:\Users\Léandre\AppData\Local\Programs\MiKTeX\tex/context/base/mkii\supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
 \scratchcounter=\count348
@@ -743,20 +743,20 @@ File: epstopdf-sys.cfg 2021/03/18 v2.0 Configuration of epstopdf for MiKTeX
 Package caption Info: Begin \AtBeginDocument code.
 Package caption Info: subfig package v1.3 is loaded.
 Package caption Info: End \AtBeginDocument code.
-Package hyperref Info: Link coloring ON on input line 74.
+Package hyperref Info: Link coloring ON on input line 75.
  (MscThesis.out) (MscThesis.out)
 \@outlinefile=\write4
 \openout4 = `MscThesis.out'.
 
-<TI_e.pdf, id=79, 274.02374pt x 128.48pt>
+<TI_e.pdf, id=111, 274.02374pt x 128.48pt>
 File: TI_e.pdf Graphic file (type pdf)
 <use TI_e.pdf>
-Package pdftex.def Info: TI_e.pdf  used on input line 81.
+Package pdftex.def Info: TI_e.pdf  used on input line 82.
 (pdftex.def)             Requested size: 274.02307pt x 128.47968pt.
-<ub_16pt_192.pdf, id=80, 258.41043pt x 199.32988pt>
+<ub_16pt_192.pdf, id=112, 258.41043pt x 199.32988pt>
 File: ub_16pt_192.pdf Graphic file (type pdf)
 <use ub_16pt_192.pdf>
-Package pdftex.def Info: ub_16pt_192.pdf  used on input line 81.
+Package pdftex.def Info: ub_16pt_192.pdf  used on input line 82.
 (pdftex.def)             Requested size: 258.40979pt x 199.32939pt.
  [1
 
@@ -791,25 +791,63 @@ File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 
 
 ]) [2]
-\openout2 = `Chapter_2.aux'.
+\openout2 = `Methods.aux'.
 
- (Chapter_2.tex) [3
-
-
-
-
-] [4]
-\openout2 = `Chapter_3.aux'.
-
- (Chapter_3.tex) [5
+ (Methods.tex
+<images/repartition.PNG, id=218, 298.11375pt x 298.41487pt>
+File: images/repartition.PNG Graphic file (type png)
+<use images/repartition.PNG>
+Package pdftex.def Info: images/repartition.PNG  used on input line 33.
+(pdftex.def)             Requested size: 178.19879pt x 178.38094pt.
+ [3
 
 
 
 
-] [6]
+ <./images/repartition.PNG>]
+<images/CT_only.png, id=230, 1050.92625pt x 915.42pt>
+File: images/CT_only.png Graphic file (type png)
+<use images/CT_only.png>
+Package pdftex.def Info: images/CT_only.png  used on input line 41.
+(pdftex.def)             Requested size: 118.80121pt x 103.47617pt.
+<images/PET_only.png, id=231, 1050.92625pt x 915.42pt>
+File: images/PET_only.png Graphic file (type png)
+<use images/PET_only.png>
+Package pdftex.def Info: images/PET_only.png  used on input line 42.
+(pdftex.def)             Requested size: 118.80121pt x 103.47617pt.
+<images/ALL.png, id=232, 1050.92625pt x 915.42pt>
+File: images/ALL.png Graphic file (type png)
+<use images/ALL.png>
+Package pdftex.def Info: images/ALL.png  used on input line 43.
+(pdftex.def)             Requested size: 118.80121pt x 103.47617pt.
+ [4 <./images/CT_only.png (PNG copy)> <./images/PET_only.png (PNG copy)> <./images/ALL.png (PNG copy)>]
+<images/CT_ONLY_PP.png, id=242, 1562.83875pt x 888.31876pt>
+File: images/CT_ONLY_PP.png Graphic file (type png)
+<use images/CT_ONLY_PP.png>
+Package pdftex.def Info: images/CT_ONLY_PP.png  used on input line 64.
+(pdftex.def)             Requested size: 118.80121pt x 67.51563pt.
+<images/PET_ONLY_PP.png, id=243, 1562.83875pt x 888.31876pt>
+File: images/PET_ONLY_PP.png Graphic file (type png)
+<use images/PET_ONLY_PP.png>
+Package pdftex.def Info: images/PET_ONLY_PP.png  used on input line 65.
+(pdftex.def)             Requested size: 118.80121pt x 67.51563pt.
+<images/ALL_PP.png, id=244, 1562.83875pt x 888.31876pt>
+File: images/ALL_PP.png Graphic file (type png)
+<use images/ALL_PP.png>
+Package pdftex.def Info: images/ALL_PP.png  used on input line 66.
+(pdftex.def)             Requested size: 118.80121pt x 67.51563pt.
+ [5 <./images/CT_ONLY_PP.png (PNG copy)> <./images/PET_ONLY_PP.png (PNG copy)> <./images/ALL_PP.png (PNG copy)>]) [6]
+\openout2 = `Results.aux'.
+
+ (Results.tex) [7
+
+
+
+
+] [8]
 \openout2 = `Conclusion.aux'.
 
- (Conclusion.tex) [7
+ (Conclusion.tex) [9
 
 
 
@@ -817,56 +855,56 @@ File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 ]
 \openout2 = `Outlook.aux'.
 
- (Outlook.tex [8
+ (Outlook.tex [10
 
 
 
 
-]) [9] (MscThesis.bbl [10
+]) [11] (MscThesis.bbl [12
 
 
 
 ]
 bibitemlist
-) [11] [12
+[13]) [14] [15
 
-] [13] [14]
+] [16]
 \openout2 = `Appendix_1.aux'.
 
- (Appendix_1.tex) [15
+ (Appendix_1.tex) [17
 
 
 ]
 \openout2 = `Appendix_2.aux'.
 
- (Appendix_2.tex [16
+ (Appendix_2.tex [18
 
 
 
 
-]) [17]
+]) [19]
 \tf@toc=\write5
 \openout5 = `MscThesis.toc'.
 
- (MscThesis.aux (Introduction.aux) (Chapter_2.aux) (Chapter_3.aux) (Conclusion.aux) (Outlook.aux) (Appendix_1.aux) (Appendix_2.aux))
+ (MscThesis.aux (Introduction.aux) (Methods.aux) (Results.aux) (Conclusion.aux) (Outlook.aux) (Appendix_1.aux) (Appendix_2.aux))
 
 LaTeX Warning: There were multiply-defined labels.
 
 Package rerunfilecheck Info: File `MscThesis.out' has not changed.
-(rerunfilecheck)             Checksum: E370E3831DFDEB6E2BFD08501CD42D5D;2549.
+(rerunfilecheck)             Checksum: FD8FE90ACB2153C0D6D16CB7D02A0847;3379.
  ) 
 Here is how much of TeX's memory you used:
- 17010 strings out of 476339
- 276599 string characters out of 5786704
- 1865340 words of memory out of 5000000
- 37046 multiletter control sequences out of 15000+600000
- 550381 words of font info for 93 fonts, out of 8000000 for 9000
+ 17097 strings out of 476339
+ 278137 string characters out of 5786704
+ 1866340 words of memory out of 5000000
+ 37105 multiletter control sequences out of 15000+600000
+ 550716 words of font info for 94 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 99i,12n,104p,1005b,595s stack positions out of 10000i,1000n,20000p,200000b,200000s
- <C:\Users\Léandre\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecrm0800.pk> <C:\Users\Léandre\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecti0800.pk> <C:\Users\Léandre\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecbx0800.pk>{C:/Users/Léandre/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-ec.enc} <C:\Users\Léandre\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecrm0700.pk> <C:\Users\Léandre\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecbx1000.pk> <C:\Users\Léandre\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecrm1000.pk> <C:\Users\Léandre\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecti1000.pk> <C:\Users\Léandre\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecti0900.pk> <C:\Users\Léandre\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecbx0900.pk> <C:\Users\Léandre\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecrm0900.pk> <C:\Users\Léandre\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecrm0600.pk> <C:\Users\Léandre\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecbx1440.pk> <C:\Users\Léandre\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecbx1728.pk> <C:\Users\Léandre\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecrm1200.pk> <C:\Users\Léandre\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecrm1095.pk><C:/Users/Léandre/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmbx10.pfb><C:/Users/Léandre/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi10.pfb><C:/Users/Léandre/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi7.pfb><C:/Users/Léandre/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi8.pfb><C:/Users/Léandre/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Users/Léandre/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr7.pfb><C:/Users/Léandre/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Users/Léandre/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmss10.pfb><C:/Users/Léandre/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmss12.pfb><C:/Users/Léandre/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmss17.pfb>
-Output written on MscThesis.pdf (25 pages, 347738 bytes).
+ 99i,12n,104p,1005b,605s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ <C:\Users\Léandre\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecti0800.pk>{C:/Users/Léandre/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-ec.enc} <C:\Users\Léandre\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecrm0800.pk> <C:\Users\Léandre\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecbx0800.pk> <C:\Users\Léandre\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\tcrm1000.pk> <C:\Users\Léandre\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecrm0700.pk> <C:\Users\Léandre\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecbx1000.pk> <C:\Users\Léandre\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecrm1000.pk> <C:\Users\Léandre\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecti1000.pk> <C:\Users\Léandre\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecti0900.pk> <C:\Users\Léandre\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecbx0900.pk> <C:\Users\Léandre\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecrm0900.pk> <C:\Users\Léandre\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecrm0600.pk> <C:\Users\Léandre\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecbx1440.pk> <C:\Users\Léandre\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecbx1728.pk> <C:\Users\Léandre\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecrm1200.pk> <C:\Users\Léandre\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecrm1095.pk><C:/Users/Léandre/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmbx10.pfb><C:/Users/Léandre/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi10.pfb><C:/Users/Léandre/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi7.pfb><C:/Users/Léandre/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi8.pfb><C:/Users/Léandre/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Users/Léandre/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr7.pfb><C:/Users/Léandre/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Users/Léandre/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmss10.pfb><C:/Users/Léandre/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmss12.pfb><C:/Users/Léandre/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmss17.pfb>
+Output written on MscThesis.pdf (27 pages, 1270191 bytes).
 PDF statistics:
- 817 PDF objects out of 1000 (max. 8388607)
- 63 named destinations out of 1000 (max. 500000)
- 163 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 918 PDF objects out of 1000 (max. 8388607)
+ 80 named destinations out of 1000 (max. 500000)
+ 262 words of extra memory for PDF output out of 10000 (max. 10000000)
 

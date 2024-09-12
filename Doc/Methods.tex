@@ -1,0 +1,79 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% This is the sample chapter file.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% Author:   René Widmer
+%           Institute for Surgical Technology and Biomechanics ISTB
+%           University of Bern
+%           rene.widmer@istb.unibe.ch
+%
+% Date:     10/28/2009
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\chapter{Methods}
+\section{Hecktor dataset}
+For the segmentation model in this project, we utilized the dataset from the Hecktor Challenge 2022. This dataset consists of both training images with corresponding ground truth labels and test images without labels. For our purposes, we focused solely on the training subset due to the availability of ground truth annotations. This subset comprises 524 imaging cases collected from seven distinct clinical centers, including:
+
+\begin{itemize}
+    \setlength\itemsep{1pt}
+    \setlength\parskip{0pt}
+    \setlength\topsep{0pt}
+    \item CHUM: Centre Hospitalier de l’Université de Montréal, Montréal, Canada
+    \item CHUP: Centre Hospitalier Universitaire de Poitiers, France
+    \item CHUS: Centre Hospitalier Universitaire de Sherbrooke, Sherbrooke, Canada
+    \item CHUV: Centre Hospitalier Universitaire Vaudois, Switzerland
+    \item HGJ: Hôpital Général Juif, Montréal, Canada
+    \item HMR: Hôpital Maisonneuve-Rosemont, Montréal, Canada
+    \item MDA: MD Anderson Cancer Center, Houston, Texas, USA
+\end{itemize}
+\begin{figure}[ht]
+    \centering
+    \includegraphics[width=0.45\textwidth]{images/repartition.PNG}
+    \caption{Distribution of cases across sites}
+\end{figure}
+\newpage
+Each case in the dataset contains two imaging modalities: computed tomography (CT), positron emission tomography (PET), and ground truth labels. The PET images were standardized using the Standardized Uptake Value (SUV). The CT and label images are provided in NIfTI format with a spatial resolution of 524 × 524 pixels in the axial plane, and variable depths across slices. While some CT images focus exclusively on the head and neck region, others encompass the entire body. In contrast, the PET images have a resolution of 128 × 128 pixels in the axial plane, with varying depths similar to the CT images.
+
+\begin{figure}[ht]
+    \centering
+    \subfloat[CT Scan]{\includegraphics[width=0.3\textwidth]{images/CT_only.png}}\hfill
+    \subfloat[PET Scan]{\includegraphics[width=0.3\textwidth]{images/PET_only.png}}\hfill
+    \subfloat[CT + PET and label]{\includegraphics[width=0.3\textwidth]{images/ALL.png}}
+    \caption{An example cases of the CHUP}
+    \label{fig:three_subfigures}
+\end{figure}
+\newpage
+\section{Segmentation model}
+
+\subsection{Preprocessing}
+Aspects of the preprocessing procedure were adapted from the methods employed by the winning team of the Hecktor Challenge 2022 \cite{Myronenko2023}
+The initial preprocessing step involved resampling the PET images to achieve uniform dimensions across modalities. Specifically, PET images were resampled to an axial plane resolution of
+524×524 pixels. Some labels exhibited minor dimensional discrepancies, occasionally differing by one plane in either width or height. These discrepancies were rectified following the resampling process.
+\vskip1em
+Subsequently, after ensuring that all three imaging modalities (CT, PET, and label) were aligned to the same dimensions, the images were resampled to a common isotropic voxel size of 
+1×1×1 mm. This resampling was performed to facilitate subsequent cropping of the head and neck region.
+\vskip1em
+For the cropping procedure, the center of the head was identified using the contours of the brain on the PET scan. Based on this central reference point, a subvolume of 
+200×200×[maximum of 310 pixels] was extracted. This approach minimizes the computational burden associated with background regions devoid of ground truth information. Additionally, the images underwent normalization via z-score clipping to mitigate the effects of outliers.
+\vskip1em
+The processed images were saved in NIfTI format following the above steps. Further preprocessing techniques were applied during the training phase, which will be detailed in subsequent sections.
+\begin{figure}[ht]
+    \centering
+    \subfloat[CT Scan]{\includegraphics[width=0.3\textwidth]{images/CT_ONLY_PP.png}}\hfill
+    \subfloat[PET Scan]{\includegraphics[width=0.3\textwidth]{images/PET_ONLY_PP.png}}\hfill
+    \subfloat[CT + PET and label]{\includegraphics[width=0.3\textwidth]{images/ALL_PP.png}}
+    \caption{Same example cases after preprocessing}
+    \label{fig:three_subfigures}
+\end{figure}
+\newpage
+\subsection{Model architectures}
+\subsection{Training}
+\subsection{Inference}
+\section{Analysis}
+\subsection{Robustness}
+\subsection{Properties}
+\subsection{Clinical evaluation}
+
+\endinput

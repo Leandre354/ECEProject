@@ -5,10 +5,10 @@ Reallocating 'name_of_file' (item size: 1) to 5 items.
 The style file: ieee.bst
 Reallocating 'name_of_file' (item size: 1) to 17 items.
 A level-1 auxiliary file: Introduction.aux
-Reallocating 'name_of_file' (item size: 1) to 14 items.
-A level-1 auxiliary file: Chapter_2.aux
-Reallocating 'name_of_file' (item size: 1) to 14 items.
-A level-1 auxiliary file: Chapter_3.aux
+Reallocating 'name_of_file' (item size: 1) to 12 items.
+A level-1 auxiliary file: Methods.aux
+Reallocating 'name_of_file' (item size: 1) to 12 items.
+A level-1 auxiliary file: Results.aux
 Reallocating 'name_of_file' (item size: 1) to 15 items.
 A level-1 auxiliary file: Conclusion.aux
 Reallocating 'name_of_file' (item size: 1) to 12 items.
@@ -19,44 +19,44 @@ A level-1 auxiliary file: Appendix_1.aux
 Reallocating 'name_of_file' (item size: 1) to 15 items.
 A level-1 auxiliary file: Appendix_2.aux
 Database file #1: References.bib
-You've used 9 entries,
+You've used 10 entries,
             2118 wiz_defined-function locations,
-            577 strings with 6336 characters,
-and the built_in function-call counts, 3501 in all, are:
-= -- 335
-> -- 205
-< -- 0
-+ -- 81
-- -- 72
-* -- 320
-:= -- 604
-add.period$ -- 27
-call.type$ -- 9
-change.case$ -- 63
+            584 strings with 6638 characters,
+and the built_in function-call counts, 4023 in all, are:
+= -- 388
+> -- 233
+< -- 1
++ -- 92
+- -- 82
+* -- 356
+:= -- 685
+add.period$ -- 31
+call.type$ -- 10
+change.case$ -- 71
 chr.to.int$ -- 0
-cite$ -- 9
-duplicate$ -- 99
-empty$ -- 238
-format.name$ -- 72
-if$ -- 683
+cite$ -- 10
+duplicate$ -- 120
+empty$ -- 276
+format.name$ -- 82
+if$ -- 799
 int.to.chr$ -- 0
-int.to.str$ -- 9
-missing$ -- 9
-newline$ -- 48
-num.names$ -- 18
-pop$ -- 45
+int.to.str$ -- 10
+missing$ -- 10
+newline$ -- 53
+num.names$ -- 20
+pop$ -- 55
 preamble$ -- 1
-purify$ -- 54
+purify$ -- 61
 quote$ -- 0
-skip$ -- 66
+skip$ -- 81
 stack$ -- 0
-substring$ -- 244
-swap$ -- 9
-text.length$ -- 0
+substring$ -- 273
+swap$ -- 18
+text.length$ -- 1
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 36
+type$ -- 40
 warning$ -- 0
-while$ -- 34
-width$ -- 10
-write$ -- 101
+while$ -- 39
+width$ -- 12
+write$ -- 113

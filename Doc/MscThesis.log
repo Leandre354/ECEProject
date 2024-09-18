@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.24 (MiKTeX 23.1) (preloaded format=pdflatex 2023.3.6)  12 SEP 2024 14:59
+This is pdfTeX, Version 3.141592653-2.6-1.40.24 (MiKTeX 23.1) (preloaded format=pdflatex 2023.3.6)  18 SEP 2024 11:55
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -700,6 +700,9 @@ Package hyperref Info: Option `breaklinks' set `true' on input line 70.
 
 LaTeX Warning: Label `fig:three_subfigures' multiply defined.
 
+
+LaTeX Warning: Label `fig:three_subfigures' multiply defined.
+
 ) (Results.aux) (Conclusion.aux) (Outlook.aux) (Appendix_1.aux) (Appendix_2.aux))
 \openout1 = `MscThesis.aux'.
 
@@ -824,65 +827,80 @@ Package pdftex.def Info: images/ALL.png  used on input line 43.
 <images/CT_ONLY_PP.png, id=242, 1562.83875pt x 888.31876pt>
 File: images/CT_ONLY_PP.png Graphic file (type png)
 <use images/CT_ONLY_PP.png>
-Package pdftex.def Info: images/CT_ONLY_PP.png  used on input line 64.
+Package pdftex.def Info: images/CT_ONLY_PP.png  used on input line 63.
 (pdftex.def)             Requested size: 118.80121pt x 67.51563pt.
 <images/PET_ONLY_PP.png, id=243, 1562.83875pt x 888.31876pt>
 File: images/PET_ONLY_PP.png Graphic file (type png)
 <use images/PET_ONLY_PP.png>
-Package pdftex.def Info: images/PET_ONLY_PP.png  used on input line 65.
+Package pdftex.def Info: images/PET_ONLY_PP.png  used on input line 64.
 (pdftex.def)             Requested size: 118.80121pt x 67.51563pt.
 <images/ALL_PP.png, id=244, 1562.83875pt x 888.31876pt>
 File: images/ALL_PP.png Graphic file (type png)
 <use images/ALL_PP.png>
-Package pdftex.def Info: images/ALL_PP.png  used on input line 66.
+Package pdftex.def Info: images/ALL_PP.png  used on input line 65.
 (pdftex.def)             Requested size: 118.80121pt x 67.51563pt.
- [5 <./images/CT_ONLY_PP.png (PNG copy)> <./images/PET_ONLY_PP.png (PNG copy)> <./images/ALL_PP.png (PNG copy)>]) [6]
+ [5 <./images/CT_ONLY_PP.png (PNG copy)> <./images/PET_ONLY_PP.png (PNG copy)> <./images/ALL_PP.png (PNG copy)>]
+Overfull \hbox (20.62415pt too wide) in paragraph at lines 73--74
+[]\T1/cmr/m/n/10 Following aug-men-ta-tion, the im-ages were ran-domly cropped into patches of size 192\TS1/cmr/m/n/10 �\T1/cmr/m/n/10 192\TS1/cmr/m/n/10 �\T1/cmr/m/n/10 192
+ []
+
+<images/UNet.PNG, id=256, 478.1865pt x 264.68887pt>
+File: images/UNet.PNG Graphic file (type png)
+<use images/UNet.PNG>
+Package pdftex.def Info: images/UNet.PNG  used on input line 81.
+(pdftex.def)             Requested size: 277.19879pt x 153.4429pt.
+[6 <./images/UNet.PNG>]
+Overfull \hbox (10.73767pt too wide) in paragraph at lines 115--116
+[]\T1/cmr/m/n/10 Dice loss is par-tic-u-larly ad-van-ta-geous for seg-men-ta-tion tasks in-volv-ing im-bal-anced datasets,
+ []
+
+[7]) [8]
 \openout2 = `Results.aux'.
 
- (Results.tex) [7
-
-
-
-
-] [8]
-\openout2 = `Conclusion.aux'.
-
- (Conclusion.tex) [9
+ (Results.tex) [9
 
 
 
 
 ]
+\openout2 = `Conclusion.aux'.
+
+ (Conclusion.tex [10
+
+
+
+
+]) [11]
 \openout2 = `Outlook.aux'.
 
- (Outlook.tex [10
+ (Outlook.tex [12
 
 
 
 
-]) [11] (MscThesis.bbl [12
+]) [13] (MscThesis.bbl [14
 
 
 
 ]
 bibitemlist
-[13]) [14] [15
+[15]) [16] [17
 
-] [16]
+] [18]
 \openout2 = `Appendix_1.aux'.
 
- (Appendix_1.tex) [17
+ (Appendix_1.tex) [19
 
 
 ]
 \openout2 = `Appendix_2.aux'.
 
- (Appendix_2.tex [18
+ (Appendix_2.tex [20
 
 
 
 
-]) [19]
+]) [21]
 \tf@toc=\write5
 \openout5 = `MscThesis.toc'.
 
@@ -891,20 +909,20 @@ bibitemlist
 LaTeX Warning: There were multiply-defined labels.
 
 Package rerunfilecheck Info: File `MscThesis.out' has not changed.
-(rerunfilecheck)             Checksum: FD8FE90ACB2153C0D6D16CB7D02A0847;3379.
+(rerunfilecheck)             Checksum: 7AB50E9FE8BCB2F618B97DD63DCF1FF6;3318.
  ) 
 Here is how much of TeX's memory you used:
- 17097 strings out of 476339
- 278137 string characters out of 5786704
+ 17079 strings out of 476339
+ 278015 string characters out of 5786704
  1866340 words of memory out of 5000000
- 37105 multiletter control sequences out of 15000+600000
- 550716 words of font info for 94 fonts, out of 8000000 for 9000
+ 37094 multiletter control sequences out of 15000+600000
+ 545380 words of font info for 76 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  99i,12n,104p,1005b,605s stack positions out of 10000i,1000n,20000p,200000b,200000s
- <C:\Users\Léandre\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecti0800.pk>{C:/Users/Léandre/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-ec.enc} <C:\Users\Léandre\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecrm0800.pk> <C:\Users\Léandre\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecbx0800.pk> <C:\Users\Léandre\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\tcrm1000.pk> <C:\Users\Léandre\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecrm0700.pk> <C:\Users\Léandre\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecbx1000.pk> <C:\Users\Léandre\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecrm1000.pk> <C:\Users\Léandre\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecti1000.pk> <C:\Users\Léandre\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecti0900.pk> <C:\Users\Léandre\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecbx0900.pk> <C:\Users\Léandre\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecrm0900.pk> <C:\Users\Léandre\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecrm0600.pk> <C:\Users\Léandre\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecbx1440.pk> <C:\Users\Léandre\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecbx1728.pk> <C:\Users\Léandre\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecrm1200.pk> <C:\Users\Léandre\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecrm1095.pk><C:/Users/Léandre/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmbx10.pfb><C:/Users/Léandre/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi10.pfb><C:/Users/Léandre/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi7.pfb><C:/Users/Léandre/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi8.pfb><C:/Users/Léandre/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Users/Léandre/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr7.pfb><C:/Users/Léandre/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Users/Léandre/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmss10.pfb><C:/Users/Léandre/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmss12.pfb><C:/Users/Léandre/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmss17.pfb>
-Output written on MscThesis.pdf (27 pages, 1270191 bytes).
+{C:/Users/Léandre/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-ec.enc} <C:\Users\Léandre\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecrm0800.pk> <C:\Users\Léandre\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecbx0800.pk> <C:\Users\Léandre\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\tcrm1000.pk> <C:\Users\Léandre\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecrm0700.pk> <C:\Users\Léandre\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecbx1000.pk> <C:\Users\Léandre\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecrm1000.pk> <C:\Users\Léandre\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecti1000.pk> <C:\Users\Léandre\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecti0900.pk> <C:\Users\Léandre\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecbx0900.pk> <C:\Users\Léandre\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecrm0900.pk> <C:\Users\Léandre\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecrm0600.pk> <C:\Users\Léandre\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecbx1440.pk> <C:\Users\Léandre\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecbx1728.pk> <C:\Users\Léandre\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecrm1200.pk> <C:\Users\Léandre\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecrm1095.pk><C:/Users/Léandre/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmex10.pfb><C:/Users/Léandre/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi10.pfb><C:/Users/Léandre/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi7.pfb><C:/Users/Léandre/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Users/Léandre/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr7.pfb><C:/Users/Léandre/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Users/Léandre/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmss10.pfb><C:/Users/Léandre/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmss12.pfb><C:/Users/Léandre/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmss17.pfb>
+Output written on MscThesis.pdf (29 pages, 1323816 bytes).
 PDF statistics:
- 918 PDF objects out of 1000 (max. 8388607)
- 80 named destinations out of 1000 (max. 500000)
- 262 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 908 PDF objects out of 1000 (max. 8388607)
+ 85 named destinations out of 1000 (max. 500000)
+ 267 words of extra memory for PDF output out of 10000 (max. 10000000)
 

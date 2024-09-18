@@ -48,7 +48,6 @@ Each case in the dataset contains two imaging modalities: computed tomography (C
 \section{Segmentation model}
 
 \subsection{Preprocessing}
-Aspects of the preprocessing procedure were adapted from the methods employed by the winning team of the Hecktor Challenge 2022 \cite{Myronenko2023}
 The initial preprocessing step involved resampling the PET images to achieve uniform dimensions across modalities. Specifically, PET images were resampled to an axial plane resolution of
 524×524 pixels. Some labels exhibited minor dimensional discrepancies, occasionally differing by one plane in either width or height. These discrepancies were rectified following the resampling process.
 \vskip1em
@@ -58,7 +57,7 @@ Subsequently, after ensuring that all three imaging modalities (CT, PET, and lab
 For the cropping procedure, the center of the head was identified using the contours of the brain on the PET scan. Based on this central reference point, a subvolume of 
 200×200×[maximum of 310 pixels] was extracted. This approach minimizes the computational burden associated with background regions devoid of ground truth information. Additionally, the images underwent normalization via z-score clipping to mitigate the effects of outliers.
 \vskip1em
-The processed images were saved in NIfTI format following the above steps. Further preprocessing techniques were applied during the training phase, which will be detailed in subsequent sections.
+The processed images were saved in NIfTI format following the above steps. Further preprocessing techniques were applied during the training phase, which will be detailed in subsequent sections. Aspects of the preprocessing procedure were adapted from the methods employed by the winning team of the Hecktor Challenge 2022 \cite{Myronenko2023}
 \begin{figure}[ht]
     \centering
     \subfloat[CT Scan]{\includegraphics[width=0.3\textwidth]{images/CT_ONLY_PP.png}}\hfill
@@ -68,12 +67,69 @@ The processed images were saved in NIfTI format following the above steps. Furth
     \label{fig:three_subfigures}
 \end{figure}
 \newpage
+\subsection{Data augmentation}
+During the training process, data augmentation was applied to the original images using the Medical Open Network for Artificial Intelligence (MONAI) framework. Spatial augmentations were applied to both imaging modalities, including random flipping, affine transformations (translation, rotation, and scaling). For the CT images, intensity augmentations were also incorporated, such as the addition of Gaussian noise, smoothing, contrast adjustment, and intensity shifting. All augmentations were applied with an occurence probability of 20\%.
+\vskip1em
+Following augmentation, the images were randomly cropped into patches of size 192×192×192 voxels. Patches were centered based on labels, with a 10\% probability of being centered on background, 45\% on primary tumors, and 45\% on nodal tumors. In cases where only one tumor type was present, the sampling probability for that tumor was increased to 90\%.
+\vskip1em
+For validation, a single patch of equal size was extracted, with a balanced distribution of 33\% for background, primary tumors, and nodal tumors. This approach eliminates the need for predictions using sliding windows (e.g., 8 predictions per image), as a single patch is used for each validation image of size 200×200×310.
 \subsection{Model architectures}
+The model used for segmentation is the Dynamic UNet (DynUNet) from MONAI. It provide several parameter to configure the model.
+The architecture is represented below :
+\begin{figure}[ht]
+    \centering
+    \includegraphics[width=0.7\textwidth]{images/UNet.PNG}
+    \caption{Model architecture}
+    \label{fig:three_subfigures}
+\end{figure}
+
+The model operates in three dimensions, taking as inputs two modalities: computed tomography (CT) and positron emission tomography (PET). It produces three binary segmentation outputs: background, primary tumors, and nodal tumors.
+\vskip1em
+All convolutional kernels used in the model are of size 3×3×3. The architecture consists of six layers, with downsampling performed consistently by a factor of 2, reducing the input size from 192×192×192 to 6×6×6. Additionally, batch normalization is implemented in conjunction with residual blocks to enhance training stability and model performance.
+The probabilites are then computed through softmax that incorporate the mutual exclusivity between the 3 segmentation masks.
 \subsection{Training}
+The training parameters for the model are as follows:
+\begin{itemize}
+    \setlength\itemsep{1pt}
+    \setlength\parskip{0pt}
+    \setlength\topsep{0pt}
+    \item Optimizer : AdamW
+    \item Learning rate : 1e-4
+    \item Weight decay : 3e-5
+    \item Batch size : 2
+    \item Epochs : 100
+\end{itemize}
+A LambdaLR scheduler is employed, utilizing the following decay function:
+\begin{equation}
+    \text{Decay Factor} = \left(1 - \frac{\text{epoch}}{\text{number\_epoch}}\right)^{0.9}
+\end{equation}
+The loss function combines Dice loss and cross-entropy loss, defined as follows:
+\begin{equation}
+    \text{Dice Loss} = 1 - \frac{2 |P \cap Y|}{|P| + |Y|} \label{eq:dice_loss}
+\end{equation}
+\begin{equation}
+    \text{Cross-Entropy Loss} = -\left(Y \log(P) + (1 - Y) \log(1 - P) \right) \label{eq:ce_loss}
+\end{equation} 
+where P is the prediction and Y is the ground truth.
+\vskip1em
+Dice loss is particularly advantageous for segmentation tasks involving imbalanced datasets, such as those found in head and neck tumor imaging, where the tumors are often significantly smaller than the surrounding tissues. The Dice coefficient, which Dice loss is based on, focuses on the overlap between the predicted segmentation and the ground truth (\ref{eq:dice_loss}), effectively capturing the regions of interest despite their limited size.
+\vskip1em
+In contrast, cross-entropy loss measures the dissimilarity between the predicted probability distribution and the true distribution (\ref{eq:ce_loss}). While it is easier to optimize due to its differentiable nature, cross-entropy can be more sensitive to class imbalances. This sensitivity may lead to suboptimal performance when the class of interest (e.g., tumors) constitutes only a small fraction of the total data.
+\vskip1em
+Given these characteristics, a hybrid approach that combines both Dice loss and cross-entropy loss offers a promising solution. This combination leverages the strengths of both methods: Dice loss ensures that the model pays adequate attention to the small tumor regions, while cross-entropy facilitates stable and efficient optimization. Such an approach can yield improved segmentation performance, making it particularly suitable for complex tasks in medical imaging.
+\newpage
+To enhance training performance, mixed precision training utilizing PyTorch has been implemented. This approach leverages both single-precision (32-bit) and half-precision (16-bit) floating-point formats during model training. By employing mixed precision, the training speed is significantly increased due to reduced computational overhead, while the memory footprint is minimized. This allows for the efficient use of hardware resources, facilitating larger batch sizes and improved model scalability without compromising numerical stability.
+The training run on a TODO with around 30Go of memory use.
+\vskip1em
+To enhance model performance, the training dataset has been partitioned into five folds representing ~90\% (with ~80\% for training and ~20\% for validation) of the initial 524 cases, facilitating a cross-validation approach. This technique allows for the integration of predictions from each fold, thereby improving the consistency and robustness of the model's predictions. By leveraging multiple subsets of the data during training, the model can better generalize to unseen data, ultimately leading to more reliable and stable results. This method not only mitigates overfitting but also enhances the overall accuracy of the predictions.
+\vskip1em
+For the validation, 
 \subsection{Inference}
 \section{Analysis}
 \subsection{Robustness}
+\subsubsection{Metrics}
 \subsection{Properties}
+\subsubsection{Metrics}
 \subsection{Clinical evaluation}
 
 \endinput

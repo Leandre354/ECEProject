@@ -121,15 +121,132 @@ Given these characteristics, a hybrid approach that combines both Dice loss and 
 To enhance training performance, mixed precision training utilizing PyTorch has been implemented. This approach leverages both single-precision (32-bit) and half-precision (16-bit) floating-point formats during model training. By employing mixed precision, the training speed is significantly increased due to reduced computational overhead, while the memory footprint is minimized. This allows for the efficient use of hardware resources, facilitating larger batch sizes and improved model scalability without compromising numerical stability.
 The training run on a TODO with around 30Go of memory use.
 \vskip1em
+Prior to training, additional preprocessing steps were applied to the images. Specifically, the CT images were min-max normalized to a range of 0 to 1, ensuring consistent scaling across the dataset. In contrast, PET images were normalized to have a zero mean, adjusting for intensity variations while preserving the relative distribution of values.
+\vskip1em
+These normalization procedures were performed dynamically during the training phase, allowing the images to be stored in their original format in NIfTI files. This preserved the integrity of the original data, enabling direct computation of properties from the segmented regions in subsequent analyses.
+\vskip1em
 To enhance model performance, the training dataset has been partitioned into five folds representing ~90\% (with ~80\% for training and ~20\% for validation) of the initial 524 cases, facilitating a cross-validation approach. This technique allows for the integration of predictions from each fold, thereby improving the consistency and robustness of the model's predictions. By leveraging multiple subsets of the data during training, the model can better generalize to unseen data, ultimately leading to more reliable and stable results. This method not only mitigates overfitting but also enhances the overall accuracy of the predictions.
 \vskip1em
-For the validation, 
+For the validation process, as outlined in the data augmentation section, a single patch was selected, ensuring equal distribution across the channels. This approach generates a validation set that is representative of the entire image while significantly reducing computational time. The validation set comprised 20% of the training data, which was passed through the model to estimate the probability of tumor presence.
+\vskip1em
+Following model inference, a postprocessing step was applied to the softmax output. This involved converting the probabilistic output into a binary mask by applying a threshold of 0.5, where values greater than or equal to 0.5 were classified as positive for the presence of a tumor, and values below this threshold were classified as negative.
 \subsection{Inference}
+During the inference phase, the test set comprised 50 cases, constituting approximately 10\% of the original dataset. Each case was subjected to 37 inference passes, which included 6 distinct perturbations applied at 3 different levels of severity for each of the two modalities, as well as one baseline inference without any perturbation. Detailed descriptions of these perturbations and their respective parameters are provided in the Analysis section.
+\vskip1em
+The inference results yielded 37 segmented binary masks for each of the 50 cases, representing the model's predictions under different conditions. These binary masks were used for subsequent analysis to assess the consistency and robustness of the model's segmentation performance across different perturbation scenarios.
+
 \section{Analysis}
 \subsection{Robustness}
-\subsubsection{Metrics}
-\subsection{Properties}
-\subsubsection{Metrics}
+
+As outlined in the Inference section, six perturbations were applied to the data to assess the robustness of the model 
+against variations that may be encountered in real-world scenarios, such as sensor noise or image artifacts. These perturbations, derived from the torchio library, simulate various types of distortions and alterations that may impact model performance.
+ The six perturbations are described below :
+\begin{itemize}
+    \setlength\itemsep{1pt}
+    \setlength\parskip{0pt}
+    \setlength\topsep{0pt}
+    \item \textbf{Noise}: Random variations in pixel intensity, simulating the effect of sensor or environmental noise during image acquisition.
+    \item \textbf{Motion}: Simulates patient movement during the scan, leading to blurring or streaking in the images.
+    \item \textbf{Blur}: Reduces image sharpness, simulating out-of-focus images or lower resolution captures.
+    \item \textbf{Spike}: Alternating bright and dark lines in the image, simulating sensor errors or environmental interference during the scan.
+    \item \textbf{Bias}: Intensity shifts or gradients across the image, simulating uneven lighting or sensor sensitivity changes.
+    \item \textbf{Ghosting}: Artifacts that simulate image echoes or multiple exposures due to acquisition errors, causing repeated structures in the image.
+\end{itemize}
+
+\noindent Here is a visual representation of the perturbations applied :
+
+\begin{figure}[ht]
+    \centering
+    \includegraphics[width=1\textwidth]{images/perturbations.PNG}
+    \caption{Perturbations}
+    \label{fig:three_subfigures}
+\end{figure}
+
+
+Each perturbation was applied independently to either the CT or PET modality at three varying degrees of severity: 
+low, medium, and high. These severity levels correspond to increasing intensities of the perturbation, where low 
+severity represents minimal distortion and high severity introduces significant alterations to the image. The figure 
+above illustrates the perturbations at each severity level for the CT modality.
+
+Note that the noise perturbations may not be accurately represented here; however, more detailed visualizations and discussion 
+of the noise effects on the images are provided in the Results section.
+\vskip1em
+To assess the impact of perturbations on segmentation performance, we utilized evaluation metrics from the Pymia library. 
+The metrics employed are as follows:
+\begin{itemize} 
+    \setlength\itemsep{1pt} 
+    \setlength\parskip{0pt} 
+    \setlength\topsep{0pt} 
+    \item \textbf{Dice coefficient}: A similarity index that measures the overlap between predicted and ground truth segmentation. 
+    \item \textbf{Hausdorff distance}: A metric that evaluates the maximum boundary distance between predicted and ground truth segmentation contours. 
+    \item \textbf{Jaccard index}: A measure of overlap between predicted and true segmentation, similar to the Dice coefficient but more sensitive to boundary errors. 
+    \item \textbf{Sensitivity}: Measures the proportion of true positives correctly identified by the model. 
+    \item \textbf{Specificity}: Measures the proportion of true negatives correctly identified by the model. 
+    \item \textbf{Accuracy}: Evaluates the overall performance of the model by considering both true positives and true negatives. 
+\end{itemize}
+
+To analyze the impact of each perturbation, the delta for each evaluation metric was computed by calculating the difference between the baseline (unperturbed) metric and the corresponding metric obtained after applying the perturbation. This delta value quantifies the performance change induced by each perturbation, providing insight into how robust the model is under varying conditions.
+\vskip1em
+For each of the six perturbations, delta values were computed for all three severity levels, separately for both the CT and PET modalities. Boxplots were generated to visualize the distribution of these delta values across all test cases. The boxplots represent the central tendency (median) and variability (interquartile range) of the delta values for each metric, with whiskers extending to the most extreme non-outlier values. Outliers were identified to highlight cases where perturbations had an unusually large effect on model performance.
+\vskip1em
+This analysis enables a detailed comparison of the model’s robustness to different perturbations and degrees of severity for both imaging modalities. Further interpretation of these results is discussed in the Results section.
+\newpage
+
+In addition to the computation of the previously described metrics, we computed properties of the segmented area to 
+investigate potential correlations between the change in Dice coefficient induced by perturbations and these properties. 
+For example, we examined whether the volume of the segmented area correlates with greater changes in perturbed images due 
+to motion. The properties are as follows:
+\begin{itemize}
+    \setlength\itemsep{1pt} 
+    \setlength\parskip{0pt} 
+    \setlength\topsep{0pt} 
+    \item \textbf{Volume}: Total number of voxels belonging to the region of interest, computed as the sum of all `True` values in the ground truth boolean mask.
+    \item \textbf{Surface Area}: The area of the surface boundary of the region, computed using compactness and surface area algorithms on the labeled region.
+    \item \textbf{Compactness}: A shape descriptor that relates the surface area to the volume, indicating how compact or spread out the region is. (Maximum value of 1 corresponds to a perfect sphere.)
+    \item \textbf{Distance from Center}: Euclidean distance from the center of mass (centroid) of the region to the center of the entire image.
+    \item \textbf{Boundary Length}: Length of the boundary of the region, calculated using the Sobel operator on the ground truth mask.
+    \item \textbf{CT Intensity Variability}: The standard deviation of the intensity values in the CT image for the region of interest, measuring intensity variation within the region.
+    \item \textbf{PET Intensity Variability}: The standard deviation of intensity values in the PET image for the region of interest, representing variability in PET signal.
+    \item \textbf{CT F/B Contrast}: Contrast between the mean intensity in the foreground (region of interest) and the background in the CT image, calculated as the difference between the mean intensities.
+    \item \textbf{PET F/B Contrast}: Contrast between the mean intensity in the foreground and background in the PET image, computed similarly to the CT contrast.
+    \item \textbf{SUVmax}: The maximum standardized uptake value (SUV) in the PET image within the region, indicating the highest metabolic activity.
+    \item \textbf{CT Number (HU)}: The mean Hounsfield unit (HU) value within the region of interest in the CT image.
+    \item \textbf{PET Number}: The mean standardized uptake value (SUV) within the region of interest in the PET image.
+    \item \textbf{Regions}: The number of regions in the labeled ground truth, representing distinct anatomical regions.
+    \item \textbf{Entropy}: A measure of the randomness or complexity of the region, reflecting the degree of heterogeneity in the image data.
+\end{itemize}
+
+Scatter plots of each perturbation at varying degrees were generated against each of the properties listed above. 
+The goal is to determine whether perturbations have a more significant effect on specific cases, such as certain anatomical 
+regions or volume sizes. Statistical correlations were computed using Pearson, Spearman and Kendall methods to assess 
+these relationships.
+
+\newpage
 \subsection{Clinical evaluation}
+To assess the relevance of geometrical metrics used in deep learning, we conducted a clinical evaluation of 50 test cases in collaboration with a 
+physician specializing in head and neck radiation oncology. The evaluation utilized a 5-point Likert scale for grading. 
+The representations of the 5-point grades are provided below:
+
+\begin{itemize}
+    \setlength\itemsep{1pt} 
+    \setlength\parskip{0pt} 
+    \setlength\topsep{0pt} 
+    \item \textbf{\ding{73}}: Unable to utilize the prediction; necessitates complete reconstruction.
+    \item \textbf{\ding{73}\ding{73}}: Able to utilize the prediction but requires significant modifications.
+    \item \textbf{\ding{73}\ding{73}\ding{73}}: Able to utilize the prediction with some modifications.
+    \item \textbf{\ding{73}\ding{73}\ding{73}\ding{73}}: Able to utilize the prediction with minor modifications.
+    \item \textbf{\ding{73}\ding{73}\ding{73}\ding{73}\ding{73}}: Able to utilize the prediction in its original form.
+\end{itemize}
+The objective of this evaluation is to provide a comprehensive assessment of the model's performance and to quantify the correlation between the geometrical metrics and physician expertise. The evaluation was conducted specifically for each label, including Primary and Nodal tumors. 
+Subsequently, scatter plots were generated to visualize the relationships between the various geometrical metrics, including the Dice score, Hausdorff distance, and Jaccard index. The correlations between these metrics and the physician evaluations were computed using Pearson correlation coefficients.
+\vskip1em
+The 50 cases were categorized into two groups: one consisting of baseline images (without perturbations), representing 32 images, and the other comprising perturbed images influenced by the three most significant perturbations. For each perturbation and modality, three cases were selected, resulting in a total of six cases for each of the three perturbations, accounting for the final 18 cases.
+\vskip1em
+This approach allows us to analyze the impact of perturbations on real-case evaluations and to assess whether there is a correlation with the effects represented by the delta Dice score. 
+\vskip1em
+This analysis, enables us to evaluate the relevance of the geometrical metrics in predicting clinical outcomes. 
+The findings will contribute to understanding the robustness of the model, its practical applicability in clinical settings, 
+and the significance of geometrical metrics in enhancing model performance and decision-making in radiotherapy.
+Limitations of this study include potential biases arising from the subjective nature of physician evaluations, as the assessment was conducted by a single observer. 
 
 \endinput

@@ -1,17 +1,106 @@
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% This is the sample chapter file.
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%
-% Author:   René Widmer
-%           Institute for Surgical Technology and Biomechanics ISTB
-%           University of Bern
-%           rene.widmer@istb.unibe.ch
-%
-% Date:     10/28/2009
-%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \chapter{Results}
 
-\section{A Sample Section with a Table}
+\section{Robustness}
+\subsection{Perturbations effects}
+The following graphs illustrates the impact of perturbations on segmentation performance. 
+The columns correspond to the baseline and the six different perturbations. The rows depict the delta values of 
+various segmentation metrics, indicating the extent of variation in segmentation performance due to the perturbations. 
+The baseline, having no delta, represents the original values for each metric. Each of the three boxplots corresponds to 
+one of three levels of perturbation severity, providing a visual representation of how segmentation performance is affected 
+at increasing degrees of perturbation. 
+\vskip1em
+The graph below represents the scenario in which perturbations are applied to nodal tumor labels in the CT modality.
+\begin{figure}[ht]
+    \centering
+    \includegraphics[width=1\textwidth]{images/CT_Nodal.png}
+    \caption{Perturbations applied to nodal tumor labels in the CT modality}
+    \label{fig:three_subfigures}
+\end{figure}
+
+The graph demonstrates significant delta values in the Dice coefficient for spike, bias, and noise perturbations, 
+highlighting their substantial impact on segmentation performance. Regarding the Hausdorff distance, the bias 
+perturbation exhibits the most pronounced negative effect. Sensitivity, specificity, and accuracy metrics display 
+behavior similar to the Dice coefficient, with considerably larger effects observed under spike, bias, and noise perturbations. 
+Across the entire set of metrics, the model appears to be relatively robust to motion, blur, and ghost perturbations, 
+showing minimal variation in performance.
+
+\begin{figure}[ht]
+    \centering
+    \includegraphics[width=1\textwidth]{images/CT_Primary.png}
+    \caption{Perturbations applied to primary tumor labels in the CT modality}
+    \label{fig:three_subfigures}
+\end{figure}
+
+Here, perturbations were also applied to CT images with a focus on primary tumors. Overall, 
+the behavior observed aligns with previous findings from nodal tumors, indicating that spike, noise, and bias perturbations 
+are more detrimental compared to other conditions. The Hausdorff distance metric was particularly sensitive 
+to bias, showing a significant impact on segmentation accuracy. Additionally, noise exhibited a less pronounced impact 
+at the first degree of severity compared to higher levels for both labels, while the effects of spike and bias were pronounced 
+even at this initial degree.
+\begin{figure}[ht]
+    \centering
+    \includegraphics[width=1\textwidth]{images/PET_Nodal.png}
+    \caption{Perturbations applied to primary tumor labels in the CT modality}
+    \label{fig:three_subfigures}
+\end{figure}
+\newpage
+\begin{figure}[ht]
+    \centering
+    \includegraphics[width=1\textwidth]{images/PET_Primary.png}
+    \caption{Perturbations applied to primary tumor labels in the CT modality}
+    \label{fig:three_subfigures}
+\end{figure}
+The two graphs show the effect of the perturbations on the PET images in both labels.
+
+\subsection{Correlation with properties}
+\begin{figure}[ht]
+    \centering
+    \includegraphics[width=1\textwidth]{images/CT_Nodal_Properties_1.png}
+    \caption{Perturbations applied to primary tumor labels in the CT modality}
+    \label{fig:three_subfigures}
+\end{figure}
+\begin{figure}[ht]
+    \centering
+    \includegraphics[width=1\textwidth]{images/CT_Nodal_Properties_2.png}
+    \caption{Perturbations applied to primary tumor labels in the CT modality}
+    \label{fig:three_subfigures}
+\end{figure}
+\begin{figure}[ht]
+    \centering
+    \includegraphics[width=1\textwidth]{images/CT_Nodal_Properties_3.png}
+    \caption{Perturbations applied to primary tumor labels in the CT modality}
+    \label{fig:three_subfigures}
+\end{figure}
+\begin{figure}[ht]
+    \centering
+    \includegraphics[width=1\textwidth]{images/CT_Nodal_Properties_4.png}
+    \caption{Perturbations applied to primary tumor labels in the CT modality}
+    \label{fig:three_subfigures}
+\end{figure}
+\begin{figure}[ht]
+    \centering
+    \includegraphics[width=0.6\textwidth]{images/CT_Nodal_cor.PNG}
+    \caption{Perturbations applied to primary tumor labels in the CT modality}
+    \label{fig:three_subfigures}
+\end{figure}
+\begin{figure}[ht]
+    \centering
+    \includegraphics[width=0.6\textwidth]{images/CT_Primary_cor.PNG}
+    \caption{Perturbations applied to primary tumor labels in the CT modality}
+    \label{fig:three_subfigures}
+\end{figure}
+\begin{figure}[ht]
+    \centering
+    \includegraphics[width=0.6\textwidth]{images/PET_Nodal_cor.png}
+    \caption{Perturbations applied to primary tumor labels in the CT modality}
+    \label{fig:three_subfigures}
+\end{figure}
+\begin{figure}[ht]
+    \centering
+    \includegraphics[width=0.6\textwidth]{images/PET_Primary_cor.png}
+    \caption{Perturbations applied to primary tumor labels in the CT modality}
+    \label{fig:three_subfigures}
+\end{figure}
+\section{Clinical evaluation}
 

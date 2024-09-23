@@ -56,7 +56,7 @@ fig, axes = plt.subplots(len(metrics), len(files), figsize=(15, 15), constrained
 fig2, axes2 = plt.subplots(3, len(files), figsize=(15, 15), constrained_layout=True, num=f'{Modality} - {Label} - Properties - 1')
 fig3, axes3 = plt.subplots(3, len(files), figsize=(15, 15), constrained_layout=True, num=f'{Modality} - {Label} - Properties - 2')
 fig4, axes4 = plt.subplots(3, len(files), figsize=(15, 15), constrained_layout=True, num=f'{Modality} - {Label} - Properties - 3')
-fig5, axes5 = plt.subplots(3, len(files), figsize=(15, 15), constrained_layout=True, num=f'{Modality} - {Label} - Properties - 4')
+fig5, axes5 = plt.subplots(4, len(files), figsize=(15, 15), constrained_layout=True, num=f'{Modality} - {Label} - Properties - 4')
 
 # Function to plot boxplot and add text annotations
 def plot_box(ax, df,db, metric, title, name):
@@ -83,11 +83,7 @@ def plot_box(ax, df,db, metric, title, name):
     if name != 'BASE':
         data_replaced2 = np.where(np.isfinite(data2), data2, 0)
         data_replaced3 = np.where(np.isfinite(data3), data3, 0)
-    """
-    mean_value = np.mean(data_replaced)
-    ax.text(0.75, mean_value, f'{mean_value:.2f}',
-            horizontalalignment='center', verticalalignment='bottom',
-            fontsize=6, color='red', weight='bold')"""
+
     if name == 'BASE':
         ax.boxplot(data_replaced, flierprops=dict(marker='.', alpha=0.3))
     else:
@@ -171,7 +167,7 @@ for name, df in data.items():
     col2 = index2 // 3
     col3 = index3 // 3
     col4 = index4 // 3
-    col5 = index5 // 3
+    col5 = index5 // 4
 
     db = pd.read_csv('Inference/Image200/Analysis/Baseline/results_pymia.csv', delimiter=';')
     dba = pd.read_csv('Inference/Image200/Analysis/Baseline/results_add.csv', delimiter=',')
@@ -203,8 +199,8 @@ for name, df in data.items():
         plot_box2(ax, df, db, dba, metric, title, name)
         index4 += 1
 
-    metrics3 = metrics2[0:3]
-    titles3 = titles2[9:12]
+    metrics3 = metrics2[0:4]
+    titles3 = titles2[9:13]
 
     for metric, title in zip(metrics3, titles3):
         row5 = index5 % len(metrics3)

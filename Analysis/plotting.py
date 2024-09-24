@@ -137,6 +137,12 @@ def plot_box2(ax, df, db, dba, metric, title, name):
 
         x = np.where(np.isfinite(x), x, 0)
 
+        mask = x != 0
+        x = x[mask]
+        y0 = y0[mask]
+        y1 = y1[mask]
+        y2 = y2[mask]
+
         pearson_corr0, _ = stats.pearsonr(x, y0)
         spearman_corr0, _ = stats.spearmanr(x, y0)
         kendall_corr0, _ = stats.kendalltau(x, y0)
@@ -146,15 +152,15 @@ def plot_box2(ax, df, db, dba, metric, title, name):
         pearson_corr2, _ = stats.pearsonr(x, y2)
         spearman_corr2, _ = stats.spearmanr(x, y2)
         kendall_corr2, _ = stats.kendalltau(x, y2)
-        textstr = (f'1st P: {pearson_corr0:.2f} S: {spearman_corr0:.2f} K: {kendall_corr0:.2f}\n'
-                   f'2nd P: {pearson_corr1:.2f} S: {spearman_corr1:.2f} K: {kendall_corr1:.2f}\n'
-                   f'3rd P: {pearson_corr2:.2f} S: {spearman_corr2:.2f} K: {kendall_corr2:.2f}')
+        textstr = (f'1st : {pearson_corr0:.2f}\n' #S: {spearman_corr0:.2f} K: {kendall_corr0:.2f}\n'
+                   f'2nd : {pearson_corr1:.2f}\n' #S: {spearman_corr1:.2f} K: {kendall_corr1:.2f}\n'
+                   f'3rd : {pearson_corr2:.2f}') #S: {spearman_corr2:.2f} K: {kendall_corr2:.2f}')
         ax.scatter(x, y0, marker='.', color='green', label='1st')
         ax.scatter(x, y1, marker='+', color='blue', alpha=0.4, label='2nd')
         ax.scatter(x, y2, marker='x', color='red', alpha=0.2, label='3rd')
         ax.legend(loc='upper right', fontsize=6)
         props = dict(boxstyle='round', facecolor='wheat', alpha=0.5)
-        ax.text(0.2, 0.2, textstr, transform=ax.transAxes, fontsize=6, verticalalignment='top', bbox=props)
+        ax.text(0.7, 0.22, textstr, transform=ax.transAxes, fontsize=6, verticalalignment='top', bbox=props)
 
 index = 0
 index2 = 0

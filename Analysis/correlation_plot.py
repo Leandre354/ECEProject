@@ -5,7 +5,7 @@ import scipy.stats as stats
 import numpy as np
 
 Modality = 'PET' #Modality which is perturbed (CT or PET)
-Label = 'Nodal' #Select label for the computation (Primary or Nodal)
+Label = 'Primary' #Select label for the computation (Primary or Nodal)
 
 #all csv files of each perturbation and each degree
 files = {
@@ -58,6 +58,10 @@ for name, df in files.items():
         #Remove the problematic values (inf, -inf, Nan)
         volume = np.where(np.isfinite(volume), volume, 0)
         delta_dice = np.array(delta_dice)
+
+        mask = volume != 0
+        volume = volume[mask]
+        delta_dice = delta_dice[mask]
 
         #Compute the correlation with pearson
         corr, p = stats.pearsonr(volume, delta_dice)

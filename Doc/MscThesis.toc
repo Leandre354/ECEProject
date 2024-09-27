@@ -17,7 +17,7 @@
 \contentsline {section}{\numberline {3.1}Robustness}{13}{section.3.1}%
 \contentsline {subsection}{\numberline {3.1.1}Perturbations effects}{13}{subsection.3.1.1}%
 \contentsline {subsection}{\numberline {3.1.2}Correlation with properties}{16}{subsection.3.1.2}%
-\contentsline {section}{\numberline {3.2}Clinical evaluation}{21}{section.3.2}%
+\contentsline {section}{\numberline {3.2}Clinical evaluation}{22}{section.3.2}%
 \contentsline {chapter}{\chapternumberline {4}Discussion and Conclusions}{23}{chapter.4}%
 \contentsline {section}{\numberline {4.1}Discussion}{23}{section.4.1}%
 \contentsline {section}{\numberline {4.2}Conclusions}{23}{section.4.2}%

@@ -6,6 +6,15 @@ import matplotlib.pyplot as plt
 from matplotlib.widgets import Slider
 
 def normalize_to_255(image):
+    """
+        Normalize the image between 0 and 255 for the color plotting
+
+        Args:
+            image(Sitk image): The image to normalize
+
+        Returns:
+            image(Sitk image): The normalized image
+    """
     # Convert SimpleITK image to NumPy array
     image_array = sitk.GetArrayFromImage(image).astype(np.float32)
 
@@ -22,6 +31,15 @@ def normalize_to_255(image):
 
 
 def compute_center(image_array):
+    """
+        Compute the center of the brain using its countour
+
+        Args:
+            image_array: The full PET image of a patient
+
+        Returns:
+            center_x (int), center_y (int), center_z (int): the three coordinates of the center
+    """
     # Convert to a numpy array for contour detection
     img_np = image_array.astype(np.uint8)
     for i in reversed(range(img_np.shape[0])):
@@ -54,6 +72,16 @@ def compute_center(image_array):
     return center_x, center_y, center_z
 
 def resample_pet(source_image, reference_image):
+    """
+        Resample the PET image to the same dimension as CT
+
+        Args:
+            source_image: The PET image
+            reference_image: The CT image
+
+        Returns:
+            resampler.Execute(source_image): The resampled PET image
+    """
     resampler = sitk.ResampleImageFilter()
     resampler.SetSize(reference_image.GetSize())
     resampler.SetOutputSpacing(reference_image.GetSpacing())

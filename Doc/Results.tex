@@ -125,15 +125,39 @@ The correlation color scale is represented on the right.
     \label{fig:four_subfigures}
 \end{figure}
 \newpage
-Starting with the nodal label in the CT modality, we observe the same general trends identified in the previous section. The highest correlations are consistently seen with spike, bias, and noise perturbations, with most properties showing strong correlations with these perturbations. Notable exceptions include compactness, distance from center, CT variations, CT contrast, and regions, which do not exhibit significant correlations.
+Starting with the nodal label in the CT modality (a), we observe the same general trends identified in the previous section. The highest correlations are consistently seen with spike, bias, and noise perturbations, with most properties showing strong correlations with these perturbations. Notable exceptions include compactness, distance from center, CT variations, CT contrast, and regions, which do not exhibit significant correlations.
 
 Spike emerges as the perturbation with the highest correlation scores, followed by noise and then bias. In contrast, ghost perturbations generally show an improvement in segmentation performance across most properties, with the strongest negative correlation observed for compactness. The only exception is CT contrast, which displays a positive correlation with ghost perturbations.
 
 Blur and motion perturbations exhibit similar behavior, showing low correlation coefficients, consistent with previous analyses. Properties such as volume, surface area, boundary length, PET variations, SUVmax, and entropy display comparable responses to the perturbations. These properties generally show moderate positive correlations with spike, bias, and noise, while ghost perturbations produce negative correlations. Motion and blur have a minimal effect, with low correlation coefficients.
 
 Interestingly, an increase in the number of regions appears to improve segmentation performance across all perturbations.
+\vskip1em
+In the primary tumor on the CT modality (b), a noticeable difference was observed between the two labels, particularly in the effect of compactness, which had a greater impact with lower segmentation degradation. Volume, surface area, boundary length, and entropy exhibited similar effects, primarily influencing spike perturbations, though with reduced correlation in the presence of bias and noise.
 
+For nodal tumors, SUVmax showed an effect across all perturbations, with a negative correlation under motion, while CT number had a reduced influence. Regions continued to improve segmentation but to a lesser extent compared to nodal tumors. Variability in PET data correlated with blur, noise, and ghost perturbations, whereas CT data showed more correlation with motion. Contrast behavior for both modalities was similar to nodal tumors, though with weaker correlation for CT under motion perturbations.
+\vskip1em
+For the nodal region in the PET modality (c), the behavior of volume, surface area, boundary length, and entropy remains consistent with prior observations but demonstrates notable differences. These properties exhibit a strong positive correlation with spike, bias, and noise perturbations, and a strong negative correlation with blur and motion, with no significant effect observed for ghost perturbations.
+
+SUVmax follows a similar trend to these four properties, though with a reduced correlation in the presence of bias perturbations. Compactness showed a positive correlation with bias, similar to distance from the center, while also presenting a negative correlation with blur.
+
+Both intensity variabilities demonstrated negative correlations with blur and motion, and positive correlations with noise. PET variability additionally showed a stronger positive correlation with spike perturbations compared to CT.
+
+For contrast, CT exhibited a positive correlation with blur and ghost perturbations, while PET showed a stronger correlation with spike and noise, accompanied by a slight negative correlation with blur and motion. The regional segmentation improvements observed previously were no longer general across all perturbations, instead showing a concentrated effect on spike perturbations.
 \newpage
+For primary tumors in the PET modality (d), the four properties volume, surface area, boundary length, and entropy exhibit similar behavior as in prior observations. However, unlike in nodal tumors, the overall correlation is reduced, with a notable shift in bias correlation from positive to negative.
+
+SUVmax is primarily correlated with spike and noise perturbations. The CT number shows significantly less impact compared to nodal tumors, with consistently low correlation coefficients, a pattern also observed for the regions.
+
+Compactness demonstrates a negative correlation with blur and motion, with a slight positive correlation observed with noise.
+
+For intensity variabilities, PET shows a strong negative correlation with blur and a less pronounced negative correlation with motion. In contrast, CT exhibits a positive correlation with noise.
+
+Regarding contrast, PET shows correlations with spike, ghost, blur, and the third degree of noise, while CT primarily correlates with blur and motion.
+\vskip1em
+Upon conducting a comprehensive comparison of the four graphs, it becomes evident that for the CT modality, the nodal tumor label exhibits a strong correlation with spike, noise, and bias, while the correlation for primary tumors is more distributed across various image properties, demonstrating specific and notable correlations.
+
+In contrast, the PET modality reveals a higher prevalence of negative correlations, particularly with respect to motion and blur for both nodal and primary tumor labels. For nodal tumors in PET, positive correlations are similarly concentrated around spike, noise, and bias, akin to the CT modality. However, a distinguishing feature for nodal tumors in PET is the shift of bias towards negative correlation, and no clear resemblance with the CT modality is observed. Additionally, correlations in PET for nodal tumors are noted with spike, noise, and some degree of correlation with ghost artifacts.\newpage
 \section{Clinical evaluation}
 
 

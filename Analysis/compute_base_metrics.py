@@ -127,12 +127,12 @@ def calculate_additional_metrics(ground_truth, ct_image, pet_image):
 # Create evaluator
 
 evaluator = SegmentationEvaluator(metrics=[dice_metric, Hausdorff_distance, Jaccard_index, Volume, Sensitivity, Specificity, Accuracy, TP, TN, FP, FN],labels=labels)
-result_file = f'Inference/Image200/Analysis/Baseline/results_pymia.csv'
-result_file2 = f'Inference/Image200/Analysis/Baseline/results_add.csv'
-files = sorted(glob.glob(f'Inference/Image200/Inputs/*[!T].nii.gz'))
-files2 = sorted(glob.glob(f'Inference/Image200/Analysis/Baseline/*.nii.gz'))
-ct_files = sorted(glob.glob(f'Inference/Image200/Inputs/*CT.nii.gz'))
-pt_files = sorted(glob.glob(f'Inference/Image200/Inputs/*PT.nii.gz'))
+result_file = f'Inference/Image200/Analysis/Baseline_perturbed/results_pymia.csv'
+result_file2 = f'Inference/Image200/Analysis/Baseline_perturbed/results_add.csv'
+files = sorted(glob.glob(f'Inference/Image200/Inputs_perturbed/*[!T].nii.gz'))
+files2 = sorted(glob.glob(f'Inference/Image200/Analysis/Baseline_perturbed/*.nii.gz'))
+ct_files = sorted(glob.glob(f'Inference/Image200/Inputs_perturbed/*CT.nii.gz'))
+pt_files = sorted(glob.glob(f'Inference/Image200/Inputs_perturbed/*PT.nii.gz'))
 all_results = []
 for i in range(0, len(files), 1):
     print(f'{i}/{len(files)}')

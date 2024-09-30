@@ -159,5 +159,55 @@ Upon conducting a comprehensive comparison of the four graphs, it becomes eviden
 
 In contrast, the PET modality reveals a higher prevalence of negative correlations, particularly with respect to motion and blur for both nodal and primary tumor labels. For nodal tumors in PET, positive correlations are similarly concentrated around spike, noise, and bias, akin to the CT modality. However, a distinguishing feature for nodal tumors in PET is the shift of bias towards negative correlation, and no clear resemblance with the CT modality is observed. Additionally, correlations in PET for nodal tumors are noted with spike, noise, and some degree of correlation with ghost artifacts.\newpage
 \section{Clinical evaluation}
+The following graphs illustrate the distribution of the 5-star clinical evaluations. The left graph represents the original cases, comprising 32 evaluations, while the right graph shows the perturbed cases, with a total of 18 evaluations.
+\begin{figure}[ht]
+    \centering
+    \includegraphics[width=1\textwidth]{images/Clinical_evaluation_repartition.png}
+    \caption{Clinical evaluation repartition}
+    \label{fig:three_subfigures}
+\end{figure}
 
+The analysis of the original cases reveals that approximately 75\% of the evaluations fall between 3 and 4 stars for both channels. Notably, the nodal channel exhibits a slightly higher incidence of 2-star evaluations, alongside a reduction in the extreme values of 1 and 5 stars compared to the primary channel.
 
+In contrast, the perturbation analysis indicates that the nodal channel was significantly more affected by the applied perturbations in the selected cases. Conversely, the distribution of evaluations for the primary channel remains consistent with that of the original cases.
+
+In the subsequent graphs, we will further investigate whether these changes are also reflected in the DICE coefficient measurements, which would be indicated with a significant correlation between the DICE coefficient and the evaluation scores.
+\newpage
+The following graphs illustrate the correlation among three metrics: the DICE coefficient, Hausdorff distance, and Jaccard index, 
+in relation to clinical evaluation gradings. The correlation analysis is conducted across both channels for the original 32 cases. 
+The Likert gradings are plotted on the x-axis, while the metrics are represented on the y-axis. In each plot, the correlation trend 
+line is depicted in red, with the Pearson correlation coefficient displayed in the top right corner.
+
+\begin{figure}[ht]
+    \centering
+    \includegraphics[width=1\textwidth]{images/Correlation_dice_eval.png}
+    \caption{Clinical evaluation correlation with DICE on original cases}
+    \label{fig:three_subfigures}
+\end{figure}
+
+The Jaccard index and DICE coefficient exhibit similar behavior, characterized by closely aligned trend lines and Pearson correlation coefficients. In contrast, the Hausdorff distance demonstrates a weaker correlation, particularly noting that cases lacking ground truth data have been excluded due to the metric's sensitivity in these instances.
+
+Across the two most reliable metrics, the primary label exhibits a stronger correlation, with values approximately 0.66, compared to the nodal channel, which shows a correlation of about 0.53.
+We see also that the range of dice coefficient has a tendecy to shrink to higher grading.
+
+Notably, some cases rated with four stars display low DICE coefficients. These specific cases have been reviewed with clinical experts and are reported to be particularly challenging, as they were difficult to evaluate without supplementary information beyond the image alone.
+\newpage 
+
+Here is the same graphs but for the 18 perturbed cases cases.
+\begin{figure}[ht]
+    \centering
+    \includegraphics[width=1\textwidth]{images/Correlation_dice_eval_perturbed.png}
+    \caption{Clinical evaluation correlation with DICE on perturbed cases}
+    \label{fig:three_subfigures}
+\end{figure}
+
+Consistent with before the Dice and Jaccard exhibit better correlation than Hausdorff even if the Hausdorff is way better than before.
+A major difference here is that the correlation for nodal channel is really high (around 0.9) and bigger than for primary channel.
+For primary channel almost all metrics value are above the 50\% of the max value for Dice and Jaccard.
+\begin{itemize}
+    \item mri robustness
+    \item daniel advice : contrast agent, mri, necrosis, symmetry, vessels, infection, 
+    \item PET actual technologie need to be precised
+    \item tell why we focus on the 3 perturbations
+    \item 
+\end{itemize}

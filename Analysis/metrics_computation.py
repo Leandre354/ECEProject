@@ -1,3 +1,9 @@
+"""
+File: metrics_computation.py
+
+Description:
+This script implements the computation of the metrics for the analysis of the effect of the perturbations
+"""
 import numpy as np
 from pymia.evaluation import metric as pymia_metric
 from pymia.evaluation.evaluator import SegmentationEvaluator

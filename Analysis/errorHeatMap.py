@@ -1,3 +1,9 @@
+"""
+File: errorHeatMap.py
+
+Description:
+This script implements a slicer tool for indicating the position of the difference (errors (FP, FN)) between the ground truth and prediction
+"""
 import nibabel as nib
 import numpy as np
 import matplotlib.pyplot as plt
@@ -28,7 +34,7 @@ prediction_imgs = [nib.load(pred_path).get_fdata() for pred_path in prediction_p
 error_maps = [gt_img - pred_img for pred_img in prediction_imgs]
 
 # Initial slice index
-slice_sel = gt_img.shape[0] // 2  # Start at the middle slice
+slice_sel = 140  # Start at the middle slice
 
 # Set up the figure and axis
 fig, axes = plt.subplots(3, len(prediction_imgs), figsize=(20, 15))
@@ -94,8 +100,6 @@ def update(val):
         color[error_map[:, :, slice_sel] == -2] = [255, 0, 255]
         im_err.set_data(color)
     fig.canvas.draw_idle()
-
-
 
 # Connect the slider to the update function
 slice_slider.on_changed(update)

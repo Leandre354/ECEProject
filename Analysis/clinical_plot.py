@@ -1,3 +1,9 @@
+"""
+File: clinical_plot.py
+
+Description:
+This script implements the plottings for the clinical evaluation
+"""
 import pandas as pd
 import seaborn as sns
 import matplotlib.pyplot as plt
@@ -18,6 +24,7 @@ db2 = pd.read_csv('Inference/Image200/Analysis/Baseline/Metrics_x_Clinical_pertu
 
 dice_bins = [0, 0.20, 0.40, 0.60, 0.80, 1]
 dice_labels = ['0-0.20', '0.20-0.40', '0.40-0.60', '0.60-0.80', '0.80-1']
+
 # Categorize the DICE values into the defined bins for both databases
 db['DICE_category'] = pd.cut(db['DICE'], bins=dice_bins, labels=dice_labels, include_lowest=True)
 db2['DICE_category'] = pd.cut(db2['DICE'], bins=dice_bins, labels=dice_labels, include_lowest=True)
@@ -66,10 +73,6 @@ counts_list3 = [counts3.get(rating, 0) for rating in ratings]
 counts_list4 = [counts4.get(rating, 0) for rating in ratings]
 
 # Plot the bar chart
-
-
-
-"""
 plt.figure('Clinical')
 plt.subplot(2,2,1).set_title('Nodal')
 plt.pie(counts_list, labels=ratings, autopct=autopct_format(counts_list), textprops={'fontsize': 7})
@@ -79,9 +82,10 @@ plt.subplot(2,2,2).set_title('Nodal perturbed')
 plt.pie(counts_list3, labels=ratings, autopct=autopct_format(counts_list3), textprops={'fontsize': 7})
 plt.subplot(2,2,4).set_title('Primary perturbed')
 plt.pie(counts_list4, labels=ratings, autopct=autopct_format(counts_list4), textprops={'fontsize': 7})
-"""
+
 
 plt.figure('Correlation')
+
 plt.subplot(2,3,1).set_title('Nodal Likert v Dice')
 plt.scatter(db['Likert'].iloc[::2], db['DICE'].iloc[::2], marker='.')
 m, b = np.polyfit(db['Likert'].iloc[::2], db['DICE'].iloc[::2], 1)
@@ -90,6 +94,7 @@ corr, p = stats.pearsonr(db['Likert'].iloc[::2], db['DICE'].iloc[::2])
 xlim = plt.xlim()
 ylim = plt.ylim()
 plt.text(xlim[1] - 0.2 * (xlim[1] - xlim[0]), ylim[1] - 0.1 * (ylim[1] - ylim[0]),f'{corr:.3f}')
+
 plt.subplot(2,3,2).set_title('Nodal Likert v Hausdorff')
 filtered_db = db[db['HDRFDST'] != 1000]
 plt.scatter(filtered_db['Likert'].iloc[::2], filtered_db['HDRFDST'].iloc[::2], marker='.')
@@ -99,6 +104,7 @@ corr, p = stats.pearsonr(filtered_db['Likert'].iloc[::2], filtered_db['HDRFDST']
 xlim = plt.xlim()
 ylim = plt.ylim()
 plt.text(xlim[1] - 0.2 * (xlim[1] - xlim[0]), ylim[1] - 0.1 * (ylim[1] - ylim[0]),f'{corr:.3f}')
+
 plt.subplot(2,3,3).set_title('Nodal Likert v Jaccard')
 plt.scatter(db['Likert'].iloc[::2], db['JACRD'].iloc[::2], marker='.')
 m, b = np.polyfit(db['Likert'].iloc[::2], db['JACRD'].iloc[::2], 1)
@@ -107,12 +113,7 @@ corr, p = stats.pearsonr(db['Likert'].iloc[::2], db['JACRD'].iloc[::2])
 xlim = plt.xlim()
 ylim = plt.ylim()
 plt.text(xlim[1] - 0.2 * (xlim[1] - xlim[0]), ylim[1] - 0.1 * (ylim[1] - ylim[0]),f'{corr:.3f}')
-"""
-plt.subplot(2,4,4).set_title('Nodal Likert v Sensitivity')
-plt.scatter(db['Likert'].iloc[::2], db['SNSVTY'].iloc[::2], marker='.')
-corr, p = stats.pearsonr(db['Likert'].iloc[::2], db['SNSVTY'].iloc[::2])
-plt.text(1, 0.2,f'{corr:.3f}')
-"""
+
 plt.subplot(2,3,4).set_title('Primary Likert v Dice')
 plt.scatter(db['Likert'].iloc[1::2], db['DICE'].iloc[1::2], marker='.')
 m, b = np.polyfit(db['Likert'].iloc[1::2], db['DICE'].iloc[1::2], 1)
@@ -121,6 +122,7 @@ corr, p = stats.pearsonr(db['Likert'].iloc[1::2], db['DICE'].iloc[1::2])
 xlim = plt.xlim()
 ylim = plt.ylim()
 plt.text(xlim[1] - 0.2 * (xlim[1] - xlim[0]), ylim[1] - 0.1 * (ylim[1] - ylim[0]),f'{corr:.3f}')
+
 plt.subplot(2,3,5).set_title('Primary Likert v Hausdorff')
 filtered_db = db[db['HDRFDST'] != 1000]
 plt.scatter(filtered_db['Likert'].iloc[1::2], filtered_db['HDRFDST'].iloc[1::2], marker='.')
@@ -130,6 +132,7 @@ corr, p = stats.pearsonr(filtered_db['Likert'].iloc[1::2], filtered_db['HDRFDST'
 xlim = plt.xlim()
 ylim = plt.ylim()
 plt.text(xlim[1] - 0.2 * (xlim[1] - xlim[0]), ylim[1] - 0.1 * (ylim[1] - ylim[0]),f'{corr:.3f}')
+
 plt.subplot(2,3,6).set_title('Primary Likert v Jaccard')
 plt.scatter(db['Likert'].iloc[1::2], db['JACRD'].iloc[1::2], marker='.')
 m, b = np.polyfit(db['Likert'].iloc[1::2], db['JACRD'].iloc[1::2], 1)
@@ -138,12 +141,6 @@ corr, p = stats.pearsonr(db['Likert'].iloc[1::2], db['JACRD'].iloc[1::2])
 xlim = plt.xlim()
 ylim = plt.ylim()
 plt.text(xlim[1] - 0.2 * (xlim[1] - xlim[0]), ylim[1] - 0.1 * (ylim[1] - ylim[0]),f'{corr:.3f}')
-"""
-plt.subplot(2,4,8).set_title('Nodal Likert v Sensitivity')
-plt.scatter(db['Likert'].iloc[1::2], db['SNSVTY'].iloc[1::2], marker='.')
-corr, p = stats.pearsonr(db['Likert'].iloc[1::2], db['SNSVTY'].iloc[1::2])
-plt.text(1, 0.2,f'{corr:.3f}')
-"""
 
 # Show the plot
 plt.show()

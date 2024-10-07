@@ -1,4 +1,9 @@
+"""
+File: dice_comparator.py
 
+Description:
+This script compute the difference between baseline and corresponding pertubated case and used to select the cases for the evaluation
+"""
 import numpy as np
 import glob
 import nibabel as nib

@@ -1,3 +1,9 @@
+"""
+File: correlation_plot.py
+
+Description:
+This script implements the plottings for the correlation of properties with perturbations
+"""
 import pandas as pd
 import seaborn as sns
 import matplotlib.pyplot as plt

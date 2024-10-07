@@ -1,3 +1,9 @@
+"""
+File: properties_computation.py
+
+Description:
+This script implements the computation of the properties of the segmented area and save them into csv files for the analysis
+"""
 import numpy as np
 from pymia.evaluation import metric as pymia_metric
 from pymia.evaluation.evaluator import SegmentationEvaluator

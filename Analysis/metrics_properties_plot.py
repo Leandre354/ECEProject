@@ -1,3 +1,9 @@
+"""
+File: metrics_properties_plot.py
+
+Description:
+This script implements the plottings for the scatter between each properties and each perturbation, and the boxplot of the perturbations effects
+"""
 import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt

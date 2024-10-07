@@ -131,13 +131,13 @@ class JointTransformVal:
         A class for applying a random cropping transformations during validation to speed up
 
         Attributes:
-            device (str): The device (e.g., 'cpu' or 'cuda') where the transformations will be applied.
-            rand_crop (tf.RandCropByLabelClasses): Random cropping transformation based on label classes.
-            rand_crop2 (tf.RandCropByLabelClasses): Alternative random cropping transformation for cases with only label 2.
-            rand_crop3 (tf.RandCropByLabelClasses): Another alternative random cropping transformation for cases with only label 1.
+            device: The device where the transformations will be applied.
+            rand_crop: Random cropping transformation based on label classes.
+            rand_crop2: Alternative random cropping transformation for cases with only label 2.
+            rand_crop3: Another alternative random cropping transformation for cases with only label 1.
 
         Args:
-            device (str): Device to perform the transformations on (e.g., 'cpu', 'cuda').
+            device: Device to perform the transformations on (e.g., 'cpu', 'cuda').
 
         Methods:
             __call__(img, lbl):
@@ -145,11 +145,11 @@ class JointTransformVal:
                 - Cropping based on label classes.
 
                 Args:
-                    img (np.ndarray): Input image to be transformed.
-                    lbl (np.ndarray): Corresponding label image to be transformed.
+                    img: Input image to be transformed.
+                    lbl: Corresponding label image to be transformed.
 
                 Returns:
-                    Tuple[np.ndarray, np.ndarray]: The transformed image and label.
+                    img,lbl: The transformed image and label.
     """
     def __init__(self, device):
         self.device = device
@@ -218,12 +218,12 @@ class MedicalSlicesDataset(Dataset):
             names_seg : List of paths to the segmentation files
 
         Args:
-            files_path (str): Path to the directory containing the data files.
-            device (str): Device to perform the transformations on ('cpu', 'cuda').
-            transforms (Callable, optional): A function or transform to apply to the data.
-            fold_idx (int, optional): Index of the fold to use for training/validation split.
-            is_train (bool, optional): Whether to load training data (`True`) or validation data (`False`).
-            n_splits (int, optional): Number of folds for cross-validation.
+            files_path: Path to the directory containing the data files.
+            device: Device to perform the transformations on ('cpu', 'cuda').
+            transforms: A function or transform to apply to the data.
+            fold_idx: Index of the fold to use for training/validation split.
+            is_train: Whether to load training data (`True`) or validation data (`False`).
+            n_splits: Number of folds for cross-validation.
 
         Methods:
             __len__():
@@ -233,7 +233,7 @@ class MedicalSlicesDataset(Dataset):
                 Loads and processes the data for the given index.
 
                 Args:
-                    idx (int): Index of the data item to retrieve.
+                    idx: Index of the data item to retrieve.
 
                 Returns:
                     dict: A dictionary containing the image (`'img'`), segmentation (`'seg'`), and file name (`'name'`).

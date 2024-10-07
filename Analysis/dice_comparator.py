@@ -4,6 +4,16 @@ import glob
 import nibabel as nib
 
 def dice_score(pred_mask, true_mask):
+    """
+       Calculate the Dice coefficient between the predicted and ground truth masks.
+
+       Args:
+           pred_mask: The predicted segmentation mask (binary or one-hot encoded).
+           true_mask: The ground truth segmentation mask (binary or one-hot encoded).
+
+       Returns:
+           dice: The Dice score, a value between 0 and 1, where 1 indicates perfect overlap.
+    """
 
     # Compute intersection and union
     intersection = np.sum(pred_mask * true_mask)
@@ -17,6 +27,15 @@ def dice_score(pred_mask, true_mask):
     return dice
 
 def one_hot(image):
+    """
+       Convert a labeled image to a one-hot encoded binary format.
+
+       Args:
+           image: A labeled image, where different integer values represent different classes.
+
+       Returns:
+           new_image: A binary one-hot encoded image, where all classes greater than or equal to 1 are set to 1.
+    """
     new_image = (image == 1)
     new_image[image == 2] = 1
     return new_image

@@ -112,7 +112,7 @@ Overall, among the 13 properties examined, the strongest correlations were obser
 
 In the following section, a more comprehensive correlation graphic will present the Pearson correlation coefficients of the various properties across each perturbation and degree, as well as for the four categories of images. This analysis will encompass both labels and modalities, providing a detailed overview of the relationships between segmentation properties and the applied perturbations.
 \newpage
-In those graphics, the y axis represent the perturbations with each time the 3 degrees of severity and on x axis the 13 properties analysed.
+In those graphics, the y axis represent the delta dice induced by perturbations with each time the 3 degrees of severity and on x axis the 13 properties analysed.
 The correlation color scale is represented on the right.
 \begin{figure}[ht]
     \centering
@@ -131,7 +131,6 @@ Spike emerges as the perturbation with the highest correlation scores, followed 
 
 Blur and motion perturbations exhibit similar behavior, showing low correlation coefficients, consistent with previous analyses. Properties such as volume, surface area, boundary length, PET variations, SUVmax, and entropy display comparable responses to the perturbations. These properties generally show moderate positive correlations with spike, bias, and noise, while ghost perturbations produce negative correlations. Motion and blur have a minimal effect, with low correlation coefficients.
 
-Interestingly, an increase in the number of regions appears to improve segmentation performance across all perturbations.
 \vskip1em
 In the primary tumor on the CT modality (b), a noticeable difference was observed between the two labels, particularly in the effect of compactness, which had a greater impact with lower segmentation degradation. Volume, surface area, boundary length, and entropy exhibited similar effects, primarily influencing spike perturbations, though with reduced correlation in the presence of bias and noise.
 
@@ -169,9 +168,23 @@ The following graphs illustrate the distribution of the 5-star clinical evaluati
 
 The analysis of the original cases reveals that approximately 75\% of the evaluations fall between 3 and 4 stars for both channels. Notably, the nodal channel exhibits a slightly higher incidence of 2-star evaluations, alongside a reduction in the extreme values of 1 and 5 stars compared to the primary channel.
 
-In contrast, the perturbation analysis indicates that the nodal channel was significantly more affected by the applied perturbations in the selected cases. Conversely, the distribution of evaluations for the primary channel remains consistent with that of the original cases.
+In contrast, the perturbation analysis indicates that the nodal channel was significantly more affected by the applied perturbations in the selected cases with majority of 1 and 2 stars. Conversely, the distribution of evaluations for the primary channel remains consistent with that of the original cases but with some changes including more 4 stars suprisingly and not any 5 stars.
 
 In the subsequent graphs, we will further investigate whether these changes are also reflected in the DICE coefficient measurements, which would be indicated with a significant correlation between the DICE coefficient and the evaluation scores.
+\newpage
+This graph that follows represent the corresponding 5 categories of dice coefficient for the same cases. With each category having a range of 0.2 from 0 to 1.
+Which would arbitrarly represent the gradinds in likert scale.
+\begin{figure}[ht]
+    \centering
+    \includegraphics[width=1\textwidth]{images/Clinical_evaluation_dice_repartition.png}
+    \caption{Clinical evaluation repartition}
+    \label{fig:three_subfigures}
+\end{figure}
+
+For the original labels, approximately 70\% of the scores are above 0.60, with a similar distribution for scores below this threshold. In contrast, the perturbed labels show a notable decline, particularly for the nodal labels, where 50\% of the scores fall between 0 and 0.2, and over 75\% of the scores are below 0.6. The primary labels, however, maintain a similar distribution to the original, except that no scores are observed between 0.2 and 0.4.
+
+Both grading systems and Dice coefficients follow a similar pattern, with a marked decline in nodal label performance under perturbation. Scores above 0.6 generally align with higher grading levels (3- and 4-star ratings).
+
 \newpage
 The following graphs illustrate the correlation among three metrics: the DICE coefficient, Hausdorff distance, and Jaccard index, 
 in relation to clinical evaluation gradings. The correlation analysis is conducted across both channels for the original 32 cases. 
@@ -187,7 +200,7 @@ line is depicted in red, with the Pearson correlation coefficient displayed in t
 
 The Jaccard index and DICE coefficient exhibit similar behavior, characterized by closely aligned trend lines and Pearson correlation coefficients. In contrast, the Hausdorff distance demonstrates a weaker correlation, particularly noting that cases lacking ground truth data have been excluded due to the metric's sensitivity in these instances.
 
-Across the two most reliable metrics, the primary label exhibits a stronger correlation, with values approximately 0.66, compared to the nodal channel, which shows a correlation of about 0.53.
+Across the two most reliable metrics, the primary label exhibits a stronger correlation, with values 0.665 and 0.656, compared to the nodal channel, which shows a correlation of 0.518 and 0.551.
 We see also that the range of dice coefficient has a tendecy to shrink to higher grading.
 
 Notably, some cases rated with four stars display low DICE coefficients. These specific cases have been reviewed with clinical experts and are reported to be particularly challenging, as they were difficult to evaluate without supplementary information beyond the image alone.
@@ -209,5 +222,5 @@ For primary channel almost all metrics value are above the 50\% of the max value
     \item daniel advice : contrast agent, mri, necrosis, symmetry, vessels, infection, 
     \item PET actual technologie need to be precised
     \item tell why we focus on the 3 perturbations
-    \item 
+    \item precise that background was not in metric computation
 \end{itemize}

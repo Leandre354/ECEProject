@@ -118,7 +118,6 @@
     \large\mdseries Examiners \\ \theexaminer
     \vskip1cm
     \large\mdseries\thefrontsignature\\ 
-    {\color{red}This report is confidential.} {\tiny(Delete this statement in the file ``unibe-msc.cls'' if the report is not confidential.)}
   }
   \cleardoublepage
   \endgroup

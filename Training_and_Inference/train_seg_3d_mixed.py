@@ -210,12 +210,12 @@ class MedicalSlicesDataset(Dataset):
         A dataset class for loading and processing medical imaging data.
 
         Attributes:
-            device (str): The device (e.g., 'cpu' or 'cuda') where the data will be processed.
-            transforms (Callable, optional): A function or transform to apply to the data.
-            path (str): Path to the directory containing the data files.
-            names_ct (List[str]): List of paths to the CT image files.
-            names_pt (List[str]): List of paths to the PET image files.
-            names_seg (List[str]): List of paths to the segmentation files.
+            device : The device where the data will be processed.
+            transforms : transform to apply to the data.
+            path : Path to the directory containing the data files.
+            names_ct : List of paths to the CT image files
+            names_pt : List of paths to the PET image files
+            names_seg : List of paths to the segmentation files
 
         Args:
             files_path (str): Path to the directory containing the data files.
@@ -295,21 +295,21 @@ class MedicalSlicesDataset(Dataset):
 
 class CombinedLossWithDeepSupervision(nn.Module):
     """
-        A class for combining multiple loss functions with deep supervision.
+        A class for combining multiple loss functions
 
         Attributes:
-            dice_loss (Callable): Dice loss function.
-            ce_loss (Callable): Cross-entropy loss function.
-            deep_supervision_weights (List[float]): Weights for deep supervision losses.
-            lambda_dice (float): Weighting factor for Dice loss.
-            lambda_ce (float): Weighting factor for cross-entropy loss.
+            dice_loss: Dice loss function.
+            ce_loss: Cross-entropy loss function.
+            deep_supervision_weights: Weights for deep supervision losses.
+            lambda_dice: Weighting factor for Dice loss.
+            lambda_ce: Weighting factor for cross-entropy loss.
 
         Args:
-            dice_loss (Callable): Dice loss function.
-            ce_loss (Callable): Cross-entropy loss function.
-            deep_supervision_weights (List[float]): Weights for deep supervision losses.
-            lambda_dice (float, optional): Weight for Dice loss (default: 0.5).
-            lambda_ce (float, optional): Weight for cross-entropy loss (default: 0.5).
+            dice_loss: Dice loss function.
+            ce_loss: Cross-entropy loss function.
+            deep_supervision_weights: Weights for deep supervision losses.
+            lambda_dice: Weight for Dice loss (default: 0.5).
+            lambda_ce: Weight for cross-entropy loss (default: 0.5).
 
         Methods:
             forward(outputs, target):
@@ -479,17 +479,9 @@ optimizer = optim.AdamW(model.parameters(), lr=config['learning_rate'], weight_d
 
 scheduler = LambdaLR(optimizer, lr_lambda=lambda epoch: (1 - epoch / config['num_epochs']) ** 0.9)
 
-#dice_loss_one_class = GeneralizedDiceFocalLoss(include_background=True, softmax=True, weight=torch.tensor([0.1,1,0], dtype=torch.float32))
-#dice_loss_two_class = GeneralizedDiceFocalLoss(include_background=True, softmax=True, weight=torch.tensor([0.1,0,1], dtype=torch.float32))
-#dice_loss = GeneralizedDiceFocalLoss(include_background=True, softmax=True, weight=torch.tensor([0.1,1,1], dtype=torch.float32))
 dice_loss = DiceLoss(sigmoid=False, softmax=True, include_background=True)
-#dice_loss = GeneralizedDiceLoss(include_background=True, softmax=True)
 ce_loss = nn.CrossEntropyLoss()
 
-#dice_loss2_one_class = GeneralizedDiceFocalLoss(include_background=False, softmax=True, weight=torch.tensor([1,0], dtype=torch.float32))
-#dice_loss2_two_class = GeneralizedDiceFocalLoss(include_background=False, softmax=True, weight=torch.tensor([0,1], dtype=torch.float32))
-#dice_loss2 = GeneralizedDiceFocalLoss(include_background=False, softmax=True, weight=torch.tensor([1,1], dtype=torch.float32))
-#dice_loss2 = GeneralizedDiceLoss(include_background=False, softmax=True)
 dice_loss2 = DiceLoss(sigmoid=False, softmax=True, include_background=False) #Exclude background for the monitoring dice
 
 loss_function = CombinedLossWithDeepSupervision(dice_loss, ce_loss, deep_supervision_weights=[0.5, 0.25], lambda_dice=config['lambda_dice'], lambda_ce=config['lambda_ce'])

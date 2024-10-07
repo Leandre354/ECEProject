@@ -29,10 +29,40 @@ import torchio as tio
 
 
 class Perturbations:
+    """
+        Class to apply a specified perturbation to the input image.
+
+        Args:
+            perturbation: A function or transformation to apply to the image.
+
+        Methods:
+            __call__(img, lbl):
+                Applies the perturbation to the CT modality of the image.
+
+        Attributes:
+            perturbation: The transformation function to be applied to the image.
+    """
     def __init__(self, perturbation):
+        """
+                   Initialize the Perturbations class with a given perturbation function.
+
+                   Args:
+                       perturbation: A transformation function that modifies the image.
+                """
         self.perturbation = perturbation
 
     def __call__(self, img, lbl):
+        """
+                    Apply perturbation to the CT modality of the image.
+
+                    Args:
+                        img: The input image array containing both CT and PET modalities.
+                             The 0th index corresponds to the CT modality.
+                        lbl: The corresponding label array.
+
+                    Returns:
+                        img, lbl: The modified image and label, where the perturbation has been applied to the CT modality.
+                """
         Modality = 1  # 0:CT, 1:PET
 
         img_torchio = tio.ScalarImage(tensor=img[Modality][np.newaxis])
@@ -42,19 +72,64 @@ class Perturbations:
         return img, lbl
 
 def zero_mean(pet_image):
+    """
+            Normalize the PET image to have zero mean and unit variance.
+
+            Args:
+                pet_image: The PET image array to be normalized.
+
+            Returns:
+                pet_image_normalized: The normalized PET image where the mean is zero and standard deviation is one.
+        """
     pet_mean = np.mean(pet_image)
     pet_std = np.std(pet_image)
     pet_image_normalized = (pet_image - pet_mean) / pet_std
     return pet_image_normalized
 
 def rescale_ct_image(ct_image):
+    """
+           Rescale the CT image to the range [0, 1].
+
+           Args:
+               ct_image: The CT image array to be rescaled.
+
+           Returns:
+               ct_image_rescaled: The CT image array with values rescaled to the [0, 1] range based on the min and max values.
+       """
     min_val = np.min(ct_image)
     max_val = np.max(ct_image)
     ct_image_rescaled = (ct_image - min_val) / (max_val - min_val)
     return ct_image_rescaled
 
 class MedicalSlicesDataset(Dataset):
+    """
+           Custom PyTorch dataset class for loading medical image slices.
+
+           Args:
+               files_path: Path to the folder containing the medical image files (.nii.gz).
+               device: The device (CPU/GPU) where the data will be loaded.
+               transforms: Optional transformations to apply to the images and labels.
+               fold_idx: Index for splitting the data (useful for cross-validation).
+               is_train: Boolean flag indicating whether the dataset is for training or testing.
+               n_splits: Number of splits for cross-validation (default is 5).
+
+           Attributes:
+               names_ct: Sorted list of file paths for CT images.
+               names_pt: Sorted list of file paths for PET images.
+               names_seg: Sorted list of file paths for segmentation masks.
+       """
     def __init__(self, files_path, device, transforms=None, fold_idx=None, is_train=True, n_splits=5):
+        """
+                    Initialize the dataset by loading the file paths and setting the device and transforms.
+
+                    Args:
+                        files_path: Path to the folder containing the .nii.gz files for CT, PET, and segmentation images.
+                        device: The device (CPU or GPU) to which the images will be loaded.
+                        transforms: Optional transformations to apply to the images and segmentation masks.
+                        fold_idx: Optional index for cross-validation fold.
+                        is_train: Boolean indicating whether this dataset is for training or testing purposes.
+                        n_splits: Number of folds for cross-validation.
+                """
         self.device = device
         self.transforms = transforms
         self.path = files_path
@@ -65,9 +140,27 @@ class MedicalSlicesDataset(Dataset):
         self.names_seg = sorted(glob.glob(files_path + '*[!T].nii.gz'))
 
     def __len__(self):
+        """
+                    Return the total number of images in the dataset.
+
+                    Returns:
+                        int: The number of CT image files, which is the same for PET and segmentation files.
+                """
         return len(self.names_ct)
 
     def __getitem__(self, idx):
+        """
+                    Retrieve and preprocess an image and its corresponding segmentation mask.
+
+                    Args:
+                        idx: Index of the image to be loaded.
+
+                    Returns:
+                        dict: A dictionary containing:
+                            - 'img': The preprocessed CT and PET images stacked as a 4D tensor.
+                            - 'seg': The segmentation mask split into 3 channels (one-hot encoded format).
+                            - 'name': The file name of the segmentation mask for reference.
+                """
         ct = nib.load(self.names_ct[idx]).get_fdata()
         pt = nib.load(self.names_pt[idx]).get_fdata()
         seg = nib.load(self.names_seg[idx]).get_fdata()
@@ -91,6 +184,20 @@ class MedicalSlicesDataset(Dataset):
         return {'img': img, 'seg': seg, 'name': self.names_seg[idx]}
 
 def patch_based_inference_3d(batch_images, model, device, patch_size=(192, 192, 192), stride=(192, 192, 192)):
+    """
+            Perform patch-based 3D inference using a sliding window approach.
+
+            Args:
+                batch_images: The input 5D tensor of shape (B, C, D, H, W) where B is the batch size,
+                              C is the number of channels, and D, H, W are the depth, height, and width of the images.
+                model: The trained model used for inference.
+                device: The device (CPU/GPU) where the computation will take place.
+                patch_size: The size of the 3D patches (depth, height, width) used for inference (default is (192, 192, 192)).
+                stride: The step size for moving the sliding window (default is (192, 192, 192)).
+
+            Returns:
+                predictions: The output predictions from the model for the entire volume, aggregated from patches.
+        """
     batch_images = batch_images.to(device)
 
     b, c, d, h, w = batch_images.shape
@@ -129,6 +236,17 @@ def patch_based_inference_3d(batch_images, model, device, patch_size=(192, 192, 
     return predictions
 
 def load_models(model_paths, model_class, device):
+    """
+            Load multiple models from the provided file paths.
+
+            Args:
+                model_paths: A list of file paths to the saved model checkpoints.
+                model_class: The class of the model to be instantiated for each checkpoint.
+                device: The device (CPU or GPU) on which the models will be loaded.
+
+            Returns:
+                models: A list of loaded model instances, each set to evaluation mode.
+        """
     models = []
     for path in model_paths:
         model = model_class.to(device)
@@ -139,6 +257,18 @@ def load_models(model_paths, model_class, device):
 
 
 def predict_with_majority_voting(models, batch_images, device):
+    """
+            Perform model ensemble prediction using majority voting.
+
+            Args:
+                models: A list of trained models to be used for predictions.
+                batch_images: A batch of input images to be predicted on, with shape (B, C, D, H, W).
+                device: The device (CPU or GPU) on which the computation will take place.
+
+            Returns:
+                one_hot: The final majority-voted predictions in one-hot encoded format,
+                         with shape (batch_size, num_classes, D, H, W).
+        """
     # Store all predictions from different models
     all_predictions = []
 
@@ -160,6 +290,18 @@ def predict_with_majority_voting(models, batch_images, device):
     return one_hot
 
 def perform_inference_and_save(models, perturbation, output_dir, device):
+    """
+            Perform inference using multiple models with the 3 most degenerative perturbation and save the input perturbed images for the clinical evaluation
+
+            Args:
+                models: A list of trained models to be used for prediction.
+                perturbation: the set of perturbation applied for the analysis of robustness
+                output_dir: Directory where the output segmentation results will be saved.
+                device: The device (CPU or GPU) on which the computation will take place.
+
+            Returns:
+                average_dice_score: The average Dice score across all test samples.
+        """
     FILES = 'imagesTs_pp200/'
 
     test_dataset = MedicalSlicesDataset(FILES, device, transforms=perturbation)

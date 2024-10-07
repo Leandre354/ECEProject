@@ -42,9 +42,12 @@ def compute_center(image_array):
     """
     # Convert to a numpy array for contour detection
     img_np = image_array.astype(np.uint8)
+
+    #Go through the slides of the images from the top of the head
     for i in reversed(range(img_np.shape[0])):
         slice_2d = img_np[i]
         _, bin = cv2.threshold(slice_2d, 5, 255, cv2.THRESH_BINARY)
+        #Contours detection
         contours, _ = cv2.findContours(bin, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
         max_area = 0
         center_y = 0
@@ -92,7 +95,16 @@ def resample_pet(source_image, reference_image):
     return resampler.Execute(source_image)
 
 def resize_label(ct_image, lbl_image):
+    """
+        Resample the label to correct little mismatch of dimension
 
+        Args:
+            ct_image: The CT image
+            lbl_image: The label
+
+        Returns:
+            resampler.Execute(lbl_image): The resampled label
+    """
     resampler = sitk.ResampleImageFilter()
     resampler.SetSize(ct_image.GetSize())
     resampler.SetOutputSpacing(ct_image.GetSpacing())
@@ -103,6 +115,16 @@ def resize_label(ct_image, lbl_image):
     return resampler.Execute(lbl_image)
 
 def resample_spacing(image, label, target_spacing=[1.0, 1.0, 1.0]):
+    """
+        Resample the given image to an isovoxel of 1x1x1mm
+
+        Args:
+            image: Image to resample (CT, PET or label)
+            label: is label flag
+
+        Returns:
+            new_image: The resampled image
+    """
     original_size = image.GetSize()
     original_spacing = image.GetSpacing()
 
@@ -111,6 +133,7 @@ def resample_spacing(image, label, target_spacing=[1.0, 1.0, 1.0]):
     resample = sitk.ResampleImageFilter()
     resample.SetOutputSpacing(target_spacing)
     resample.SetSize(new_size)
+    #NearestNeighbour for labels and Linear for CT and PET
     if label == True:
         resample.SetInterpolator(sitk.sitkNearestNeighbor)
     else:
@@ -124,6 +147,16 @@ def resample_spacing(image, label, target_spacing=[1.0, 1.0, 1.0]):
     return new_image
 
 def z_score_clip_image(image, clip_range=(-3, 3)):
+    """
+            Z-score clipping of provided image for outliers
+
+            Args:
+                image: Image to clip
+                clip_range: range of the clipping
+
+            Returns:
+                clipped_image: Image clipped
+        """
     # Convert SimpleITK image to numpy array
     image_array = sitk.GetArrayFromImage(image)
 
@@ -148,6 +181,18 @@ def z_score_clip_image(image, clip_range=(-3, 3)):
     return clipped_image
 
 def cropping(resampled_ct_img, resampled_pet_img, resampled_lbl_img, plotting=False):
+    """
+        Cropping of the ROI
+
+        Args:
+            resampled_ct_img: CT Image preprocessed
+            resampled_pet_img: PET Image preprocessed
+            resampled_lbl_img: Label Image preprocessed
+
+        Returns:
+            cropped_ct_img, cropped_pet_img, cropped_lbl_img: The 3 image cropped around the ROI (Head and Neck)
+    """
+
     #Normalize to 0-255 range for the plotting
     ct_norm = sitk.GetArrayFromImage(normalize_to_255(resampled_ct_img))
     pt_norm = sitk.GetArrayFromImage(normalize_to_255(resampled_pet_img))

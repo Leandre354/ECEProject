@@ -29,7 +29,7 @@ files = {
     'MOTION3': pd.read_csv(f'Inference/Image200/Analysis/{Modality}/Motion3/results_Motion3_pymia.csv', delimiter=';')
 }
 
-#Loading the metrics and properties of baseline
+#Loading the metrics (pymia) and properties (add) of baseline
 db = pd.read_csv('Inference/Image200/Analysis/Baseline/results_pymia.csv', delimiter=';')
 dba = pd.read_csv('Inference/Image200/Analysis/Baseline/results_add.csv', delimiter=',')
 
@@ -76,5 +76,5 @@ plt.tight_layout()
 sns.heatmap(correlation2d, annot=True, cmap='bwr', vmin=-1, vmax=1, square=True, cbar=True, fmt='.2f', xticklabels=titles,  # Column labels (metrics)
             yticklabels=files.keys(), annot_kws={"size": 6})
 
-# Show the plot
 plt.show()
+

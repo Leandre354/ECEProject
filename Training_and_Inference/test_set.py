@@ -36,5 +36,4 @@ for key in selected_keys:
         dest_path = os.path.join(test_folder, os.path.basename(file_path))
         shutil.move(file_path, dest_path)
 
-#print(f'Moved 50 cases to {test_folder}.')
 

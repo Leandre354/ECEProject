@@ -26,13 +26,33 @@ Consultation with a clinician revealed that the severity of the applied perturba
 \vskip1em
 The analysis of spatial properties such as volume, surface area, boundary length, and entropy reveals an average correlation of approximately 0.3 with perturbations including spike, bias, and noise in nodal tumors. This observation suggests that larger and more complex regions are more susceptible to these perturbations. Conversely, a negative correlation was identified in PET imaging for both channels concerning motion and blur, with correlation values reaching as low as -0.56 for blur. Furthermore, the bias exhibited a negative correlation for the primary label in PET imaging, indicating that smaller and less complex primary tumors are disproportionately affected by these perturbations compared to nodal tumors.
 
-Additionally, when perturbations are introduced in CT imaging, particularly for primary tumors, the variability and maximum standardized uptake value (SUVmax) in PET demonstrate stronger correlations than observed in scenarios where perturbations are applied directly to PET. This finding suggests that the model tends to prioritize the PET signal when the CT modality is compromised. In contrast, the intensity properties of CT do not yield significantly higher correlations with PET when subjected to perturbations compared to the effects observed when perturbations are directly applied to PET.
+Additionally, when perturbations are introduced in CT imaging, particularly for primary tumors, the variability and maximum standardized uptake value (SUVmax) in PET demonstrate stronger correlations than observed in scenarios where perturbations are applied directly to PET. 
+This finding suggests an inherent relationship between the metabolic activity of tumors (from PET SUVmax) and their sensitivity to CT-based segmentation perturbations, highlighting how tumors with greater metabolic intensity tend to experience more segmentation deviations when the CT is altered.
+In contrast, the intensity properties of CT do not yield significantly higher correlations with PET when subjected to perturbations compared to the effects observed when perturbations are directly applied to PET.
 
-Moreover, focusing on PET variability, we observed a prominent negative correlation of approximately -0.45 for primary tumors under PET perturbations, indicating that the impact of blur is more pronounced in less variable signals. Overall, examining the specific effects of perturbations rather than solely focusing on spatial properties indicates that the most impactful perturbations—specifically bias, noise, and spike—tend to correlate with higher values. In the context of PET imaging, the perturbations of blur and motion exhibit negative correlations across both channels, while bias correlates negatively only for the primary channel. This suggests that generally, the lower the values of properties such as size, intensity, variability, and complexity, the more significantly the segmentation is affected by these perturbations.
+Moreover, focusing on PET variability, we observed a prominent negative correlation of approximately -0.45 for primary tumors under PET perturbations, indicating that the impact of blur is more pronounced in less variable signals. 
+This makes sense because uniform metabolic activity often correlates with a simpler, smoother anatomical structure. As a result, these tumors are less sensitive to the smoothing effect of blurring, since their boundaries are easier to detect. 
+Overall, examining the specific effects of perturbations rather than solely focusing on spatial properties indicates that the most impactful perturbations—specifically bias, noise, and spike—tend to correlate with higher values. In the context of PET imaging, the perturbations of blur and motion exhibit negative correlations across both channels, while bias correlates negatively only for the primary channel. This suggests that generally, the lower the values of properties such as size, intensity, variability, and complexity, the more significantly the segmentation is affected by these perturbations.
 
 \newpage
 \subsection{Clinical evaluation}
+As shown in the pie chart, the majority of the scores are above 0.6, indicating strong performance from a metric perspective. When comparing these results with real-world gradings, we observe that most cases fall within the 3- and 4-star categories, suggesting promising clinical utility.
 
+To further validate these findings, we examined the correlation to confirm that these scores accurately represent the underlying cases. For the original cases, the correlation was found to be in the high-moderate range, with a stronger correlation for primary tumors. This is expected, as primary tumors tend to be singular and centrally located in the images, while nodal labels can be multiple and distributed across both sides, introducing more variables that can affect the model's and physician's judgment.
+
+Following perturbation, we observed a high correlation (~0.9) for nodal labels, which may seem significant. However, this result should be interpreted with caution, as there were several 1-star evaluations (7 out of 18 cases) where the model failed to segment any regions. These outliers are clustered closely in the graph, artificially inflating the correlation. In contrast, for primary tumors, this bias was much less pronounced, with only two instances of 1-star evaluations. The correlation for primary tumors after perturbation was similar to that of the original cases, indicating that the metrics remained consistent and relevant to real-world clinical performance, even under perturbation.
+
+Also, something to take in account and seen with clincian, he doesn't agree everytime with the groundtruth which create bias with dice which is directly base on the ground truth. In ideal
+world the ground truth and the evaluation could be performed by the same person.
+
+These results demonstrate a higher correlation compared to the existing literature \cite{Kofler2023}. The observed correlation indicates that the Dice coefficient is relevant for real-world applications, although there is still room for improvement in its predictive accuracy.
+
+\subsection{Limitations}
+As the clinical evaluation was performed by only one observer the results could contain bias. Also with two observers, the correlation between them could be
+a good aspect to compare with dice.
+
+
+\newpage
 \section{Conclusions}
 
 \textit{Formulate clear conclusions which are supported by your research results.}

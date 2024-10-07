@@ -908,7 +908,6 @@ INPUT C:\Users\Léandre\AppData\Local\Programs\MiKTeX\fonts\tfm\jknappen\ec\ecbx
 INPUT C:\Users\Léandre\AppData\Local\Programs\MiKTeX\fonts\tfm\jknappen\ec\ecbx1095.tfm
 INPUT C:\Users\Léandre\AppData\Local\Programs\MiKTeX\fonts\tfm\jknappen\ec\ecrm1440.tfm
 INPUT C:\Users\Léandre\AppData\Local\Programs\MiKTeX\fonts\tfm\jknappen\ec\ecbx1440.tfm
-INPUT C:\Users\Léandre\AppData\Local\Programs\MiKTeX\fonts\tfm\jknappen\ec\ecrm0600.tfm
 INPUT C:\Users\Léandre\AppData\Local\MiKTeX\fonts\map\pdftex\pdftex.map
 INPUT .\Abstract.tex
 INPUT .\Abstract.tex
@@ -1162,6 +1161,13 @@ INPUT .\images\Clinical_evaluation_repartition.png
 INPUT .\images\Clinical_evaluation_repartition.png
 INPUT .\images\Clinical_evaluation_repartition.png
 INPUT .\images\Clinical_evaluation_repartition.png
+INPUT .\images\Clinical_evaluation_dice_repartition.png
+INPUT .\images\Clinical_evaluation_dice_repartition.png
+INPUT images\Clinical_evaluation_dice_repartition.png
+INPUT .\images\Clinical_evaluation_dice_repartition.png
+INPUT .\images\Clinical_evaluation_dice_repartition.png
+INPUT .\images\Clinical_evaluation_dice_repartition.png
+INPUT .\images\Clinical_evaluation_dice_repartition.png
 INPUT .\images\Correlation_dice_eval.png
 INPUT .\images\Correlation_dice_eval.png
 INPUT images\Correlation_dice_eval.png
@@ -1266,8 +1272,6 @@ INPUT C:\Users\Léandre\AppData\Local\MiKTeX\fonts\pk\ljfour\jknappen\ec\dpi600\
 INPUT C:\Users\Léandre\AppData\Local\MiKTeX\fonts\pk\ljfour\jknappen\ec\dpi600\ecbx0900.pk
 INPUT C:\Users\Léandre\AppData\Local\MiKTeX\fonts\pk\ljfour\jknappen\ec\dpi600\ecrm0900.pk
 INPUT C:\Users\Léandre\AppData\Local\MiKTeX\fonts\pk\ljfour\jknappen\ec\dpi600\ecrm0900.pk
-INPUT C:\Users\Léandre\AppData\Local\MiKTeX\fonts\pk\ljfour\jknappen\ec\dpi600\ecrm0600.pk
-INPUT C:\Users\Léandre\AppData\Local\MiKTeX\fonts\pk\ljfour\jknappen\ec\dpi600\ecrm0600.pk
 INPUT C:\Users\Léandre\AppData\Local\MiKTeX\fonts\pk\ljfour\jknappen\ec\dpi600\ecbx1440.pk
 INPUT C:\Users\Léandre\AppData\Local\MiKTeX\fonts\pk\ljfour\jknappen\ec\dpi600\ecbx1440.pk
 INPUT C:\Users\Léandre\AppData\Local\MiKTeX\fonts\pk\ljfour\jknappen\ec\dpi600\ecbx1728.pk

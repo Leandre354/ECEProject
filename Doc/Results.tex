@@ -64,7 +64,7 @@ The following graphs present the correlation between the 13 previously discussed
 
 Each scatter plot includes data for all three degrees of perturbation, represented by distinct markers, allowing for visual differentiation of the effects of increasing perturbation severity. Also, the pearson correlation coefficient is visible for each degree.
 The graphs presented here represent cases where perturbations have been applied to the nodal label in the CT modality. 
-The remaining three category (Primary in CT, Nodal and Primary in PET) will be provided in the appendix. A more comprehensive correlation graph, encompassing all 
+The remaining three category (Primary in CT, Nodal and Primary in PET) will be provided in the appendix (\ref{chap:CorrProp}). A more comprehensive correlation graph, encompassing all 
 four categories, will follow to offer a broader view of the relationships between the segmentation properties and the applied perturbations.
 \begin{figure}[ht]
     \centering
@@ -156,7 +156,11 @@ Regarding contrast, PET shows correlations with spike, ghost, blur, and the thir
 \vskip1em
 Upon conducting a comprehensive comparison of the four graphs, it becomes evident that for the CT modality, the nodal tumor label exhibits a strong correlation with spike, noise, and bias, while the correlation for primary tumors is more distributed across various image properties, demonstrating specific and notable correlations.
 
-In contrast, the PET modality reveals a higher prevalence of negative correlations, particularly with respect to motion and blur for both nodal and primary tumor labels. For nodal tumors in PET, positive correlations are similarly concentrated around spike, noise, and bias, akin to the CT modality. However, a distinguishing feature for nodal tumors in PET is the shift of bias towards negative correlation, and no clear resemblance with the CT modality is observed. Additionally, correlations in PET for nodal tumors are noted with spike, noise, and some degree of correlation with ghost artifacts.\newpage
+In contrast, the PET modality reveals a higher prevalence of negative correlations, particularly with respect to motion and blur for both nodal and primary tumor labels. For nodal tumors in PET, positive correlations are similarly concentrated around spike, noise, and bias, akin to the CT modality. However, a distinguishing feature for nodal tumors in PET is the shift of bias towards negative correlation, and no clear resemblance with the CT modality is observed. Additionally, correlations in PET for nodal tumors are noted with spike, noise, and some degree of correlation with ghost artifacts.
+
+Furthermore, across all degrees of severity for each perturbation, the correlation behavior is mostly not linear with increasing severity levels.
+
+\newpage
 \section{Clinical evaluation}
 The following graphs illustrate the distribution of the 5-star clinical evaluations. The left graph represents the original cases, comprising 32 evaluations, while the right graph shows the perturbed cases, with a total of 18 evaluations.
 \begin{figure}[ht]
@@ -217,10 +221,3 @@ Here is the same graphs but for the 18 perturbed cases cases.
 Consistent with before the Dice and Jaccard exhibit better correlation than Hausdorff even if the Hausdorff is way better than before.
 A major difference here is that the correlation for nodal channel is really high (around 0.9) and bigger than for primary channel.
 For primary channel almost all metrics value are above the 50\% of the max value for Dice and Jaccard.
-\begin{itemize}
-    \item mri robustness, adding most effective perturbations as augmentations
-    \item daniel advice : contrast agent, mri, necrosis, symmetry, vessels, infection, 
-    \item PET actual technologie need to be precised
-    \item tell why we focus on the 3 perturbations
-    \item precise that background was not in metric computation
-\end{itemize}

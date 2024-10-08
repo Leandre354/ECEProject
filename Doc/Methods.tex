@@ -1,17 +1,3 @@
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% This is the sample chapter file.
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%
-% Author:   René Widmer
-%           Institute for Surgical Technology and Biomechanics ISTB
-%           University of Bern
-%           rene.widmer@istb.unibe.ch
-%
-% Date:     10/28/2009
-%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-
 \chapter{Methods}
 \section{Hecktor dataset}
 For the segmentation model in this project, we utilized the dataset from the Hecktor Challenge 2022. This dataset consists of both training images with corresponding ground truth labels and test images without labels. For our purposes, we focused solely on the training subset due to the availability of ground truth annotations. This subset comprises 524 imaging cases collected from seven distinct clinical centers, including:
@@ -34,7 +20,7 @@ For the segmentation model in this project, we utilized the dataset from the Hec
     \caption{Distribution of cases across sites}
 \end{figure}
 \newpage
-Each case in the dataset contains two imaging modalities: computed tomography (CT), positron emission tomography (PET), and ground truth labels. The PET images were standardized using the Standardized Uptake Value (SUV). The CT and label images are provided in NIfTI format with a spatial resolution of 524 × 524 pixels in the axial plane, and variable depths across slices. While some CT images focus exclusively on the head and neck region, others encompass the entire body. In contrast, the PET images have a resolution of 128 × 128 pixels in the axial plane, with varying depths similar to the CT images.
+Each case in the dataset contains two imaging modalities: computed tomography (CT), Fluorodeoxyglucose positron emission tomography (FDG-PET), and ground truth labels. The PET images were standardized using the Standardized Uptake Value (SUV). The CT and label images are provided in NIfTI format with a spatial resolution of 524 × 524 pixels in the axial plane, and variable depths across slices. While some CT images focus exclusively on the head and neck region, others encompass the entire body. In contrast, the PET images have a resolution of 128 × 128 pixels in the axial plane, with varying depths similar to the CT images.
 
 \begin{figure}[ht]
     \centering
@@ -117,6 +103,7 @@ Dice loss is particularly advantageous for segmentation tasks involving imbalanc
 In contrast, cross-entropy loss measures the dissimilarity between the predicted probability distribution and the true distribution (\ref{eq:ce_loss}). While it is easier to optimize due to its differentiable nature, cross-entropy can be more sensitive to class imbalances. This sensitivity may lead to suboptimal performance when the class of interest (e.g., tumors) constitutes only a small fraction of the total data.
 \vskip1em
 Given these characteristics, a hybrid approach that combines both Dice loss and cross-entropy loss offers a promising solution. This combination leverages the strengths of both methods: Dice loss ensures that the model pays adequate attention to the small tumor regions, while cross-entropy facilitates stable and efficient optimization. Such an approach can yield improved segmentation performance, making it particularly suitable for complex tasks in medical imaging.
+Note that the background was included solely during the training process and was not utilized in the monitoring of loss functions.
 \newpage
 To enhance training performance, mixed precision training utilizing PyTorch has been implemented. This approach leverages both single-precision (32-bit) and half-precision (16-bit) floating-point formats during model training. By employing mixed precision, the training speed is significantly increased due to reduced computational overhead, while the memory footprint is minimized. This allows for the efficient use of hardware resources, facilitating larger batch sizes and improved model scalability without compromising numerical stability.
 The training run on a TODO with around 30Go of memory use.
@@ -167,10 +154,11 @@ against variations that may be encountered in real-world scenarios, such as sens
 Each perturbation was applied independently to either the CT or PET modality at three varying degrees of severity: 
 low, medium, and high. These severity levels correspond to increasing intensities of the perturbation, where low 
 severity represents minimal distortion and high severity introduces significant alterations to the image. The figure 
-above illustrates the perturbations at each severity level for the CT modality.
+above illustrates the perturbations at each severity level for the CT modality. For detailed values of each perturbation 
+at varying degrees, refer to the appendix (\ref{chap:Pert}).
 
 Note that the noise perturbations may not be accurately represented here; however, more detailed visualizations and discussion 
-of the noise effects on the images are provided in the Results section.
+of the noise effects on the images are provided in the Results section. A visual representation of noise is provided in appendix (\ref{chap:Pert})
 \vskip1em
 To assess the impact of perturbations on segmentation performance, we utilized evaluation metrics from the Pymia library. 
 The metrics employed are as follows:
@@ -251,5 +239,7 @@ The findings will contribute to understanding the robustness of the model, its p
 and the significance of geometrical metrics in enhancing model performance and decision-making in radiotherapy.
 Limitations of this study include potential biases arising from the subjective nature of physician evaluations, as the assessment was conducted by a single observer. 
 
+
+TODO talk about the condition for the physician during the evaluation
 
 \endinput

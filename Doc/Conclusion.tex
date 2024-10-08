@@ -33,6 +33,7 @@ In contrast, the intensity properties of CT do not yield significantly higher co
 Moreover, focusing on PET variability, we observed a prominent negative correlation of approximately -0.45 for primary tumors under PET perturbations, indicating that the impact of blur is more pronounced in less variable signals. 
 This makes sense because uniform metabolic activity often correlates with a simpler, smoother anatomical structure. As a result, these tumors are less sensitive to the smoothing effect of blurring, since their boundaries are easier to detect. 
 Overall, examining the specific effects of perturbations rather than solely focusing on spatial properties indicates that the most impactful perturbations—specifically bias, noise, and spike—tend to correlate with higher values. In the context of PET imaging, the perturbations of blur and motion exhibit negative correlations across both channels, while bias correlates negatively only for the primary channel. This suggests that generally, the lower the values of properties such as size, intensity, variability, and complexity, the more significantly the segmentation is affected by these perturbations.
+The observed similarity between the spike degrees 2 and 3 across all four graphs can be attributed to the fact that, at these levels of degradation, the dice coefficient frequently approaches zero. This extreme reduction in dice value results in nearly identical delta values for these degrees, leading to a similar pattern of correlation propagation.
 
 \newpage
 \subsection{Clinical evaluation}

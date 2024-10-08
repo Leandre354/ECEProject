@@ -9,8 +9,8 @@ import numpy as np
 import matplotlib.pyplot as plt
 import scipy.stats as stats
 
-Modality = 'CT' #CT or PET
-Label = 'Nodal' #Nodal or Primary
+Modality = 'PET' #CT or PET
+Label = 'Primary' #Nodal or Primary
 # File paths
 test = f'Analysis/{Modality}'
 

@@ -26,9 +26,10 @@
 \contentsline {section}{\numberline {4.2}Conclusions}{30}{section.4.2}%
 \contentsline {chapter}{\chapternumberline {5}Outlook}{31}{chapter.5}%
 \contentsline {chapter}{Bibliography}{33}{chapter*.3}%
-\contentsline {appendix}{\chapternumberline {A}Vector and Tensor Mathematics}{37}{appendix.A}%
-\contentsline {section}{\numberline {A.1}Introduction}{37}{section.A.1}%
-\contentsline {section}{\numberline {A.2}Variable Types}{37}{section.A.2}%
-\contentsline {appendix}{\chapternumberline {B}Another Appendix}{39}{appendix.B}%
-\contentsline {section}{\numberline {B.1}Section 1}{39}{section.B.1}%
-\contentsline {section}{\numberline {B.2}Section 2}{39}{section.B.2}%
+\contentsline {appendix}{\chapternumberline {A}Correlation with properties}{37}{appendix.A}%
+\contentsline {section}{\numberline {A.1}Properties correlation with perturbation on primary label in CT}{37}{section.A.1}%
+\contentsline {section}{\numberline {A.2}Properties correlation with perturbation on nodal label in PET}{40}{section.A.2}%
+\contentsline {section}{\numberline {A.3}Properties correlation with perturbation on primary label in PET}{42}{section.A.3}%
+\contentsline {appendix}{\chapternumberline {B}Perturbations}{45}{appendix.B}%
+\contentsline {section}{\numberline {B.1}Values of the perturbations}{45}{section.B.1}%
+\contentsline {section}{\numberline {B.2}Representation of noise perturbation}{46}{section.B.2}%

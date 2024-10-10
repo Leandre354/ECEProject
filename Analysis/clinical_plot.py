@@ -19,10 +19,10 @@ def autopct_format(values):
     return my_format
 
 #Loading the metrics and properties of baseline
-db = pd.read_csv('Inference/Image200/Analysis/Baseline/Metrics_x_Clinical.csv', delimiter=';')
-db2 = pd.read_csv('Inference/Image200/Analysis/Baseline/Metrics_x_Clinical_perturbed.csv', delimiter=';')
+db2 = pd.read_csv('Inference/Image200/Analysis/Baseline/Metrics_x_Clinical.csv', delimiter=';')
+db = pd.read_csv('Inference/Image200/Analysis/Baseline/Metrics_x_Clinical_perturbed.csv', delimiter=';')
 
-observer = 'Likert 2'
+observer = 'Likert 1'
 
 dice_bins = [0, 0.20, 0.40, 0.60, 0.80, 1]
 dice_labels = ['0-0.20', '0.20-0.40', '0.40-0.60', '0.60-0.80', '0.80-1']

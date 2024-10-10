@@ -162,25 +162,36 @@ Furthermore, across all degrees of severity for each perturbation, the correlati
 
 \newpage
 \section{Clinical evaluation}
-The following graphs illustrate the distribution of the 5-star clinical evaluations. The left graph represents the original cases, comprising 32 evaluations, while the right graph shows the perturbed cases, with a total of 18 evaluations.
+The following graphs illustrate the distribution of the 5-star clinical evaluations for both observers. The left graph represents the original cases, comprising 32 evaluations, while the right graph shows the perturbed cases, with a total of 18 evaluations.
 \begin{figure}[ht]
     \centering
-    \includegraphics[width=1\textwidth]{images/Clinical_evaluation_repartition.png}
-    \caption{Clinical evaluation repartition}
+    \includegraphics[width=0.8\textwidth]{images/Clinical_evaluation_repartition.png}
+    \caption{Clinical evaluation repartition observer 1}
     \label{fig:three_subfigures}
 \end{figure}
 
-The analysis of the original cases reveals that approximately 75\% of the evaluations fall between 3 and 4 stars for both channels. Notably, the nodal channel exhibits a slightly higher incidence of 2-star evaluations, alongside a reduction in the extreme values of 1 and 5 stars compared to the primary channel.
+\begin{figure}[ht]
+    \centering
+    \includegraphics[width=0.8\textwidth]{images/Clinical_evaluation_repartition_2.png}
+    \caption{Clinical evaluation repartition observer 2}
+    \label{fig:three_subfigures}
+\end{figure}
 
+\newpage
+
+For the first observer, the analysis of the original cases reveals that approximately 75\% of the evaluations fall between 3 and 4 stars for both channels. Notably, the nodal channel exhibits a slightly higher incidence of 2-star evaluations, alongside a reduction in the extreme values of 1 and 5 stars compared to the primary channel.
 In contrast, the perturbation analysis indicates that the nodal channel was significantly more affected by the applied perturbations in the selected cases with majority of 1 and 2 stars. Conversely, the distribution of evaluations for the primary channel remains consistent with that of the original cases but with some changes including more 4 stars suprisingly and not any 5 stars.
+Comparing with the second observer, for the original cases, the repartition for the nodal channel is more equal accross 2, 3 and 4 stars with approximately 30\% each with 2 and 3 stars more present.
+However, for the primary tumors, the 4-stars percentage is higher than before with also a 1-star grade more prevalent. 
+For the perturbed cases, the same behavior observed in nodal label with even worst impact in this evaluation. For the primary, the only major change is that 3-star are a bit more present at expense of the 4-stars.
 
 In the subsequent graphs, we will further investigate whether these changes are also reflected in the DICE coefficient measurements, which would be indicated with a significant correlation between the DICE coefficient and the evaluation scores.
-\newpage
+
 This graph that follows represent the corresponding 5 categories of dice coefficient for the same cases. With each category having a range of 0.2 from 0 to 1.
 Which would arbitrarly represent the gradinds in likert scale.
 \begin{figure}[ht]
     \centering
-    \includegraphics[width=1\textwidth]{images/Clinical_evaluation_dice_repartition.png}
+    \includegraphics[width=0.8\textwidth]{images/Clinical_evaluation_dice_repartition.png}
     \caption{Clinical evaluation repartition}
     \label{fig:three_subfigures}
 \end{figure}
@@ -198,26 +209,65 @@ line is depicted in red, with the Pearson correlation coefficient displayed in t
 \begin{figure}[ht]
     \centering
     \includegraphics[width=1\textwidth]{images/Correlation_dice_eval.png}
-    \caption{Clinical evaluation correlation with DICE on original cases}
+    \caption{Observer 1 clinical evaluation correlation with DICE on original cases}
     \label{fig:three_subfigures}
 \end{figure}
 
-The Jaccard index and DICE coefficient exhibit similar behavior, characterized by closely aligned trend lines and Pearson correlation coefficients. In contrast, the Hausdorff distance demonstrates a weaker correlation, particularly noting that cases lacking ground truth data have been excluded due to the metric's sensitivity in these instances.
-
-Across the two most reliable metrics, the primary label exhibits a stronger correlation, with values 0.665 and 0.656, compared to the nodal channel, which shows a correlation of 0.518 and 0.551.
-We see also that the range of dice coefficient has a tendecy to shrink to higher grading.
-
-Notably, some cases rated with four stars display low DICE coefficients. These specific cases have been reviewed with clinical experts and are reported to be particularly challenging, as they were difficult to evaluate without supplementary information beyond the image alone.
-\newpage 
-
-Here is the same graphs but for the 18 perturbed cases cases.
 \begin{figure}[ht]
     \centering
-    \includegraphics[width=1\textwidth]{images/Correlation_dice_eval_perturbed.png}
+    \includegraphics[width=1\textwidth]{images/Correlation_dice_eval_2.png}
+    \caption{Observer 2 clinical evaluation correlation with DICE on original cases}
+    \label{fig:three_subfigures}
+\end{figure}
+\newpage
+For the first observer, the Jaccard index and DICE coefficient demonstrate similar behavior, with highly aligned trend lines and strong Pearson correlation coefficients. In contrast, the Hausdorff distance shows a weaker correlation, particularly for cases without ground truth data, which were excluded due to the sensitivity of this metric in such instances. Among the two most reliable metrics, the primary label exhibits stronger correlations, with values of 0.665 and 0.656, compared to the nodal channel, which yields lower correlations of 0.518 and 0.551.
+
+Additionally, there is a tendency for the range of DICE coefficients to contract at higher grading levels. Interestingly, some cases rated with four stars exhibit low DICE coefficients. These cases were reviewed with clinical experts and identified as particularly challenging, where the image alone was insufficient for accurate evaluation without supplementary information.
+
+In comparison to the second observer, the nodal label shows similar behavior, with comparable point distributions, reflected by close correlation coefficients. However, a notable difference arises in the Hausdorff distance, which here demonstrates a more representative and improved correlation. For the primary label, the second observer achieves significantly higher correlations with the DICE coefficient, around 0.85 compared to 0.65 for the first observer's DICE and Jaccard indices, and -0.55 compared to 0.37 for the Hausdorff distance. Additionally, the second observer shows less variability in the DICE range for lower gradings.
+\newpage
+The following graph exhibit the correlation between the two physicians for the original cases.
+\begin{figure}[ht]
+    \centering
+    \includegraphics[width=0.95\textwidth]{images/Physician_correlation.png}
+    \caption{Phyisician correlation in original cases}
+    \label{fig:three_subfigures}
+\end{figure}
+
+For the nodal label, the majority of grades (22 out of 32) lie on the diagonal, indicating a strong level of agreement between observers. However, the second observer tends to assign slightly lower grades compared to the first observer. The correlation between the two observers for the nodal label is 0.635, which, while higher than the correlation between the DICE coefficient and the physician’s assessment (0.518 and 0.549), does not represent a significant increase.
+
+For the primary label, the inter-observer agreement is more dispersed, which accounts for the observed difference in correlation coefficients between the first and second observers (0.665 vs. 0.873). The correlation for the primary label (0.658 and 0.635) is similar to that for the nodal labels, as well as to the correlation between the first observer’s assessment and the DICE coefficient (0.665). However, this correlation is lower when compared to the second observer’s correlation with the DICE coefficient (0.873).\newpage  
+
+Here is the same graphs and analysis but for the 18 perturbed cases cases.
+\begin{figure}[ht]
+    \centering
+    \includegraphics[width=0.97\textwidth]{images/Correlation_dice_eval_perturbed.png}
     \caption{Clinical evaluation correlation with DICE on perturbed cases}
     \label{fig:three_subfigures}
 \end{figure}
 
-Consistent with before the Dice and Jaccard exhibit better correlation than Hausdorff even if the Hausdorff is way better than before.
-A major difference here is that the correlation for nodal channel is really high (around 0.9) and bigger than for primary channel.
-For primary channel almost all metrics value are above the 50\% of the max value for Dice and Jaccard.
+\begin{figure}[ht]
+    \centering
+    \includegraphics[width=0.97\textwidth]{images/Correlation_dice_eval_perturbed_2.png}
+    \caption{Clinical evaluation correlation with DICE on perturbed cases}
+    \label{fig:three_subfigures}
+\end{figure}
+
+
+The Hausdorff distance appears to be more representative, showing higher correlation values. However, the DICE and Jaccard indices remain more consistent across different cases and are less affected by the absence of ground truth in one label.
+
+For the first observer, the peak correlation is 0.901 for the nodal label. In contrast, for the second observer, the difference between nodal and primary labels is less pronounced, with correlations of 0.824 and 0.778, respectively, compared to 0.901 and 0.695 for the first observer. Overall, for both observers, the correlation values are higher compared to the original cases.
+In contrast to the original cases, the point distribution similarity between the two observers is less pronounced.
+
+\newpage
+\begin{figure}[ht]
+    \centering
+    \includegraphics[width=1\textwidth]{images/Physician_correlation_perturbed.png}
+    \caption{Clinical evaluation correlation with DICE on perturbed cases}
+    \label{fig:three_subfigures}
+\end{figure}
+
+The correlation for both channels is observed to be identical, with values of 0.825, closely matching the correlation seen with the DICE coefficient. As illustrated in the pie chart, the nodal label predominantly consists of lower grades. In contrast, the primary label exhibits a wider distribution of grades, with a higher proportion of elevated scores.
+
+For the nodal label, Observer 2 tends to assign lower grades for the same cases compared to Observer 1. However, for the primary label, the grades are more evenly distributed between the two observers.
+

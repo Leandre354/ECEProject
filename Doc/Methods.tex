@@ -213,8 +213,8 @@ these relationships.
 
 \newpage
 \subsection{Clinical evaluation}
-To assess the relevance of geometrical metrics used in deep learning, we conducted a clinical evaluation of 50 test cases in collaboration with a 
-physician specializing in head and neck radiation oncology. The evaluation utilized a 5-point Likert scale for grading. 
+To assess the relevance of geometrical metrics used in deep learning, we conducted a clinical evaluation of 50 test cases in collaboration with two 
+physicians specializing in head and neck radiation oncology. The evaluation utilized a 5-point Likert scale for grading. 
 The representations of the 5-point grades are provided below:
 
 \begin{itemize}
@@ -229,6 +229,8 @@ The representations of the 5-point grades are provided below:
 \end{itemize}
 The objective of this evaluation is to provide a comprehensive assessment of the model's performance and to quantify the correlation between the geometrical metrics and physician expertise. The evaluation was conducted specifically for each label, including Primary and Nodal tumors. 
 Subsequently, scatter plots were generated to visualize the relationships between the various geometrical metrics, including the Dice score, Hausdorff distance, and Jaccard index. The correlations between these metrics and the physician evaluations were computed using Pearson correlation coefficients.
+This analysis have been performed for both physician result, also a correlation between the two physician have been processed in order to compare with the Dice result.
+The both physicians have evluated in the same conditions to avoid any bias.
 \vskip1em
 The 50 cases were categorized into two groups: one consisting of baseline images (without perturbations), representing 32 images, and the other comprising perturbed images influenced by the three most significant perturbations. For each perturbation and modality, three cases were selected, resulting in a total of six cases for each of the three perturbations, accounting for the final 18 cases.
 \vskip1em
@@ -237,9 +239,5 @@ This approach allows us to analyze the impact of perturbations on real-case eval
 This analysis, enables us to evaluate the relevance of the geometrical metrics in predicting clinical outcomes. 
 The findings will contribute to understanding the robustness of the model, its practical applicability in clinical settings, 
 and the significance of geometrical metrics in enhancing model performance and decision-making in radiotherapy.
-Limitations of this study include potential biases arising from the subjective nature of physician evaluations, as the assessment was conducted by a single observer. 
-
-
-TODO talk about the condition for the physician during the evaluation
 
 \endinput

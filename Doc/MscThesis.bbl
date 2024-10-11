@@ -1,5 +1,15 @@
 \begin{thebibliography}{10}
 
+\bibitem{Andrearczyk2022}
+V.~Andrearczyk, V.~Oreiller, S.~Boughdad, C.~C.~L. Rest, H.~Elhalawani,
+  M.~Jreige, J.~O. Prior, M.~Vallières, D.~Visvikis, M.~Hatt, and
+  A.~Depeursinge.
+\newblock Overview of the hecktor challenge at miccai 2021: Automatic head and
+  neck tumor segmentation and outcome prediction in pet/ct images.
+\newblock In {\em Head and Neck Tumor Segmentation and Outcome Prediction:
+  Second Challenge, HECKTOR 2021, held in conjunction with MICCAI 2021,
+  Strasbourg, France, September 27, 2021, Proceedings}, pages 1--37, 2022.
+
 \bibitem{Andrearczyk2023}
 V.~Andrearczyk, V.~Oreiller, and et~al.
 \newblock Overview of the hecktor challenge at miccai 2022: Automatic head and

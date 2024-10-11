@@ -39,23 +39,29 @@ The observed similarity between the spike degrees 2 and 3 across all four graphs
 \subsection{Clinical evaluation}
 As shown in the pie chart, the majority of the scores are above 0.6, indicating strong performance from a metric perspective. When comparing these results with real-world gradings, we observe that most cases fall within the 3- and 4-star categories, suggesting promising clinical utility.
 
-To further validate these findings, we examined the correlation to confirm that these scores accurately represent the underlying cases. For the original cases, the correlation was found to be in the high-moderate range, with a stronger correlation for primary tumors. This is expected, as primary tumors tend to be singular and centrally located in the images, while nodal labels can be multiple and distributed across both sides, introducing more variables that can affect the model's and physician's judgment.
+To further validate these findings, we examined the correlation to confirm that these scores accurately represent the underlying cases. For the original cases, the correlation was found to be in the high-moderate range, with a stronger correlation for primary tumors for both observer. This is expected, as primary tumors tend to be singular and centrally located in the images, while nodal labels can be multiple and distributed across both sides, introducing more variables that can affect the model's and physician's judgment.
 
-Following perturbation, we observed a high correlation (~0.9) for nodal labels, which may seem significant. However, this result should be interpreted with caution, as there were several 1-star evaluations (7 out of 18 cases) where the model failed to segment any regions. These outliers are clustered closely in the graph, artificially inflating the correlation. In contrast, for primary tumors, this bias was much less pronounced, with only two instances of 1-star evaluations. The correlation for primary tumors after perturbation was similar to that of the original cases, indicating that the metrics remained consistent and relevant to real-world clinical performance, even under perturbation.
+Following perturbation, we observed high correlations (0.901 and 0.824) for nodal labels, which may seem significant. However, this result should be interpreted with caution, as there were several 1-star evaluations (7 and 9 out of 18 cases) where the model failed to segment any regions. These outliers are clustered closely in the graph, artificially inflating the correlation. In contrast, for primary tumors, this bias was much less pronounced, with only two instances of 1-star evaluations. The correlations for primary tumors after perturbation were a bit higher than for the original cases, indicating that the metrics remained consistent and relevant to real-world clinical performance, even under perturbation.
 
-Also, something to take in account and seen with clincian, he doesn't agree everytime with the groundtruth which create bias with dice which is directly base on the ground truth. In ideal
-world the ground truth and the evaluation could be performed by the same person.
+Also, something to take in account and seen with clinician, he doesn't agree everytime with the groundtruth which create bias with dice which is directly base on the ground truth. In ideal
+world the ground truth and the evaluation could be performed by the same person. Also, in clinical practice they always use MRI for the diagnostic especially for primary tumors which was not able in this dataset.
 
 These results demonstrate a higher correlation compared to the existing literature \cite{Kofler2023}. The observed correlation indicates that the Dice coefficient is relevant for real-world applications, although there is still room for improvement in its predictive accuracy.
 
 \subsection{Limitations}
-As the clinical evaluation was performed by only one observer the results could contain bias. Also with two observers, the correlation between them could be
-a good aspect to compare with dice.
+As previously discussed, the absence of MRI data represents a significant limitation, as MRI is currently the gold standard for the diagnosis of primary tumors in the head and neck region. Its omission restricts the model's applicability in clinical practice, where MRI plays a crucial role in providing detailed anatomical and soft tissue contrast essential for accurate diagnosis.
 
+Furthermore, the evaluation process is limited by the lack of patient-specific information, as the Hecktor dataset provides such information, including HPV status, for only a subset of patients (primarily for two out of seven sites). This lack of comprehensive data may affect the accuracy and relevance of the clinical assessments.
+
+Additionally, clinician disagreement with the ground truth in certain cases introduces a potential bias against the Dice coefficient, as it is directly dependent on the ground truth. This discrepancy can undermine the validity of the Dice score as a reliable metric in such instances.
 
 \newpage
 \section{Conclusions}
 
-\textit{Formulate clear conclusions which are supported by your research results.}
+The robustness analysis of the model has shown its capacity to handle common perturbations such as ghosting, blurring, and motion artifacts with minimal performance degradation, particularly in PET imaging. The PET modality’s resilience is likely due to its reliance on functional data rather than fine anatomical details, making it less vulnerable to structural distortions. However, despite noise augmentation during training, the model exhibited sensitivity to noise, especially spike and bias perturbations, which resulted in significant performance drops even at low levels of severity. This suggests a need for further training augmentations that address these specific challenges.
+
+Correlation analysis of spatial properties demonstrated that larger and more complex nodal tumors were more susceptible to noise and bias, while smaller and less complex primary tumors were disproportionately affected by perturbations, particularly in PET. Interestingly, CT-based perturbations had a stronger effect on PET segmentation accuracy, especially for tumors with higher metabolic activity. This intermodal sensitivity points to the potential need for more integrated augmentation strategies.
+
+From a clinical perspective, the model’s performance is promising, with most cases achieving strong metric scores. However, some discrepancies between the model's segmentation and clinical ground truth were noted, highlighting a challenge in aligning automated model outputs with real-world clinical evaluations, particularly for primary tumors where MRI is typically preferred but unavailable in this dataset. The clinician's disagreement with ground truth in some instances also underscores the limitations of relying solely on Dice scores for evaluation. Nonetheless, the high correlations observed, even under perturbations, suggest that the model maintains clinical relevance.
 
 \endinput

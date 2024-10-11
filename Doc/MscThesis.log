@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.24 (MiKTeX 23.1) (preloaded format=pdflatex 2023.3.6)  10 OCT 2024 11:54
+This is pdfTeX, Version 3.141592653-2.6-1.40.24 (MiKTeX 23.1) (preloaded format=pdflatex 2023.3.6)  11 OCT 2024 11:00
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -1115,22 +1115,22 @@ bibitemlist
 \openout2 = `Appendix_1.aux'.
 
  (Appendix_1.tex
-<images/CT_Primary_Properties_1.png, id=515, 1110.0672pt x 554.3109pt>
+<images/CT_Primary_Properties_1.png, id=516, 1110.0672pt x 554.3109pt>
 File: images/CT_Primary_Properties_1.png Graphic file (type png)
 <use images/CT_Primary_Properties_1.png>
 Package pdftex.def Info: images/CT_Primary_Properties_1.png  used on input line 9.
 (pdftex.def)             Requested size: 396.0pt x 197.74173pt.
-<images/CT_Primary_Properties_2.png, id=516, 1110.0672pt x 554.3109pt>
+<images/CT_Primary_Properties_2.png, id=517, 1110.0672pt x 554.3109pt>
 File: images/CT_Primary_Properties_2.png Graphic file (type png)
 <use images/CT_Primary_Properties_2.png>
 Package pdftex.def Info: images/CT_Primary_Properties_2.png  used on input line 14.
 (pdftex.def)             Requested size: 396.0pt x 197.74173pt.
-<images/CT_Primary_Properties_3.png, id=517, 1110.0672pt x 554.3109pt>
+<images/CT_Primary_Properties_3.png, id=518, 1110.0672pt x 554.3109pt>
 File: images/CT_Primary_Properties_3.png Graphic file (type png)
 <use images/CT_Primary_Properties_3.png>
 Package pdftex.def Info: images/CT_Primary_Properties_3.png  used on input line 19.
 (pdftex.def)             Requested size: 396.0pt x 197.74173pt.
-<images/CT_Primary_Properties_4.png, id=518, 1110.0672pt x 554.3109pt>
+<images/CT_Primary_Properties_4.png, id=519, 1110.0672pt x 554.3109pt>
 File: images/CT_Primary_Properties_4.png Graphic file (type png)
 <use images/CT_Primary_Properties_4.png>
 Package pdftex.def Info: images/CT_Primary_Properties_4.png  used on input line 24.
@@ -1139,22 +1139,22 @@ Package pdftex.def Info: images/CT_Primary_Properties_4.png  used on input line 
 
 
  <./images/CT_Primary_Properties_1.png>] [40 <./images/CT_Primary_Properties_2.png> <./images/CT_Primary_Properties_3.png>] [41 <./images/CT_Primary_Properties_4.png>]
-<images/PET_Nodal_Properties_1.png, id=540, 1110.0672pt x 554.3109pt>
+<images/PET_Nodal_Properties_1.png, id=541, 1110.0672pt x 554.3109pt>
 File: images/PET_Nodal_Properties_1.png Graphic file (type png)
 <use images/PET_Nodal_Properties_1.png>
 Package pdftex.def Info: images/PET_Nodal_Properties_1.png  used on input line 33.
 (pdftex.def)             Requested size: 396.0pt x 197.74173pt.
-<images/PET_Nodal_Properties_2.png, id=541, 1110.0672pt x 554.3109pt>
+<images/PET_Nodal_Properties_2.png, id=542, 1110.0672pt x 554.3109pt>
 File: images/PET_Nodal_Properties_2.png Graphic file (type png)
 <use images/PET_Nodal_Properties_2.png>
 Package pdftex.def Info: images/PET_Nodal_Properties_2.png  used on input line 39.
 (pdftex.def)             Requested size: 396.0pt x 197.74173pt.
-<images/PET_Nodal_Properties_3.png, id=542, 1110.0672pt x 554.3109pt>
+<images/PET_Nodal_Properties_3.png, id=543, 1110.0672pt x 554.3109pt>
 File: images/PET_Nodal_Properties_3.png Graphic file (type png)
 <use images/PET_Nodal_Properties_3.png>
 Package pdftex.def Info: images/PET_Nodal_Properties_3.png  used on input line 45.
 (pdftex.def)             Requested size: 396.0pt x 197.74173pt.
-<images/PET_Nodal_Properties_4.png, id=543, 1110.0672pt x 554.3109pt>
+<images/PET_Nodal_Properties_4.png, id=544, 1110.0672pt x 554.3109pt>
 File: images/PET_Nodal_Properties_4.png Graphic file (type png)
 <use images/PET_Nodal_Properties_4.png>
 Package pdftex.def Info: images/PET_Nodal_Properties_4.png  used on input line 51.
@@ -1162,22 +1162,22 @@ Package pdftex.def Info: images/PET_Nodal_Properties_4.png  used on input line 5
  [42
 
  <./images/PET_Nodal_Properties_1.png> <./images/PET_Nodal_Properties_2.png>] [43 <./images/PET_Nodal_Properties_3.png> <./images/PET_Nodal_Properties_4.png>]
-<images/PET_Primary_Properties_1.png, id=560, 1110.0672pt x 554.3109pt>
+<images/PET_Primary_Properties_1.png, id=561, 1110.0672pt x 554.3109pt>
 File: images/PET_Primary_Properties_1.png Graphic file (type png)
 <use images/PET_Primary_Properties_1.png>
 Package pdftex.def Info: images/PET_Primary_Properties_1.png  used on input line 60.
 (pdftex.def)             Requested size: 396.0pt x 197.74173pt.
-<images/PET_Primary_Properties_2.png, id=561, 1110.0672pt x 554.3109pt>
+<images/PET_Primary_Properties_2.png, id=562, 1110.0672pt x 554.3109pt>
 File: images/PET_Primary_Properties_2.png Graphic file (type png)
 <use images/PET_Primary_Properties_2.png>
 Package pdftex.def Info: images/PET_Primary_Properties_2.png  used on input line 66.
 (pdftex.def)             Requested size: 396.0pt x 197.74173pt.
-<images/PET_Primary_Properties_3.png, id=562, 1110.0672pt x 554.3109pt>
+<images/PET_Primary_Properties_3.png, id=563, 1110.0672pt x 554.3109pt>
 File: images/PET_Primary_Properties_3.png Graphic file (type png)
 <use images/PET_Primary_Properties_3.png>
 Package pdftex.def Info: images/PET_Primary_Properties_3.png  used on input line 72.
 (pdftex.def)             Requested size: 396.0pt x 197.74173pt.
-<images/PET_Primary_Properties_4.png, id=563, 1110.0672pt x 554.3109pt>
+<images/PET_Primary_Properties_4.png, id=564, 1110.0672pt x 554.3109pt>
 File: images/PET_Primary_Properties_4.png Graphic file (type png)
 <use images/PET_Primary_Properties_4.png>
 Package pdftex.def Info: images/PET_Primary_Properties_4.png  used on input line 78.
@@ -1203,18 +1203,18 @@ Overfull \vbox (12.0pt too high) has occurred while \output is active []
 
 
 ]
-<images/perturbations_values.png, id=584, 502.12593pt x 249.18094pt>
+<images/perturbations_values.png, id=585, 502.12593pt x 249.18094pt>
 File: images/perturbations_values.png Graphic file (type png)
 <use images/perturbations_values.png>
 Package pdftex.def Info: images/perturbations_values.png  used on input line 9.
 (pdftex.def)             Requested size: 396.0pt x 196.52759pt.
  [47 <./images/perturbations_values.png>]
-<images/MDA_113_CT_Noise.png, id=592, 3203.97pt x 1851.91875pt>
+<images/MDA_113_CT_Noise.png, id=593, 3203.97pt x 1851.91875pt>
 File: images/MDA_113_CT_Noise.png Graphic file (type png)
 <use images/MDA_113_CT_Noise.png>
 Package pdftex.def Info: images/MDA_113_CT_Noise.png  used on input line 17.
 (pdftex.def)             Requested size: 356.39758pt x 206.00058pt.
-<images/MDA_033_PET_Noise.png, id=593, 2125.9425pt x 1906.12125pt>
+<images/MDA_033_PET_Noise.png, id=594, 2125.9425pt x 1906.12125pt>
 File: images/MDA_033_PET_Noise.png Graphic file (type png)
 <use images/MDA_033_PET_Noise.png>
 Package pdftex.def Info: images/MDA_033_PET_Noise.png  used on input line 22.
@@ -1239,17 +1239,17 @@ Package rerunfilecheck Info: File `MscThesis.out' has not changed.
 (rerunfilecheck)             Checksum: 1082E54E4CEBDA7C078F2A24113E63BB;5157.
  ) 
 Here is how much of TeX's memory you used:
- 18263 strings out of 476339
- 303994 string characters out of 5786704
- 1866340 words of memory out of 5000000
- 38135 multiletter control sequences out of 15000+600000
+ 18265 strings out of 476339
+ 304031 string characters out of 5786704
+ 1871340 words of memory out of 5000000
+ 38136 multiletter control sequences out of 15000+600000
  545304 words of font info for 77 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  99i,12n,104p,1005b,618s stack positions out of 10000i,1000n,20000p,200000b,200000s
 {C:/Users/Léandre/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-ec.enc} <C:\Users\Léandre\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecrm0800.pk> <C:\Users\Léandre\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecbx0800.pk> <C:\Users\Léandre\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\tcrm1000.pk> <C:\Users\Léandre\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecbx1000.pk> <C:\Users\Léandre\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecrm0700.pk> <C:\Users\Léandre\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecti1000.pk> <C:\Users\Léandre\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecrm1000.pk> <C:\Users\Léandre\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecti0900.pk> <C:\Users\Léandre\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecbx0900.pk> <C:\Users\Léandre\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecrm0900.pk> <C:\Users\Léandre\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecbx1440.pk> <C:\Users\Léandre\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecbx1728.pk> <C:\Users\Léandre\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecrm1200.pk> <C:\Users\Léandre\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\ecrm1095.pk><C:/Users/Léandre/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmex10.pfb><C:/Users/Léandre/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi10.pfb><C:/Users/Léandre/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi7.pfb><C:/Users/Léandre/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Users/Léandre/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr7.pfb><C:/Users/Léandre/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Users/Léandre/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmss10.pfb><C:/Users/Léandre/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmss12.pfb><C:/Users/Léandre/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmss17.pfb><C:/Users/Léandre/AppData/Local/Programs/MiKTeX/fonts/type1/urw/zapfding/uzdr.pfb>
-Output written on MscThesis.pdf (56 pages, 8128950 bytes).
+Output written on MscThesis.pdf (56 pages, 8132892 bytes).
 PDF statistics:
- 1203 PDF objects out of 1440 (max. 8388607)
- 154 named destinations out of 1000 (max. 500000)
+ 1205 PDF objects out of 1440 (max. 8388607)
+ 155 named destinations out of 1000 (max. 500000)
  500 words of extra memory for PDF output out of 10000 (max. 10000000)
 

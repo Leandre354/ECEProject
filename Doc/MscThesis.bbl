@@ -50,6 +50,13 @@ V.~Krstevska.
   extracapsular extension of nodal disease.
 \newblock {\em Journal of BUON}, 20(6):943--953, July 2015.
 
+\bibitem{Naser2021}
+R.~H. e.~a. Mohamed A.~Naser, Lisanne V. van~Dijk.
+\newblock Tumor segmentation in patients with head and neck cancers using deep
+  learning based-on multi-modality pet/ct images.
+\newblock In {\em Head and Neck Tumor Segmentation}, volume 12603, pages
+  85--98, 2021.
+
 \bibitem{Myronenko2023}
 A.~Myronenko, M.~M.~R. Siddiquee, D.~Yang, Y.~He, and D.~Xu.
 \newblock Automated head and neck tumor segmentation from 3d pet/ct: Hecktor
@@ -71,6 +78,18 @@ T.~V. Thomas, M.~R. Kanakamedala, E.~Bhanat, A.~Abraham, E.~Mundra, A.~A.
 \newblock Predictors of extracapsular extension in patients with squamous cell
   carcinoma of the head and neck and outcome analysis.
 \newblock {\em Cureus}, 13(4):e16680, July 2021.
+
+\bibitem{Weissmann2023}
+S.~F. e.~a. Thomas~Weissmann, Yixing~Huang.
+\newblock Deep learning for automatic head and neck lymph node level
+  delineation provides expert-level accuracy.
+\newblock {\em Frontiers in Oncology}, 13:1115258, 2023.
+
+\bibitem{Wang2024}
+L.~H. e.~a. Yiling~Wang, Elia~Lombardo.
+\newblock Comparison of deep learning networks for fully automated head and
+  neck tumor delineation on multi-centric pet/ct images.
+\newblock {\em Radiation Oncology}, 19:3, 2024.
 
 \bibitem{Ariji2020}
 Y.~S. e.~a. Yoshiko~Ariji.

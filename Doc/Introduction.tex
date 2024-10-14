@@ -1,23 +1,14 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % This is the introduction chapter file.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%
-% Author:   René Widmer
-%           Institute for Surgical Technology and Biomechanics ISTB
-%           University of Bern
-%           rene.widmer@istb.unibe.ch
-%
-% Date:     10/28/2009
-%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \chapter{Introduction}
 \vskip1em
-Extracapsular extension (ECE) in head and neck cancers refers to the spread of metastatic tumors beyond the lymph node capsule into the surrounding connective tissue. ECE is associated with a poorer prognosis, significantly affecting treatment strategies and reducing overall survival rates in affected patients [4][7]. Accurate early detection of ECE is crucial for optimizing patient management and treatment planning. Proper identification of ECE can guide therapeutic decisions, including the potential benefits of adjunctive treatments such as postoperative concurrent chemoradiotherapy, which may improve outcomes for patients at higher risk due to ECE \cite{Krstevska2015}.
+Extracapsular extension (ECE) in head and neck cancers refers to the spread of metastatic tumors beyond the lymph node capsule into the surrounding connective tissue. ECE is associated with a poorer prognosis, significantly affecting treatment strategies and reducing overall survival rates in affected patients \cite{Kelly2017}\cite{Thomas2021}. Accurate early detection of ECE is crucial for optimizing patient management and treatment planning. Proper identification of ECE can guide therapeutic decisions, including the potential benefits of adjunctive treatments such as postoperative concurrent chemoradiotherapy, which may improve outcomes for patients at higher risk due to ECE \cite{Krstevska2015}.
 \vskip1em
 Currently, definitive diagnosis of ECE can only be confirmed through postoperative pathology, limiting its clinical utility \cite{Kann2018}. In practice, contrast-enhanced computed tomography (CT) is used to detect ECE, relying heavily on physician expertise. Literature indicates that the sensitivity of CT for detecting ECE ranges from 18.8\% to 72.2\%, with higher sensitivity in more advanced cases. Sensitivity increases from 18.8\% in early-stage (grade 1-2) ECE to 72.2\% in advanced-stage (grade 4) ECE \cite{Prabhu2014}. This wide range reflects considerable inter-observer variability.
 \vskip1em
-Recent advancements in deep learning have shown significant potential in improving ECE detection compared to manual expertise \cite{Kann2018}\cite{Ariji2020}\cite{Kann2023}. Deep learning algorithms offer more consistent assessments and address the high inter-observer variability observed among human experts. Notably, the HECKTOR challenge, held annually from 2020 to 2022, focused on enhancing segmentation tasks through deep learning. The challenge aimed to develop models for segmenting the primary gross tumor volume (GTVp) and metastatic lymph nodes (GTVn) in the head and neck region. The results were promising, with a substantial majority of participants achieving an aggregate Dice similarity coefficient greater than 0.70 for both GTVp and GTVn, and the top-performing model achieving a Dice score of 0.788, underscoring the efficacy of deep learning approaches in complex segmentation tasks.
+Recent advancements in deep learning have shown significant potential in improving ECE detection compared to manual expertise \cite{Kann2018}\cite{Ariji2020}\cite{Kann2023}. Deep learning algorithms offer more consistent assessments and address the high inter-observer variability observed among human experts. Notably, the HECKTOR challenge \cite{Andrearczyk2022}\cite{Andrearczyk2023}, held annually from 2020 to 2022, focused on enhancing segmentation tasks through deep learning. The challenge aimed to develop models for segmenting the primary gross tumor volume (GTVp) and metastatic lymph nodes (GTVn) in the head and neck region. The results were promising, with a substantial majority of participants achieving an aggregate Dice similarity coefficient greater than 0.70 for both GTVp and GTVn, and the top-performing model achieving a Dice score of 0.788, underscoring the efficacy of deep learning approaches in complex segmentation tasks.
 \begin{comment}
 Extracapsular extension (ECE) in head and neck cancers refers to the spread of metastatic tumors beyond the lymph node capsule into the surrounding connective tissue. ECE is associated with a poorer prognosis, significantly impacting treatment strategies and reducing overall survival rates in affected patients \cite{Kelly2017}\cite{Thomas2021}. 
 Accurate early detection of ECE is vital for optimizing patient management and treatment planning. Correct indentification can guide therapeutic decisions, including the potential benefit of adjunctive treatments such as postoperative concurrent chemoradiotherapy, which may improve outcomes for patients at higher risk due to ECE \cite{Krstevska2015}.
@@ -35,33 +26,14 @@ The challenge produced promising results, with a substantial majority of partici
 \newpage
 In this study, we propose an approach inspired by participants of the HECKTOR challenge, utilizing the same dataset, which integrates Fluorodeoxyglucose positron emission tomography (FDG-PET) imaging alongside conventional computed tomography (CT) imaging. PET imaging provides metabolic insights that complement the anatomical information from CT, potentially improving the detection of extracapsular extension (ECE) in head and neck cancers. By leveraging this multimodal approach, we aim to enhance diagnostic accuracy and provide more reliable predictions of ECE, thereby supporting more informed clinical decision-making.
 \vskip1em
-The majority of the top-performing models in this domain have employed ensembles of 3D U-Net architectures. In this work, we aim to assess the robustness of 3D U-Nets under various perturbations that may occur in real-world clinical scenarios. Specifically, we will analyze how different tumor characteristics correlate with the degree to which these perturbations affect segmentation performance.
+The majority of the top-performing models in this domain have employed ensembles of 3D U-Net architectures \cite{Andrearczyk2023}\cite{Weissmann2023}\cite{Wang2024}\cite{Naser2021}. In this work, we aim to assess the robustness of 3D U-Nets under various perturbations that may occur in real-world clinical scenarios. Specifically, we will analyze how different tumor characteristics correlate with the degree to which these perturbations affect segmentation performance.
 \vskip1em
-Additionally, we will link these findings to a relevant clinical application by comparing the model's performance with expert physicians' evaluations. This comparison will explore the correlation between the Dice similarity coefficient, which quantitatively assesses the segmentation accuracy of the deep learning models, and the qualitative assessment provided by physicians. Existing literature has demonstrated a moderate correlation between the Dice similarity coefficient and physician evaluations, with values ranging from 0.36 to 0.5 depending on the anatomical location of the segmented area \cite{Kofler2023}.
+Additionally, we will link these findings to a relevant clinical application by comparing the model's performance with expert physician's evaluations. This comparison will explore the correlation between the Dice similarity coefficient, which quantitatively assesses the segmentation accuracy of the deep learning models, and the qualitative assessment provided by physicians. Existing literature has demonstrated a moderate correlation between the Dice similarity coefficient and physician evaluations, with values ranging from 0.36 to 0.5 depending on the anatomical location of the segmented area \cite{Kofler2023}.
 \vskip1em
 Moreover, physicians will also evaluate cases with artificially introduced perturbations to examine whether changes in Dice scores align with variations in their clinical grading. This analysis will provide insights into the relationship between perturbation-induced segmentation errors and the clinical evaluation of ECE.
 \vskip1em
 The primary focus of this study is on the segmentation aspect of the ECE prediction baseline. To enhance the overall predictive model, future work will extend the analysis to the classification component, aiming to improve the model's ability to predict ECE with greater accuracy.
-\vskip1em
 
-\begin{comment}
-\begin{figure}[htbp]
-	\centering
-	\subfloat[Normal]
-	{
-		\label{fig:subfig:NormalStructure}
-		\includegraphics[width=4.5cm]{NormalBoneStructure}
-	}
-	\hfill
-	\subfloat[Osteoporotic]
-	{
-		\label{fig:subfig:OsteoporoticStructure}
-		\includegraphics[width=4.5cm]{OsteoporoticBoneStructure}
-	}
-	\caption[Normal and osteoporotic spongy bone structure]{Normal and osteoporotic spongy microscale bone structure at 25x magnification. Image source: \url{http://facstaff.unca.edu/cnicolay/BIO223-F08/L06-bone.pdf}.\par\vspace{1em}\textit{Please document your image sources.}}
-	\label{fig:OsteoporoticStructure}  
-\end{figure}
-\end{comment}
 
 
 \endinput

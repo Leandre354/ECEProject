@@ -43,7 +43,7 @@ To further validate these findings, we examined the correlation to confirm that 
 
 Following perturbation, we observed high correlations (0.901 and 0.824) for nodal labels, which may seem significant. However, this result should be interpreted with caution, as there were several 1-star evaluations (7 and 9 out of 18 cases) where the model failed to segment any regions. These outliers are clustered closely in the graph, artificially inflating the correlation. In contrast, for primary tumors, this bias was much less pronounced, with only two instances of 1-star evaluations. The correlations for primary tumors after perturbation were a bit higher than for the original cases, indicating that the metrics remained consistent and relevant to real-world clinical performance, even under perturbation.
 
-Also, something to take in account and seen with clinician, he doesn't agree everytime with the groundtruth which create bias with dice which is directly base on the ground truth. In ideal
+Also, something to take in account and seen with clinicians, they doesn't agree everytime with the groundtruth which create bias with dice which is directly base on the ground truth. In ideal
 world the ground truth and the evaluation could be performed by the same person. Also, in clinical practice they always use MRI for the diagnostic especially for primary tumors which was not able in this dataset.
 
 These results demonstrate a higher correlation compared to the existing literature \cite{Kofler2023}. The observed correlation indicates that the Dice coefficient is relevant for real-world applications, although there is still room for improvement in its predictive accuracy.

@@ -17,7 +17,7 @@ For the segmentation model in this project, we utilized the dataset from the Hec
 \begin{figure}[ht]
     \centering
     \includegraphics[width=0.45\textwidth]{images/repartition.PNG}
-    \caption{Distribution of cases across sites}
+    \caption{Distribution of cases across centers}
 \end{figure}
 \newpage
 Each case in the dataset contains two imaging modalities: computed tomography (CT), Fluorodeoxyglucose positron emission tomography (FDG-PET), and ground truth labels. The PET images were standardized using the Standardized Uptake Value (SUV). The CT and label images are provided in NIfTI format with a spatial resolution of 524 × 524 pixels in the axial plane, and variable depths across slices. While some CT images focus exclusively on the head and neck region, others encompass the entire body. In contrast, the PET images have a resolution of 128 × 128 pixels in the axial plane, with varying depths similar to the CT images.
@@ -43,7 +43,7 @@ Subsequently, after ensuring that all three imaging modalities (CT, PET, and lab
 For the cropping procedure, the center of the head was identified using the contours of the brain on the PET scan. Based on this central reference point, a subvolume of 
 200×200×[maximum of 310 pixels] was extracted. This approach minimizes the computational burden associated with background regions devoid of ground truth information. Additionally, the images underwent normalization via z-score clipping to mitigate the effects of outliers.
 \vskip1em
-The processed images were saved in NIfTI format following the above steps. Further preprocessing techniques were applied during the training phase, which will be detailed in subsequent sections. Aspects of the preprocessing procedure were adapted from the methods employed by the winning team of the Hecktor Challenge 2022 \cite{Myronenko2023}
+The processed images were saved in NIfTI format following the above steps. Further preprocessing techniques were applied during the training phase, which will be detailed in subsequent sections. Aspects of the preprocessing procedure and further data augmentation were adapted from the methods employed by the winning team of the Hecktor Challenge 2022 \cite{Myronenko2023}
 \begin{figure}[ht]
     \centering
     \subfloat[CT Scan]{\includegraphics[width=0.3\textwidth]{images/CT_ONLY_PP.png}}\hfill
@@ -60,8 +60,8 @@ Following augmentation, the images were randomly cropped into patches of size 19
 \vskip1em
 For validation, a single patch of equal size was extracted, with a balanced distribution of 33\% for background, primary tumors, and nodal tumors. This approach eliminates the need for predictions using sliding windows (e.g., 8 predictions per image), as a single patch is used for each validation image of size 200×200×310.
 \subsection{Model architectures}
-The model used for segmentation is the Dynamic UNet (DynUNet) from MONAI. It provide several parameter to configure the model.
-The architecture is represented below :
+The model used for segmentation is the Dynamic UNet (DynUNet) from MONAI. It provides several parameters to configure the model.
+The architecture is represented below:
 \begin{figure}[ht]
     \centering
     \includegraphics[width=0.7\textwidth]{images/UNet.PNG}
@@ -72,7 +72,7 @@ The architecture is represented below :
 The model operates in three dimensions, taking as inputs two modalities: computed tomography (CT) and positron emission tomography (PET). It produces three binary segmentation outputs: background, primary tumors, and nodal tumors.
 \vskip1em
 All convolutional kernels used in the model are of size 3×3×3. The architecture consists of six layers, with downsampling performed consistently by a factor of 2, reducing the input size from 192×192×192 to 6×6×6. Additionally, batch normalization is implemented in conjunction with residual blocks to enhance training stability and model performance.
-The probabilites are then computed through softmax that incorporate the mutual exclusivity between the 3 segmentation masks.
+The probabilities are then computed through softmax which incorporates the mutual exclusivity between the 3 segmentation masks.
 \subsection{Training}
 The training parameters for the model are as follows:
 \begin{itemize}
@@ -106,7 +106,7 @@ Given these characteristics, a hybrid approach that combines both Dice loss and 
 Note that the background was included solely during the training process and was not utilized in the monitoring of loss functions.
 \newpage
 To enhance training performance, mixed precision training utilizing PyTorch has been implemented. This approach leverages both single-precision (32-bit) and half-precision (16-bit) floating-point formats during model training. By employing mixed precision, the training speed is significantly increased due to reduced computational overhead, while the memory footprint is minimized. This allows for the efficient use of hardware resources, facilitating larger batch sizes and improved model scalability without compromising numerical stability.
-The training run on a TODO with around 30Go of memory use.
+The training process utilized approximately 30 GB of memory.
 \vskip1em
 Prior to training, additional preprocessing steps were applied to the images. Specifically, the CT images were min-max normalized to a range of 0 to 1, ensuring consistent scaling across the dataset. In contrast, PET images were normalized to have a zero mean, adjusting for intensity variations while preserving the relative distribution of values.
 \vskip1em
@@ -169,7 +169,7 @@ The metrics employed are as follows:
     \label{list:metrics}
     \item \textbf{Dice coefficient}: A similarity index that measures the overlap between predicted and ground truth segmentation. 
     \item \textbf{Hausdorff distance}: A metric that evaluates the maximum boundary distance between predicted and ground truth segmentation contours. 
-    \item \textbf{Jaccard index}: A measure of overlap between predicted and true segmentation, similar to the Dice coefficient but more sensitive to boundary errors. 
+    %\item \textbf{Jaccard index}: A measure of overlap between predicted and true segmentation, similar to the Dice coefficient but more sensitive to boundary errors. 
     \item \textbf{Sensitivity}: Measures the proportion of true positives correctly identified by the model. 
     \item \textbf{Specificity}: Measures the proportion of true negatives correctly identified by the model. 
     \item \textbf{Accuracy}: Evaluates the overall performance of the model by considering both true positives and true negatives. 
@@ -190,6 +190,7 @@ to motion. The properties are as follows:
     \setlength\itemsep{1pt} 
     \setlength\parskip{0pt} 
     \setlength\topsep{0pt} 
+    \label{list:properties}
     \item \textbf{Volume}: Total number of voxels belonging to the region of interest, computed as the sum of all `True` values in the ground truth boolean mask.
     \item \textbf{Surface Area}: The area of the surface boundary of the region, computed using compactness and surface area algorithms on the labeled region.
     \item \textbf{Compactness}: A shape descriptor that relates the surface area to the volume, indicating how compact or spread out the region is. (Maximum value of 1 corresponds to a perfect sphere.)
@@ -201,7 +202,7 @@ to motion. The properties are as follows:
     \item \textbf{PET F/B Contrast}: Contrast between the mean intensity in the foreground and background in the PET image, computed similarly to the CT contrast.
     \item \textbf{SUVmax}: The maximum standardized uptake value (SUV) in the PET image within the region, indicating the highest metabolic activity.
     \item \textbf{CT Number (HU)}: The mean Hounsfield unit (HU) value within the region of interest in the CT image.
-    \item \textbf{PET Number}: The mean standardized uptake value (SUV) within the region of interest in the PET image.
+    %\item \textbf{PET Number}: The mean standardized uptake value (SUV) within the region of interest in the PET image.
     \item \textbf{Regions}: The number of regions in the labeled ground truth, representing distinct anatomical regions.
     \item \textbf{Entropy}: A measure of the randomness or complexity of the region, reflecting the degree of heterogeneity in the image data.
 \end{itemize}
@@ -214,7 +215,7 @@ these relationships.
 \newpage
 \subsection{Clinical evaluation}
 To assess the relevance of geometrical metrics used in deep learning, we conducted a clinical evaluation of 50 test cases in collaboration with two 
-physicians specializing in head and neck radiation oncology. The evaluation utilized a 5-point Likert scale for grading. 
+physicians specializing in radiation oncology. The evaluation utilized a 5-point Likert scale for grading. 
 The representations of the 5-point grades are provided below:
 
 \begin{itemize}
@@ -230,7 +231,7 @@ The representations of the 5-point grades are provided below:
 The objective of this evaluation is to provide a comprehensive assessment of the model's performance and to quantify the correlation between the geometrical metrics and physician expertise. The evaluation was conducted specifically for each label, including Primary and Nodal tumors. 
 Subsequently, scatter plots were generated to visualize the relationships between the various geometrical metrics, including the Dice score, Hausdorff distance, and Jaccard index. The correlations between these metrics and the physician evaluations were computed using Pearson correlation coefficients.
 This analysis have been performed for both physician result, also a correlation between the two physician have been processed in order to compare with the Dice result.
-The both physicians have evluated in the same conditions to avoid any bias.
+The both physicians have evaluated in the same conditions to avoid any bias.
 \vskip1em
 The 50 cases were categorized into two groups: one consisting of baseline images (without perturbations), representing 32 images, and the other comprising perturbed images influenced by the three most significant perturbations. For each perturbation and modality, three cases were selected, resulting in a total of six cases for each of the three perturbations, accounting for the final 18 cases.
 \vskip1em

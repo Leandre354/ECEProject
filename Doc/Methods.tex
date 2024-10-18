@@ -70,9 +70,8 @@ The architecture is represented below:
 \end{figure}
 
 The model operates in three dimensions, taking as inputs two modalities: computed tomography (CT) and positron emission tomography (PET). It produces three binary segmentation outputs: background, primary tumors, and nodal tumors.
-\vskip1em
 All convolutional kernels used in the model are of size 3×3×3. The architecture consists of six layers, with downsampling performed consistently by a factor of 2, reducing the input size from 192×192×192 to 6×6×6. Additionally, batch normalization is implemented in conjunction with residual blocks to enhance training stability and model performance.
-The probabilities are then computed through softmax which incorporates the mutual exclusivity between the 3 segmentation masks.
+The probabilities are then computed through softmax, which incorporates the mutual exclusivity between the three segmentation masks.
 \subsection{Training}
 The training parameters for the model are as follows:
 \begin{itemize}
@@ -126,7 +125,7 @@ The inference results yielded 37 segmented binary masks for each of the 50 cases
 \subsection{Robustness}
 
 As outlined in the Inference section, six perturbations were applied to the data to assess the robustness of the model 
-against variations that may be encountered in real-world scenarios, such as sensor noise or image artifacts. These perturbations, derived from the torchio library, simulate various types of distortions and alterations that may impact model performance.
+against variations that may be encountered in real-world scenarios, such as sensor noise or image artifacts. These perturbations, derived from the TorchIO library, simulate various types of distortions and alterations that may impact model performance.
  The six perturbations are described below :
 \begin{itemize}
     \setlength\itemsep{1pt}
@@ -157,7 +156,7 @@ severity represents minimal distortion and high severity introduces significant 
 above illustrates the perturbations at each severity level for the CT modality. For detailed values of each perturbation 
 at varying degrees, refer to the appendix (\ref{chap:Pert}).
 
-Note that the noise perturbations may not be accurately represented here; however, more detailed visualizations and discussion 
+Note that the noise perturbations may not be accurately represented here; however, more detailed visualizations and discussions 
 of the noise effects on the images are provided in the Results section. A visual representation of noise is provided in appendix (\ref{chap:Pert})
 \vskip1em
 To assess the impact of perturbations on segmentation performance, we utilized evaluation metrics from the Pymia library. 
@@ -183,7 +182,7 @@ This analysis enables a detailed comparison of the model’s robustness to diffe
 \newpage
 
 In addition to the computation of the previously described metrics, we computed properties of the segmented area to 
-investigate potential correlations between the change in Dice coefficient induced by perturbations and these properties. 
+investigate potential correlations between the change in the Dice coefficient induced by perturbations and these properties. 
 For example, we examined whether the volume of the segmented area correlates with greater changes in perturbed images due 
 to motion. The properties are as follows:
 \begin{itemize}
@@ -209,7 +208,7 @@ to motion. The properties are as follows:
 
 Scatter plots of each perturbation at varying degrees were generated against each of the properties listed above. 
 The goal is to determine whether perturbations have a more significant effect on specific cases, such as certain anatomical 
-regions or volume sizes. Statistical correlations were computed using Pearson, Spearman and Kendall methods to assess 
+regions or volume sizes. Statistical correlations were computed using Pearson, Spearman, and Kendall methods to assess 
 these relationships.
 
 \newpage
@@ -228,10 +227,10 @@ The representations of the 5-point grades are provided below:
     \item \textbf{\ding{73}\ding{73}\ding{73}\ding{73}}: Able to utilize the prediction with minor modifications.
     \item \textbf{\ding{73}\ding{73}\ding{73}\ding{73}\ding{73}}: Able to utilize the prediction in its original form.
 \end{itemize}
-The objective of this evaluation is to provide a comprehensive assessment of the model's performance and to quantify the correlation between the geometrical metrics and physician expertise. The evaluation was conducted specifically for each label, including Primary and Nodal tumors. 
+The objective of this evaluation is to provide a comprehensive assessment of the model's performance and to quantify the correlation between the geometrical metrics and physician expertise. The evaluation was conducted specifically for each label, including primary and nodal tumors. 
 Subsequently, scatter plots were generated to visualize the relationships between the various geometrical metrics, including the Dice score, Hausdorff distance, and Jaccard index. The correlations between these metrics and the physician evaluations were computed using Pearson correlation coefficients.
-This analysis have been performed for both physician result, also a correlation between the two physician have been processed in order to compare with the Dice result.
-The both physicians have evaluated in the same conditions to avoid any bias.
+This analysis was performed for both physicians' results, a correlation between the evaluations of the two physicians was also processed in order to compare with the Dice result.
+Both physicians have evaluated the cases under the same conditions to avoid any bias.
 \vskip1em
 The 50 cases were categorized into two groups: one consisting of baseline images (without perturbations), representing 32 images, and the other comprising perturbed images influenced by the three most significant perturbations. For each perturbation and modality, three cases were selected, resulting in a total of six cases for each of the three perturbations, accounting for the final 18 cases.
 \vskip1em

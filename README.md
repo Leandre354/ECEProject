@@ -1,6 +1,5 @@
 # Master's Thesis: 
-
-
+Development, Robustness Analysis and Clinical Evaluation of a Deep Learning-based Segmentation Model for Head and Neck Cancer Patients
 
 # Structure
 
@@ -12,7 +11,7 @@
      * [`metrics_computation.py`](Analysis/metrics_computation.py): Computes the metrics for analyzing the effect of perturbations.
      * [`metrics_properties_plot.py`](Analysis/metrics_properties_plot.py): Generates scatter plots between properties and perturbations, and boxplots of the perturbation effects.
      * [`properties_computation.py`](Analysis/properties_computation.py): Computes properties of the segmented area and saves them in CSV files for analysis.
-     * [`Inference`](Analysis/Inference): Directory containing the CSV files with the metrics, properties and evaluation for each case, including both perturbations and the baseline.
+     * [`Inference`](Analysis/Inference): Directory containing the CSV files with the metrics, properties and clinical evaluation for each case, including both perturbations and the baseline.
  * [`Doc/`](Doc/):
      * [`MscThesis.pdf`](Doc/MscThesis.pdf): Master's thesis report.
  * [`Preprocessing/`](Preprocessing/):

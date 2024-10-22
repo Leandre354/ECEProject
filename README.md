@@ -1,5 +1,11 @@
-# Master's Thesis: 
-Development, Robustness Analysis and Clinical Evaluation of a Deep Learning-based Segmentation Model for Head and Neck Cancer Patients
+# Master's Thesis: Development, Robustness Analysis and Clinical Evaluation of a Deep Learning-based Segmentation Model for Head and Neck Cancer Patients
+
+# Description
+The goal of this project is to improve the detection of extracapsular extension (ECE) in head and neck cancers by employing a multimodal approach that combines FDG-PET and CT imaging. 
+The focus here is solely on the segmentation step, which delineates the tumors for future classification.
+A 3D U-Net deep learning model is implemented to segment primary and nodal tumors, using the HECKTOR Challenge 2022 dataset along with additional preprocessing and data augmentation techniques.
+
+The primary objective is to evaluate the model's effectiveness and assess its robustness by analyzing the impact of various image perturbations on the segmentation process. Additionally, we collaborated with physicians to evaluate the model’s clinical relevance.
 
 # Structure
 

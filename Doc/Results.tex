@@ -26,15 +26,18 @@ The graph below represents the scenario in which perturbations are applied to no
 \end{figure}
 
 The graph illustrates significant variations in the Dice coefficient under spike, bias, and noise perturbations, 
-underscoring their substantial impact on segmentation performance across both labels. Notably, the Hausdorff 
-distance demonstrates that bias perturbation exerts the most pronounced negative effect, with the boxplot range extending 
-up to 200. Sensitivity, specificity, and accuracy metrics exhibit trends consistent with the Dice coefficient, revealing 
+underscoring their substantial impact on segmentation performance across both labels. 
+\vskip1em
+Notably, the Hausdorff distance demonstrates that bias perturbation exerts the most pronounced negative effect, with the boxplot range extending 
+up to 200. 
+\vskip1em
+Sensitivity, specificity, and accuracy metrics exhibit trends consistent with the Dice coefficient, revealing 
 markedly larger effects under spike, bias, and noise perturbations. In contrast, the model demonstrates relative robustness 
 against motion, blur, and ghost perturbations, as indicated by minimal performance variability across all metrics.
-
+\vskip1em
 Moreover, noise perturbation exhibits a less pronounced effect at the initial degree of severity compared to higher levels, 
 while spike and bias perturbations show significant impact even at the first degree. 
-
+\vskip1em
 Interestingly, in certain cases, the Dice coefficient delta is negative, indicating an improvement in segmentation 
 performance under perturbation.This behavior suggests that certain perturbations may occasionally enhance segmentation accuracy, 
 depending on the model and context.
@@ -65,7 +68,7 @@ The following graphs present the correlation between the 13 previously discussed
 Each scatter plot includes data for all three degrees of perturbation, represented by distinct markers, allowing for visual differentiation of the effects of increasing perturbation severity. Also, the pearson correlation coefficient is visible for each degree.
 The graphs presented here represent cases where perturbations have been applied to the nodal label in the CT modality. 
 The remaining three category (Primary in CT, Nodal and Primary in PET) are provided in the appendix (\ref{chap:CorrProp}). A more comprehensive correlation graph, encompassing all 
-four categories, will follow to offer a broader view of the relationships between the segmentation properties and the applied perturbations.
+four categories, will follow to offer a broader view of the relationships.
 \begin{figure}[ht]
     \centering
     \includegraphics[width=1\textwidth]{images/CT_Nodal_Properties_1.png}
@@ -73,7 +76,7 @@ four categories, will follow to offer a broader view of the relationships betwee
     \label{fig:three_subfigures}
 \end{figure}
 
-On the left, the Dice coefficient exhibits a crescent-shaped distribution for the three properties related to tumor size and shape. The correlation is consistently higher for perturbations that exert a greater impact, as anticipated. In contrast, blur, motion, and ghost perturbations present a significantly flatter scatter plot with considerably smaller variations, reflecting the robustness observed in earlier analyses. 
+On the left, the Dice coefficient exhibits a crescent-shaped distribution for the three properties. The correlation is consistently higher for perturbations that exert a greater impact, as anticipated. In contrast, blur, motion, and ghost perturbations present a significantly flatter scatter plot with considerably smaller variations, reflecting the robustness observed in earlier analyses. 
 Motion and ghost exhibit the highest variations in properties at lower values, whereas Blur demonstrates a more evenly distributed effect across the property range.
 The analysis demonstrates that the marker positions for spike events remain generally consistent across both second and third degrees. Furthermore, these markers are positioned in close proximity to the original baseline distribution, indicating a complete removal of prediction (dice = delta dice). The effect is also observed for bias and noise, though it is less pronounced.
 Among the perturbations, spike and noise demonstrate the strongest correlation with volume and surface area, with correlation coefficients ranging from 0.30 to 0.42, the highest being associated with surface area. 

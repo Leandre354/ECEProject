@@ -126,7 +126,8 @@ The inference results yielded 37 segmented binary masks for each of the 50 cases
 
 As outlined in the Inference section, six perturbations were applied to the data to assess the robustness of the model 
 against variations that may be encountered in real-world scenarios, such as sensor noise or image artifacts. These perturbations, derived from the TorchIO library, simulate various types of distortions and alterations that may impact model performance.
- The six perturbations are described below :
+\vskip1em\noindent
+The six perturbations are described below :
 \begin{itemize}
     \setlength\itemsep{1pt}
     \setlength\parskip{0pt}
@@ -140,24 +141,20 @@ against variations that may be encountered in real-world scenarios, such as sens
     \item \textbf{Ghosting}: Artifacts that simulate image echoes or multiple exposures due to acquisition errors, causing repeated structures in the image.
 \end{itemize}
 
-\noindent Here is a visual representation of the perturbations applied :
-
 \begin{figure}[ht]
     \centering
     \includegraphics[width=1\textwidth]{images/perturbations.PNG}
-    \caption{Perturbations}
+    \caption{Visual representation of the perturbations applied}
     \label{fig:three_subfigures}
 \end{figure}
-
 
 Each perturbation was applied independently to either the CT or PET modality at three varying degrees of severity: 
 low, medium, and high. These severity levels correspond to increasing intensities of the perturbation, where low 
 severity represents minimal distortion and high severity introduces significant alterations to the image. The figure 
 above illustrates the perturbations at each severity level for the CT modality. For detailed values of each perturbation 
 at varying degrees, refer to the appendix (\ref{chap:Pert}).
-
-Note that the noise perturbations may not be accurately represented here; however, more detailed visualizations and discussions 
-of the noise effects on the images are provided in the Results section. A visual representation of noise is provided in appendix (\ref{chap:Pert})
+\vskip1em
+Note: the noise perturbations may not be accurately represented here; A better visual representation of noise is provided in appendix (\ref{chap:Pert})
 \vskip1em
 To assess the impact of perturbations on segmentation performance, we utilized evaluation metrics from the Pymia library. 
 The metrics employed are as follows:
@@ -173,7 +170,6 @@ The metrics employed are as follows:
     \item \textbf{Specificity}: Measures the proportion of true negatives correctly identified by the model. 
     \item \textbf{Accuracy}: Evaluates the overall performance of the model by considering both true positives and true negatives. 
 \end{itemize}
-
 To analyze the impact of each perturbation, the delta for each evaluation metric was computed by calculating the difference between the baseline (unperturbed) metric and the corresponding metric obtained after applying the perturbation. This delta value quantifies the performance change induced by each perturbation, providing insight into how robust the model is under varying conditions.
 \vskip1em
 For each of the six perturbations, delta values were computed for all three severity levels, separately for both the CT and PET modalities. Boxplots were generated to visualize the distribution of these delta values across all test cases. The boxplots represent the central tendency (median) and variability (interquartile range) of the delta values for each metric, with whiskers extending to the most extreme non-outlier values. Outliers were identified to highlight cases where perturbations had an unusually large effect on model performance.
@@ -181,10 +177,12 @@ For each of the six perturbations, delta values were computed for all three seve
 This analysis enables a detailed comparison of the model’s robustness to different perturbations and degrees of severity for both imaging modalities. Further interpretation of these results is discussed in the Results section.
 \newpage
 
-In addition to the computation of the previously described metrics, we computed properties of the segmented area to 
+\noindent In addition to the computation of the previously described metrics, we computed properties of the segmented area to 
 investigate potential correlations between the change in the Dice coefficient induced by perturbations and these properties. 
 For example, we examined whether the volume of the segmented area correlates with greater changes in perturbed images due 
-to motion. The properties are as follows:
+to motion. 
+\vskip1em\noindent
+The properties are as follows:
 \begin{itemize}
     \setlength\itemsep{1pt} 
     \setlength\parskip{0pt} 
@@ -208,13 +206,14 @@ to motion. The properties are as follows:
 
 Scatter plots of each perturbation at varying degrees were generated against each of the properties listed above. 
 The goal is to determine whether perturbations have a more significant effect on specific cases, such as certain anatomical 
-regions or volume sizes. Statistical correlations were computed using Pearson, Spearman, and Kendall methods to assess 
-these relationships.
+regions or volume sizes. 
+\vskip1em
+Statistical correlations were computed using Pearson method to assess these relationships.
 
 \newpage
 \subsection{Clinical evaluation}
 To assess the relevance of geometrical metrics used in deep learning, we conducted a clinical evaluation of 50 test cases in collaboration with two 
-physicians specializing in radiation oncology. The evaluation utilized a 5-point Likert scale for grading. 
+physicians specializing in radiation oncology. The evaluation utilized a 5-point Likert scale for grading. \newline
 The representations of the 5-point grades are provided below:
 
 \begin{itemize}
@@ -227,16 +226,21 @@ The representations of the 5-point grades are provided below:
     \item \textbf{\ding{73}\ding{73}\ding{73}\ding{73}}: Able to utilize the prediction with minor modifications.
     \item \textbf{\ding{73}\ding{73}\ding{73}\ding{73}\ding{73}}: Able to utilize the prediction in its original form.
 \end{itemize}
-The objective of this evaluation is to provide a comprehensive assessment of the model's performance and to quantify the correlation between the geometrical metrics and physician expertise. The evaluation was conducted specifically for each label, including primary and nodal tumors. 
-Subsequently, scatter plots were generated to visualize the relationships between the various geometrical metrics, including the Dice score, Hausdorff distance, and Jaccard index. The correlations between these metrics and the physician evaluations were computed using Pearson correlation coefficients.
-This analysis was performed for both physicians' results, a correlation between the evaluations of the two physicians was also processed in order to compare with the Dice result.
+The objective of this evaluation is to provide a comprehensive assessment of the model's performance and to quantify the correlation between the geometrical metrics and physician expertise. 
+\vskip1em\noindent
+The evaluation was conducted specifically for each label, including primary and nodal tumors. 
+Subsequently, scatter plots were generated to visualize the relationships between the various geometrical metrics, including the Dice score, Hausdorff distance, and Jaccard index. 
+The correlations between these metrics and the physician evaluations were computed using Pearson correlation coefficients. 
+\vskip1em\noindent
+This analysis was performed for both physicians' results. 
+A correlation between the evaluations of the two physicians was also processed in order to compare with the Dice result.
 Both physicians have evaluated the cases under the same conditions to avoid any bias.
-\vskip1em
+\vskip1em\noindent
 The 50 cases were categorized into two groups: one consisting of baseline images (without perturbations), representing 32 images, and the other comprising perturbed images influenced by the three most significant perturbations. For each perturbation and modality, three cases were selected, resulting in a total of six cases for each of the three perturbations, accounting for the final 18 cases.
-\vskip1em
+\vskip1em\noindent
 This approach allows us to analyze the impact of perturbations on real-case evaluations and to assess whether there is a correlation with the effects represented by the delta Dice score. 
-\vskip1em
 This analysis, enables us to evaluate the relevance of the geometrical metrics in predicting clinical outcomes. 
+\vskip1em\noindent
 The findings will contribute to understanding the robustness of the model, its practical applicability in clinical settings, 
 and the significance of geometrical metrics in enhancing model performance and decision-making in radiotherapy.
 

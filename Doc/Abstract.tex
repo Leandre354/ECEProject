@@ -13,7 +13,7 @@
 
 \begin{abstract}
 
-Accurate detection of extracapsular extension (ECE) is crucial for improving prognosis and guiding treatment decisions in head and neck cancers. Traditional methods relying on physician expertise to interpret contrast-enhanced CT images often lead to significant variability. This study employs a multimodal approach combining FDG-PET and CT imaging, leveraging deep learning to enhance ECE detection.
+Accurate detection of extracapsular extension (ECE) is crucial for improving prognosis and guiding treatment decisions in head and neck cancers. Traditional methods relying on physician expertise to interpret contrast-enhanced CT images often lead to significant variability. This study employs a multimodal approach combining FDG-PET and CT imaging, leveraging deep learning to enhance ECE detection, focusing on the segmentation step.
 \vskip1em
 We implemented a 3D U-Net architecture to assess segmentation performance. Our objectives were to evaluate accuracy with the Dice similarity coefficient and compare the model's performance against expert assessments. We utilized the HECKTOR Challenge 2022 dataset, with additional preprocessing and data augmentation. The model generated binary outputs for background, primary tumors, and nodal tumors, employing a hybrid loss function that combined Dice and cross-entropy losses. A five-fold cross-validation strategy enhanced model generalization, and a test set of 50 cases was evaluated under various perturbations to assess robustness.
 \vskip1em

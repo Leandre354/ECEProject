@@ -19,8 +19,8 @@
      * [`preprocessing_images.py`](Preprocessing/preprocessing_images.py): Script containing all the preprocessing steps for the images.
      * [`hecktor2022`](Preprocessing/hecktor2022): Directory containing the CSV files from the dataset.
  * [`Training_and_Inference/`](Training_and_Inference/):
-     * [`test_seg_3d_majority_voting.py`](Training_and_inference/test_seg_3d_majority_voting.py): Implements inference using majority voting with all perturbations.
-     * [`test_seg_3d_majority_voting_perturbed.py`](Training_and_inference/test_seg_3d_majority_voting_perturbed.py): Implements inference focusing on the most impactful perturbations and saves input images for clinical evaluations.
-     * [`test_set.py`](Training_and_inference/test_set.py): Script for creating a random test set of 50 cases.
-     * [`train_seg_3d_mixed.py`](Training_and_inference/train_seg_3d_mixed.py): Implements the training of the model.
+     * [`test_seg_3d_majority_voting.py`](Training_and_Inference/test_seg_3d_majority_voting.py): Implements inference using majority voting with all perturbations.
+     * [`test_seg_3d_majority_voting_perturbed.py`](Training_and_Inference/test_seg_3d_majority_voting_perturbed.py): Implements inference focusing on the most impactful perturbations and saves input images for clinical evaluations.
+     * [`test_set.py`](Training_and_Inference/test_set.py): Script for creating a random test set of 50 cases.
+     * [`train_seg_3d_mixed.py`](Training_and_Inference/train_seg_3d_mixed.py): Implements the training of the model.
 

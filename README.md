@@ -29,3 +29,9 @@ The primary objective is to evaluate the model's effectiveness and assess its ro
      * [`test_set.py`](Training_and_Inference/test_set.py): Script for creating a random test set of 50 cases.
      * [`train_seg_3d_mixed.py`](Training_and_Inference/train_seg_3d_mixed.py): Implements the training of the model.
 
+# License
+The HECKTOR Challenge 2022 dataset is licensed under the Creative Commons Attribution-NonCommercial 4.0 International (CC BY-NC 4.0) license. This allows for non-commercial use, distribution, and reproduction in any medium, provided proper credit is given to the original creators.
+
+For more details, please refer to the HECKTOR Challenge website (https://hecktor.grand-challenge.org/) and the dataset repository documentation​
+
+

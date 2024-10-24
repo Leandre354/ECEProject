@@ -1044,6 +1044,9 @@ INPUT .\MscThesis.toc
 INPUT MscThesis.toc
 INPUT MscThesis.toc
 INPUT C:\Users\Léandre\AppData\Local\Programs\MiKTeX\fonts\tfm\jknappen\ec\ecbx1000.tfm
+INPUT .\MscThesis.lof
+INPUT MscThesis.lof
+INPUT MscThesis.lof
 INPUT .\Introduction.tex
 INPUT .\Introduction.tex
 INPUT .\Introduction.tex
@@ -1315,6 +1318,11 @@ INPUT .\MscThesis.bbl
 INPUT MscThesis.bbl
 INPUT .\MscThesis.bbl
 INPUT MscThesis.bbl
+INPUT C:\Users\Léandre\AppData\Local\Programs\MiKTeX\tex\latex\base\t1cmtt.fd
+INPUT C:\Users\Léandre\AppData\Local\Programs\MiKTeX\tex\latex\base\t1cmtt.fd
+INPUT C:\Users\Léandre\AppData\Local\Programs\MiKTeX\tex\latex\base\t1cmtt.fd
+INPUT C:\Users\Léandre\AppData\Local\Programs\MiKTeX\tex\latex\base\t1cmtt.fd
+INPUT C:\Users\Léandre\AppData\Local\Programs\MiKTeX\fonts\tfm\jknappen\ec\ectt1000.tfm
 INPUT .\Appendix_1.tex
 INPUT .\Appendix_1.tex
 INPUT .\Appendix_1.tex
@@ -1441,6 +1449,7 @@ INPUT .\images\MDA_033_PET_Noise.png
 INPUT .\images\MDA_033_PET_Noise.png
 INPUT .\images\MDA_033_PET_Noise.png
 OUTPUT MscThesis.toc
+OUTPUT MscThesis.lof
 INPUT MscThesis.aux
 INPUT .\Introduction.aux
 INPUT Introduction.aux
@@ -1465,6 +1474,8 @@ INPUT Appendix_2.aux
 INPUT Appendix_2.aux
 INPUT .\MscThesis.out
 INPUT .\MscThesis.out
+INPUT C:\Users\Léandre\AppData\Local\MiKTeX\fonts\pk\ljfour\jknappen\ec\dpi600\ectt1000.pk
+INPUT C:\Users\Léandre\AppData\Local\MiKTeX\fonts\pk\ljfour\jknappen\ec\dpi600\ectt1000.pk
 INPUT C:\Users\Léandre\AppData\Local\Programs\MiKTeX\fonts\enc\dvips\lm\lm-ec.enc
 INPUT C:\Users\Léandre\AppData\Local\MiKTeX\fonts\pk\ljfour\jknappen\ec\dpi600\ecrm0800.pk
 INPUT C:\Users\Léandre\AppData\Local\MiKTeX\fonts\pk\ljfour\jknappen\ec\dpi600\ecrm0800.pk

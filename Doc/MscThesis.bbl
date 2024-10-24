@@ -16,6 +16,17 @@ V.~Andrearczyk, V.~Oreiller, and et~al.
   neck tumor segmentation and outcome prediction in pet/ct.
 \newblock {\em Lecture Notes in Computer Science}, 13626(2):1--30, March 2023.
 
+\bibitem{MONAI2024}
+M.~Consortium.
+\newblock Monai: Medical open network for ai.
+\newblock \url{https://monai.io}, 2024.
+
+\bibitem{TorchIO2024}
+M.~P.~H. Fernando Perez-Garcia, Roman~Iglesias.
+\newblock Torchio: A python library for efficient loading, preprocessing,
+  augmentation and patch-based sampling of medical images in deep learning.
+\newblock \url{https://torchio.readthedocs.io}, 2024.
+
 \bibitem{Kann2018}
 B.~H. Kann, S.~Aneja, G.~V. Loganadane, J.~R. Kelly, S.~M. Smith, R.~H. Decker,
   J.~B. Yu, H.~S. Park, W.~G. Yarbrough, A.~Malhotra, B.~A. Burtness, and Z.~A.
@@ -64,6 +75,11 @@ A.~Myronenko, M.~M.~R. Siddiquee, D.~Yang, Y.~He, and D.~Xu.
 \newblock In {\em Proceedings of the HECKTOR 2022 Challenge}, pages 31--37.
   Lecture Notes in Computer Science (LNCS, Volume 13626), 2023.
 
+\bibitem{Hecktor2022}
+H.~C.~. Organizers.
+\newblock Hecktor challenge 2022: Tumor segmentation in head and neck cancer.
+\newblock \url{https://hecktor.grand-challenge.org/}, 2022.
+
 \bibitem{Prabhu2014}
 R.~S. Prabhu and K.~R.~M. et~al.
 \newblock Accuracy of computed tomography for predicting pathologic nodal
@@ -84,6 +100,12 @@ S.~F. e.~a. Thomas~Weissmann, Yixing~Huang.
 \newblock Deep learning for automatic head and neck lymph node level
   delineation provides expert-level accuracy.
 \newblock {\em Frontiers in Oncology}, 13:1115258, 2023.
+
+\bibitem{Pymia2024}
+e.~a. Tobias~Hogemann, Marcel~Bengs.
+\newblock Pymia: A python package for data handling and evaluation in deep
+  learning-based medical image analysis.
+\newblock \url{https://pymia.readthedocs.io}, 2024.
 
 \bibitem{Wang2024}
 L.~H. e.~a. Yiling~Wang, Elia~Lombardo.

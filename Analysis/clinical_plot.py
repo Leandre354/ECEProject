@@ -19,8 +19,8 @@ def autopct_format(values):
     return my_format
 
 #Loading the metrics and properties of baseline
-db2 = pd.read_csv('Inference/Image200/Analysis/Baseline/Metrics_x_Clinical.csv', delimiter=';')
-db = pd.read_csv('Inference/Image200/Analysis/Baseline/Metrics_x_Clinical_perturbed.csv', delimiter=';')
+db = pd.read_csv('Inference/Image200/Analysis/Baseline/Metrics_x_Clinical.csv', delimiter=';')
+db2 = pd.read_csv('Inference/Image200/Analysis/Baseline/Metrics_x_Clinical_perturbed.csv', delimiter=';')
 
 observer = 'Likert 1'
 
@@ -183,6 +183,75 @@ plt.ylabel('Observer 2 Ratings')
 plt.tight_layout()
 
 plt.gca().invert_yaxis()  # Inverts the Y-axis
+
+
+plt.figure('General correlation')
+plt.subplot(2,3,1)
+corr_matrix = db[['Likert 1', 'Likert 2', 'DICE']].iloc[1::2].corr()
+plt.title("Correlation Primary")
+heatmap = sns.heatmap(corr_matrix, annot=True, cmap='coolwarm', vmin=-1, vmax=1, cbar=True)
+custom_labels = ['Observer 1', 'Observer 2', 'DICE']  # Custom labels for x and y axis
+heatmap.set_xticklabels(custom_labels, rotation=45, horizontalalignment='right')  # Custom x-axis labels with rotation
+heatmap.set_yticklabels(custom_labels, rotation=0)
+
+plt.subplot(2,3,4)
+corr_matrix = db[['Likert 1', 'Likert 2', 'DICE']].iloc[::2].corr()
+plt.title("Correlation Nodal")
+heatmap = sns.heatmap(corr_matrix, annot=True, cmap='coolwarm', vmin=-1, vmax=1, cbar=True)
+custom_labels = ['Observer 1', 'Observer 2', 'DICE']  # Custom labels for x and y axis
+heatmap.set_xticklabels(custom_labels, rotation=45, horizontalalignment='right')  # Custom x-axis labels with rotation
+heatmap.set_yticklabels(custom_labels, rotation=0)
+
+plt.subplot(2,3,2)
+corr_matrix = db2[['Likert 1', 'Likert 2', 'DICE']].iloc[1::2].corr()
+plt.title("Correlation Primary Perturbed")
+heatmap = sns.heatmap(corr_matrix, annot=True, cmap='coolwarm', vmin=-1, vmax=1, cbar=True)
+custom_labels = ['Observer 1', 'Observer 2', 'DICE']  # Custom labels for x and y axis
+heatmap.set_xticklabels(custom_labels, rotation=45, horizontalalignment='right')  # Custom x-axis labels with rotation
+heatmap.set_yticklabels(custom_labels, rotation=0)
+
+plt.subplot(2,3,5)
+corr_matrix = db2[['Likert 1', 'Likert 2', 'DICE']].iloc[::2].corr()
+plt.title("Correlation Nodal Perturbed")
+heatmap = sns.heatmap(corr_matrix, annot=True, cmap='coolwarm', vmin=-1, vmax=1, cbar=True)
+custom_labels = ['Observer 1', 'Observer 2', 'DICE']  # Custom labels for x and y axis
+heatmap.set_xticklabels(custom_labels, rotation=45, horizontalalignment='right')  # Custom x-axis labels with rotation
+heatmap.set_yticklabels(custom_labels, rotation=0)
+
+
+observer1 = 'Likert 1'
+observer2 = 'Likert 2'
+
+plt.subplot(2,3,3)
+heatmap_data_obs1 = pd.crosstab(index=[db[observer1].iloc[1::2]], columns=["Count"]).reindex(range(1, 6), fill_value=0)
+heatmap_data_obs2 = pd.crosstab(index=db[observer2].iloc[1::2], columns="Count").reindex(range(1, 6), fill_value=0)
+# Concatenate the two heatmap datasets side by side
+combined_heatmap_data = pd.concat([heatmap_data_obs1, heatmap_data_obs2], axis=1)
+combined_heatmap_data.columns = ['Observer 1', 'Observer 2']  # Rename columns for clarity
+# Create a single heatmap
+sns.heatmap(combined_heatmap_data, annot=True, cmap='Reds', cbar=True, fmt='d')
+# Add title and labels
+plt.title('Grades Primary')
+plt.xlabel('')
+plt.ylabel('')
+plt.xticks(ticks=[0.5, 1.5], labels=['Observer 1', 'Observer 2'], rotation=45)  # Center the ticks on the heatmap
+
+plt.subplot(2,3,6)
+heatmap_data_obs1 = pd.crosstab(index=[db[observer1].iloc[::2]], columns=["Count"]).reindex(range(1, 6), fill_value=0)
+heatmap_data_obs2 = pd.crosstab(index=db[observer2].iloc[::2], columns="Count").reindex(range(1, 6), fill_value=0)
+# Concatenate the two heatmap datasets side by side
+combined_heatmap_data = pd.concat([heatmap_data_obs1, heatmap_data_obs2], axis=1)
+combined_heatmap_data.columns = ['Observer 1', 'Observer 2']  # Rename columns for clarity
+# Create a single heatmap
+sns.heatmap(combined_heatmap_data, annot=True, cmap='Reds', cbar=True, fmt='d')
+# Add title and labels
+plt.title('Grades Nodal')
+plt.xlabel('')
+plt.ylabel('')
+plt.xticks(ticks=[0.5, 1.5], labels=['Observer 1', 'Observer 2'], rotation=45)  # Center the ticks on the heatmap
+
+
+plt.tight_layout()
 
 # Show the plot
 plt.show()

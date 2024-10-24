@@ -1,6 +1,6 @@
-\chapter{Methods}
+\chapter{Materials and Methods}
 \section{Hecktor dataset}
-For the segmentation model in this project, we utilized the dataset from the Hecktor Challenge 2022. This dataset consists of both training images with corresponding ground truth labels and test images without labels. For our purposes, we focused solely on the training subset due to the availability of ground truth annotations. This subset comprises 524 imaging cases collected from seven distinct clinical centers, including:
+For the segmentation model in this project, we utilized the dataset from the Hecktor Challenge 2022 \cite{Hecktor2022}. This dataset consists of both training images with corresponding ground truth labels and test images without labels. For our purposes, we focused solely on the training subset due to the availability of ground truth annotations. This subset comprises 524 imaging cases collected from seven distinct clinical centers, including:
 
 \begin{itemize}
     \setlength\itemsep{1pt}
@@ -20,7 +20,7 @@ For the segmentation model in this project, we utilized the dataset from the Hec
     \caption{Distribution of cases across centers}
 \end{figure}
 \newpage
-Each case in the dataset contains two imaging modalities: computed tomography (CT), Fluorodeoxyglucose positron emission tomography (FDG-PET), and ground truth labels. The PET images were standardized using the Standardized Uptake Value (SUV). The CT and label images are provided in NIfTI format with a spatial resolution of 524 × 524 pixels in the axial plane, and variable depths across slices. While some CT images focus exclusively on the head and neck region, others encompass the entire body. In contrast, the PET images have a resolution of 128 × 128 pixels in the axial plane, with varying depths similar to the CT images.
+Each case in the dataset contains two imaging modalities: computed tomography (CT), Fluorodeoxyglucose positron emission tomography (FDG-PET), and ground truth labels. The PET images were standardized using the Standardized Uptake Value (SUV). The CT and label images are provided in NIfTI format with a spatial resolution of 524 × 524 pixels in the axial plane, and variable depths across slices. While some CT images focus exclusively on the head and neck region, others encompass the entire body. In contrast, the PET images have a resolution of 128 × 128 pixels in the axial plane, with varying depths like the CT images.
 
 \begin{figure}[ht]
     \centering
@@ -54,7 +54,7 @@ The processed images were saved in NIfTI format following the above steps. Furth
 \end{figure}
 \newpage
 \subsection{Data augmentation}
-During the training process, data augmentation was applied to the original images using the Medical Open Network for Artificial Intelligence (MONAI) framework. Spatial augmentations were applied to both imaging modalities, including random flipping, affine transformations (translation, rotation, and scaling). For the CT images, intensity augmentations were also incorporated, such as the addition of Gaussian noise, smoothing, contrast adjustment, and intensity shifting. All augmentations were applied with an occurence probability of 20\%.
+During the training process, data augmentation was applied to the original images using the Medical Open Network for Artificial Intelligence (MONAI) framework \cite{MONAI2024}. Spatial augmentations were applied to both imaging modalities, including random flipping, affine transformations (translation, rotation, and scaling). For the CT images, intensity augmentations were also incorporated, such as the addition of Gaussian noise, smoothing, contrast adjustment, and intensity shifting. All augmentations were applied with an occurence probability of 20\%.
 \vskip1em
 Following augmentation, the images were randomly cropped into patches of size 192×192×192 voxels. Patches were centered based on labels, with a 10\% probability of being centered on background, 45\% on primary tumors, and 45\% on nodal tumors. In cases where only one tumor type was present, the sampling probability for that tumor was increased to 90\%.
 \vskip1em
@@ -125,8 +125,8 @@ The inference results yielded 37 segmented binary masks for each of the 50 cases
 \subsection{Robustness}
 
 As outlined in the Inference section, six perturbations were applied to the data to assess the robustness of the model 
-against variations that may be encountered in real-world scenarios, such as sensor noise or image artifacts. These perturbations, derived from the TorchIO library, simulate various types of distortions and alterations that may impact model performance.
-\vskip1em\noindent
+against variations that may be encountered in real-world scenarios, such as sensor noise or image artifacts. These perturbations, derived from the TorchIO library \cite{TorchIO2024}, simulate various types of distortions and alterations that may impact model performance.
+\vskip1em
 The six perturbations are described below :
 \begin{itemize}
     \setlength\itemsep{1pt}
@@ -156,7 +156,7 @@ at varying degrees, refer to the appendix (\ref{chap:Pert}).
 \vskip1em
 Note: the noise perturbations may not be accurately represented here; A better visual representation of noise is provided in appendix (\ref{chap:Pert})
 \vskip1em
-To assess the impact of perturbations on segmentation performance, we utilized evaluation metrics from the Pymia library. 
+To assess the impact of perturbations on segmentation performance, we utilized evaluation metrics from the Pymia library \cite{Pymia2024}. 
 The metrics employed are as follows:
 \begin{itemize} 
     \setlength\itemsep{1pt} 
@@ -177,11 +177,11 @@ For each of the six perturbations, delta values were computed for all three seve
 This analysis enables a detailed comparison of the model’s robustness to different perturbations and degrees of severity for both imaging modalities. Further interpretation of these results is discussed in the Results section.
 \newpage
 
-\noindent In addition to the computation of the previously described metrics, we computed properties of the segmented area to 
+In addition to the computation of the previously described metrics, we computed properties of the segmented area to 
 investigate potential correlations between the change in the Dice coefficient induced by perturbations and these properties. 
 For example, we examined whether the volume of the segmented area correlates with greater changes in perturbed images due 
 to motion. 
-\vskip1em\noindent
+\vskip1em
 The properties are as follows:
 \begin{itemize}
     \setlength\itemsep{1pt} 
@@ -214,6 +214,7 @@ Statistical correlations were computed using Pearson method to assess these rela
 \subsection{Clinical evaluation}
 To assess the relevance of geometrical metrics used in deep learning, we conducted a clinical evaluation of 50 test cases in collaboration with two 
 physicians specializing in radiation oncology. The evaluation utilized a 5-point Likert scale for grading. \newline
+\vskip1em
 The representations of the 5-point grades are provided below:
 
 \begin{itemize}
@@ -227,20 +228,20 @@ The representations of the 5-point grades are provided below:
     \item \textbf{\ding{73}\ding{73}\ding{73}\ding{73}\ding{73}}: Able to utilize the prediction in its original form.
 \end{itemize}
 The objective of this evaluation is to provide a comprehensive assessment of the model's performance and to quantify the correlation between the geometrical metrics and physician expertise. 
-\vskip1em\noindent
+\vskip1em
 The evaluation was conducted specifically for each label, including primary and nodal tumors. 
 Subsequently, scatter plots were generated to visualize the relationships between the various geometrical metrics, including the Dice score, Hausdorff distance, and Jaccard index. 
 The correlations between these metrics and the physician evaluations were computed using Pearson correlation coefficients. 
-\vskip1em\noindent
+\vskip1em
 This analysis was performed for both physicians' results. 
 A correlation between the evaluations of the two physicians was also processed in order to compare with the Dice result.
 Both physicians have evaluated the cases under the same conditions to avoid any bias.
-\vskip1em\noindent
+\vskip1em
 The 50 cases were categorized into two groups: one consisting of baseline images (without perturbations), representing 32 images, and the other comprising perturbed images influenced by the three most significant perturbations. For each perturbation and modality, three cases were selected, resulting in a total of six cases for each of the three perturbations, accounting for the final 18 cases.
-\vskip1em\noindent
+\vskip1em
 This approach allows us to analyze the impact of perturbations on real-case evaluations and to assess whether there is a correlation with the effects represented by the delta Dice score. 
 This analysis, enables us to evaluate the relevance of the geometrical metrics in predicting clinical outcomes. 
-\vskip1em\noindent
+\vskip1em
 The findings will contribute to understanding the robustness of the model, its practical applicability in clinical settings, 
 and the significance of geometrical metrics in enhancing model performance and decision-making in radiotherapy.
 

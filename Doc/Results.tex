@@ -10,7 +10,7 @@ The baseline, having no delta, represents the original values for each metric. E
 one of three levels of perturbation severity, providing a visual representation of how segmentation performance is affected 
 at increasing degrees of perturbation. 
 \vskip1em
-The graph below represents the scenario in which perturbations are applied to nodal and primary tumor labels in the CT modality.
+The graphs below represents the scenarios in which perturbations are applied to nodal and primary tumor labels in the CT modality.
 \begin{figure}[ht]
     \centering
     \includegraphics[width=1\textwidth]{images/CT_Nodal.png}
@@ -25,7 +25,7 @@ The graph below represents the scenario in which perturbations are applied to no
     \label{fig:three_subfigures}
 \end{figure}
 
-The graph illustrates significant variations in the Dice coefficient under spike, bias, and noise perturbations, 
+The graphs illustrates significant variations in the Dice coefficient under spike, bias, and noise perturbations, 
 underscoring their substantial impact on segmentation performance across both labels. 
 \vskip1em
 Notably, the Hausdorff distance demonstrates that bias perturbation exerts the most pronounced negative effect, with the boxplot range extending 
@@ -39,13 +39,13 @@ Moreover, noise perturbation exhibits a less pronounced effect at the initial de
 while spike and bias perturbations show significant impact even at the first degree. 
 \vskip1em
 Interestingly, in certain cases, the Dice coefficient delta is negative, indicating an improvement in segmentation 
-performance under perturbation.This behavior suggests that certain perturbations may occasionally enhance segmentation accuracy, 
+performance under perturbation. This behavior suggests that certain perturbations may occasionally enhance segmentation accuracy, 
 depending on the model and context.
 \newpage
 \begin{figure}[ht]
     \centering
     \includegraphics[width=1\textwidth]{images/PET_Nodal.png}
-    \caption{Perturbations applied to primary tumor labels in the PET modality}
+    \caption{Perturbations applied to nodal tumor labels in the PET modality}
     \label{fig:three_subfigures}
 \end{figure}
 \begin{figure}[ht]
@@ -64,52 +64,71 @@ in the Hausdorff distance, where a significant impact is still observed.
 
 \subsection{Correlation with properties}
 The following graphs present the correlation between the 13 previously discussed properties of the segmentation area (\ref{list:properties}). Similar to the earlier graph, the figures are organized into 7 columns, with the baseline in the first column and the 6 perturbations in the subsequent columns. The baseline scatter plot illustrates the correlation between the original Dice coefficient and the segmentation properties, establishing a reference for the unperturbed performance. The columns corresponding to each perturbation display the correlation between the delta Dice (change in Dice coefficient) and the segmentation properties, highlighting whether significant segmentation degradation is associated with specific properties.
-
+\vskip1em
 Each scatter plot includes data for all three degrees of perturbation, represented by distinct markers, allowing for visual differentiation of the effects of increasing perturbation severity. Also, the pearson correlation coefficient is visible for each degree.
 The graphs presented here represent cases where perturbations have been applied to the nodal label in the CT modality. 
 The remaining three category (Primary in CT, Nodal and Primary in PET) are provided in the appendix (\ref{chap:CorrProp}). A more comprehensive correlation graph, encompassing all 
 four categories, will follow to offer a broader view of the relationships.
 \begin{figure}[ht]
     \centering
-    \includegraphics[width=1\textwidth]{images/CT_Nodal_Properties_1.png}
-    \caption{Correlation with perturbations applied to nodal tumor labels in the CT modality}
+    \includegraphics[width=0.96\textwidth]{images/CT_Nodal_Properties_1.png}
+    \caption{Correlation with Volume, Surface area, and compactness}
     \label{fig:three_subfigures}
 \end{figure}
 
-On the left, the Dice coefficient exhibits a crescent-shaped distribution for the three properties. The correlation is consistently higher for perturbations that exert a greater impact, as anticipated. In contrast, blur, motion, and ghost perturbations present a significantly flatter scatter plot with considerably smaller variations, reflecting the robustness observed in earlier analyses. 
+On the left, the Dice coefficient exhibits a crescent-shaped distribution for the three properties. The correlation is consistently higher for the most impactful perturbations. In contrast, blur, motion, and ghost perturbations present a significantly flatter scatter plot with considerably smaller variations, reflecting the robustness observed in earlier analyses. 
+\vskip1em
 Motion and ghost exhibit the highest variations in properties at lower values, whereas Blur demonstrates a more evenly distributed effect across the property range.
+\vskip1em
 The analysis demonstrates that the marker positions for spike events remain generally consistent across both second and third degrees. Furthermore, these markers are positioned in close proximity to the original baseline distribution, indicating a complete removal of prediction (dice = delta dice). The effect is also observed for bias and noise, though it is less pronounced.
+\vskip1em
 Among the perturbations, spike and noise demonstrate the strongest correlation with volume and surface area, with correlation coefficients ranging from 0.30 to 0.42, the highest being associated with surface area. 
-\newpage
+\vskip1em
 In the case of bias, the correlation coefficient increases across the degrees of perturbation, showing a very low correlation at the first degree. By the third degree, the correlation reaches levels comparable to those of other perturbations. Notably, bias exhibits the highest correlation with compactness, although this correlation is not statistically significant, peaking at 0.21.
-
-Interestingly, ghost perturbation reveals a prominent negative correlation, suggesting an improvement in segmentation performance as the properties values decrease, with the strongest correlation observed with the compactness property.
+\vskip1em
+Interestingly, ghost perturbation reveals a prominent negative correlation, suggesting an improvement in segmentation performance as the properties values increase, with the strongest correlation observed with the compactness property.
 \begin{figure}[ht]
     \centering
     \includegraphics[width=1\textwidth]{images/CT_Nodal_Properties_2.png}
-    \caption{Perturbations applied to primary tumor labels in the CT modality}
+    \caption{Correlation with Distance from Center, Boundary Length, and CT Intensity Var}
     \label{fig:three_subfigures}
 \end{figure}
+
+
+The distance from the center did not show a significant correlation with any perturbation type, as the highest coefficient observed was only 0.17. Scatter plots for blur, motion, and ghost effects remained mostly flat, with outliers around a distance of 70. Noise showed a clearer distinction between perturbation levels, with degree one having values close to the horizontal line, while higher degrees matched the original distribution, similar to spike perturbations. Bias perturbations, however, displayed a more widespread distribution across delta Dice values with first degree exhibiting a distribution nearer zero compared to the higher degrees, though not as pronounced as that observed for noise perturbations.
+\vskip1em
+In contrast, boundary length showed notable correlations with spike and noise perturbations, with coefficients ranging from 0.20 to 0.30, and bias perturbations reaching 0.34 at higher degrees. Scatter plots indicated a consistent pattern of outliers concentrated near 0 for blur, motion, and ghost effects.
+\vskip1em
+For intensity variations in CT scans, only noise demonstrated a significant correlation, with coefficients of 0.38 and 0.31 at the first two degrees of severity. The scatter plot behavior remained consistent, though the outliers were observed around variations of 20.
+
+\newpage
 
 \begin{figure}[ht]
     \centering
     \includegraphics[width=1\textwidth]{images/CT_Nodal_Properties_3.png}
-    \caption{Perturbations applied to primary tumor labels in the CT modality}
+    \caption{Correlation with PET Intensity Var, CT contrast, and PET contrast}
     \label{fig:three_subfigures}
 \end{figure}
-\newpage
-The distance from the center did not demonstrate a significant correlation with any perturbation, with the highest coefficient reaching only 0.17. In contrast, for the boundary length, spike and noise perturbations exhibited correlation coefficients ranging from 0.20 to 0.30, while bias showed a correlation of 0.34 at the third degree of perturbation.
-Regarding intensity properties, in CT variations, the only perturbation that displayed a significant correlation was noise, with coefficients of 0.38 and 0.31, but only at the first two degrees of severity. For PET variations, the correlation with noise was lower; however, spike demonstrated a stronger correlation, achieving a score of up to 0.41.
-In terms of contrast, PET generally exhibited greater correlation, particularly with spike, which reached a maximum of 0.61. The third degree of noise showed a correlation of 0.38, while bias presented a more moderate correlation, peaking at 0.29.
+For PET variations, the correlation with noise was lower; however, spike perturbations demonstrated stronger correlations, reaching up to 0.41. The scatter distributions were similar to those for CT, with outliers observed around 0.5.
+\vskip1em
+In terms of contrast, PET exhibited higher correlations, particularly with spike, which reached a maximum of 0.61. Noise showed a correlation of 0.38 at the third degree, while bias peaked at a moderate correlation of 0.29. The scatter plots for both modalities showed similar distributions. However, there were noticeable changes in property values where the outliers appeared. The baseline distribution for contrast in PET was more aligned with a diagonal compared to CT.\newpage
 \begin{figure}[ht]
     \centering
     \includegraphics[width=1\textwidth]{images/CT_Nodal_Properties_4.png}
-    \caption{Perturbations applied to primary tumor labels in the CT modality}
+    \caption{Correlation with SUVmax, CT number, Regions, and Entropy}
     \label{fig:three_subfigures}
 \end{figure}
 
-For the last four properties analyzed, the SUVmax demonstrated a moderate correlation with spike perturbations, ranging from 0.29 to 0.43 across the degrees of severity. Noise and bias also exhibited correlations, albeit at more moderate levels, around 0.20. In the case of CT number, spike perturbations again displayed the strongest correlation, peaking at 0.32, while a surprising correlation of 0.28 was observed with ghost perturbations at the third degree. Notably, noise exhibited irregular behavior, with correlation coefficients fluctuating between -0.40 and 0.20.
-The regions showed inconsistent behavior across properties, except for spike, which revealed a stable negative correlation ranging from -0.16 to -0.26. As expected, entropy demonstrated stronger correlations with effective perturbations, particularly spike, which reached values of up to 0.39, and bias at the third degree, which peaked at 0.42. Noise showed a more consistent behavior across degrees, with correlation coefficients ranging from 0.30 to 0.36.
+For the last four properties analyzed, the SUVmax demonstrated a moderate correlation with spike perturbations, ranging from 0.29 to 0.43 across the degrees of severity. Noise and bias also exhibited correlations, albeit at more moderate levels, around 0.20. 
+\vskip1em
+In the case of CT number, spike perturbations again displayed the strongest correlation, peaking at 0.32, while a surprising correlation of 0.28 was observed with ghost perturbations at the third degree. Notably, noise exhibited irregular behavior, with correlation coefficients fluctuating between -0.40 and 0.20.
+\vskip1em
+The regions showed inconsistent behavior across properties, except for spike, which revealed a stable negative correlation ranging from -0.16 to -0.26. 
+\vskip1em
+As expected, entropy demonstrated stronger correlations with effective perturbations, particularly spike, which reached values of up to 0.39, and bias at the third degree, which peaked at 0.42. Noise showed a more consistent behavior across degrees, with correlation coefficients ranging from 0.30 to 0.36.
+\vskip1em
+In terms of scatter plot behavior, no significant new patterns emerged. However, entropy displayed a distinct crescent-shaped distribution, consistent with the trends observed for the first three properties analyzed.
+\vskip1em
 Overall, among the 13 properties examined, the strongest correlations were observed with perturbations that most significantly affected segmentation performance. In contrast, blur, motion, and ghost perturbations exhibited only minor correlations due to their limited variability. For spike, bias, and noise, the correlation coefficients generally clustered around 0.30 to 0.40, with occasional peaks reaching up to 0.60.
 
 \newpage
@@ -130,38 +149,39 @@ properties and applied perturbations. The y-axis in these graphics shows the del
 \end{figure}
 \newpage
 Starting with the nodal label in the CT modality (a), we observe the same general trends identified in the previous section. The highest correlations are consistently seen with spike, bias, and noise perturbations, with most properties showing strong correlations with these perturbations. Notable exceptions include compactness, distance from center, CT variations, CT contrast, and regions, which do not exhibit significant correlations.
-
+\vskip1em
 Spike emerges as the perturbation with the highest correlation scores, followed by noise and then bias. In contrast, ghost perturbations generally show an improvement in segmentation performance as most properties values decrease, with the strongest negative correlation observed for compactness. The only exception is CT contrast, which displays a positive correlation with ghost perturbations.
-
+\vskip1em
 Blur and motion perturbations exhibit similar behavior, showing low correlation coefficients, consistent with previous analyses. Properties such as volume, surface area, boundary length, PET variations, SUVmax, and entropy display comparable responses to the perturbations. These properties generally show moderate positive correlations with spike, bias, and noise, while ghost perturbations produce negative correlations. Motion and blur have a minimal effect, with low correlation coefficients.
 
 \vskip1em
 In the primary tumor on the CT modality (b), a noticeable difference was observed between the two labels, particularly in the effect of compactness, which had a greater impact with lower segmentation degradation. Volume, surface area, boundary length, and entropy exhibited similar effects, primarily influencing spike perturbations, though with reduced correlation in the presence of bias and noise.
-
+\vskip1em
 For primary tumors, SUVmax showed an effect across all perturbations, with a negative correlation under motion, while CT number had a reduced influence. Regions continued to improve segmentation but to a lesser extent compared to nodal tumors. Variability in PET data correlated with blur, noise, and ghost perturbations, whereas CT data showed more correlation with motion. Contrast behavior for both modalities was similar to nodal tumors, though with weaker correlation for CT under motion perturbations.
 \vskip1em
 For the nodal region in the PET modality (c), the behavior of volume, surface area, boundary length, and entropy remains consistent with prior observations but demonstrates notable differences. These properties exhibit a strong positive correlation with spike, bias, and noise perturbations, and a strong negative correlation with blur and motion, with no significant effect observed for ghost perturbations.
-
-SUVmax follows a similar trend to these four properties, though with a reduced correlation in the presence of bias perturbations. Compactness showed a positive correlation with bias, similar to distance from the center, while also presenting a negative correlation with blur.
-
+\vskip1em
+SUVmax follows a similar trend to these properties, though with a reduced correlation in the presence of bias perturbations. Compactness showed a positive correlation with bias, similar to distance from the center, while also presenting a negative correlation with blur.
+\vskip1em
 Both intensity variabilities demonstrated negative correlations with blur and motion, and positive correlations with noise. PET variability additionally showed a stronger positive correlation with spike perturbations compared to CT.
-
+\vskip1em
 For contrast, CT exhibited a positive correlation with blur and ghost perturbations, while PET showed a stronger correlation with spike and noise, accompanied by a slight negative correlation with blur and motion. The regional segmentation improvements observed previously were no longer general across all perturbations, instead showing a concentrated effect on spike perturbations.
 \newpage
 For primary tumors in the PET modality (d), the four properties volume, surface area, boundary length, and entropy exhibit similar behavior as in prior observations. However, unlike in nodal tumors, the overall correlation is reduced, with a notable shift in bias correlation from positive to negative.
-
+\vskip1em
 SUVmax is primarily correlated with spike and noise perturbations. The CT number shows significantly less impact compared to nodal tumors, with consistently low correlation coefficients, a pattern also observed for the regions.
-
+\vskip1em
 Compactness demonstrates a negative correlation with blur and motion, with a slight positive correlation observed with noise.
-
+\vskip1em
 For intensity variabilities, PET shows a strong negative correlation with blur and a less pronounced negative correlation with motion. In contrast, CT exhibits a positive correlation with noise.
-
+\vskip1em
 Regarding contrast, PET shows correlations with spike, ghost, blur, and the third degree of noise, while CT primarily correlates with blur and motion.
 \vskip1em
 Upon conducting a comprehensive comparison of the four graphs, it becomes evident that for the CT modality, the nodal tumor label exhibits a strong correlation with spike, noise, and bias, while the correlation for primary tumors is more distributed across various image properties, demonstrating specific and notable correlations.
-
+\vskip1em
 In contrast, the PET modality reveals a higher prevalence of negative correlations, particularly with respect to motion and blur for both nodal and primary tumor labels. For nodal tumors in PET, positive correlations are similarly concentrated around spike, noise, and bias, akin to the CT modality. However, a distinguishing feature for nodal tumors in PET is the shift of bias towards negative correlation, and no clear resemblance with the CT modality is observed. Additionally, correlations in PET for nodal tumors are noted with spike, noise, and some degree of correlation with ghost artifacts.
-We can see that in the four graphs the second and third degree have mainly the same values like seen before indicating the complete removal of the prediction.
+\vskip1em
+We can see that in the four graphs the second and third degree have mainly the same values like seen before, indicating the complete removal of the prediction.
 Furthermore, across all degrees of severity for each perturbation, the correlation behavior is mostly not linear with increasing severity levels.
 
 \newpage
@@ -169,42 +189,42 @@ Furthermore, across all degrees of severity for each perturbation, the correlati
 The following graphs illustrate the distribution of the 5-star clinical evaluations for both observers. The left graph represents the original cases, comprising 32 evaluations, while the right graph shows the perturbed cases, with a total of 18 evaluations.
 \begin{figure}[ht]
     \centering
-    \includegraphics[width=0.8\textwidth]{images/Clinical_evaluation_repartition.png}
+    \includegraphics[width=0.56\textwidth]{images/Clinical_evaluation_repartition.png}
     \caption{Clinical evaluation repartition observer 1}
     \label{fig:three_subfigures}
 \end{figure}
 
 \begin{figure}[ht]
     \centering
-    \includegraphics[width=0.8\textwidth]{images/Clinical_evaluation_repartition_2.png}
+    \includegraphics[width=0.6\textwidth]{images/Clinical_evaluation_repartition_2.png}
     \caption{Clinical evaluation repartition observer 2}
     \label{fig:three_subfigures}
 \end{figure}
 
 \newpage
 
-For the first observer, the analysis of the original cases reveals that approximately 75\% of the evaluations fall between 3 and 4 stars for both channels. Notably, the nodal channel exhibits a slightly higher incidence of 2-star evaluations, alongside a reduction in the extreme values of 1 and 5 stars compared to the primary channel.
-In contrast, the perturbation analysis indicates that the nodal channel was significantly more affected by the applied perturbations in the selected cases with majority of 1 and 2 stars. Conversely, the distribution of evaluations for the primary channel remains consistent with that of the original cases but with some changes including more 4 stars suprisingly and not any 5 stars.
-Comparing with the second observer, for the original cases, the repartition for the nodal channel is more equal accross 2, 3 and 4 stars with approximately 30\% each with 2 and 3 stars more present.
-However, for the primary tumors, the 4-stars percentage is higher than before with also a 1-star grade more prevalent. 
-For the perturbed cases, the same behavior observed in nodal label with even worst impact in this evaluation. For the primary, the only major change is that 3-star are a bit more present at expense of the 4-stars.
-
+For the first observer, the analysis of the original cases reveals that approximately 80\% fall between 3 and 5 stars for both channels. Notably, the nodal channel exhibits a slightly higher incidence of 2-star evaluations, alongside a reduction in the extreme values of 1 and 5 stars compared to the primary channel.
+In contrast, the perturbation analysis indicates that the nodal channel was significantly more affected by the applied perturbations in the selected cases with majority of 1 and 2. Conversely, the distribution of evaluations for the primary channel remains consistent with that of the original cases but with some changes including more 4 suprisingly and not any 5.
+\vskip1em
+Comparing with the second observer, for the original cases, the repartition for the nodal channel is more equal accross 2, 3 and 4 stars with around 30\% each with 2 and 3 more present.
+However, for the primary tumors, the 4-stars percentage is higher than before with also a 1-star more prevalent. 
+For the perturbed cases, the same behavior observed in nodal label with even worst impact. For the primary, the only major change is that 3-stars are a bit more present at expense of the 4-stars.
+\vskip1em
 In the subsequent graphs, we will further investigate whether these changes are also reflected in the DICE coefficient measurements, which would be indicated with a significant correlation between the DICE coefficient and the evaluation scores.
-
+\vskip1em
 This graph that follows represent the corresponding 5 categories of dice coefficient for the same cases. With each category having a range of 0.2 from 0 to 1.
 Which would arbitrarly represent the gradings in likert scale.
 \begin{figure}[ht]
     \centering
-    \includegraphics[width=0.8\textwidth]{images/Clinical_evaluation_dice_repartition.png}
-    \caption{Clinical evaluation repartition}
+    \includegraphics[width=0.65\textwidth]{images/Clinical_evaluation_dice_repartition.png}
+    \caption{Dice coefficient ranges repartition}
     \label{fig:three_subfigures}
 \end{figure}
 
 For the original labels, approximately 70\% of the scores are above 0.60, with a similar distribution for scores below this threshold. In contrast, the perturbed labels show a notable decline, particularly for the nodal labels, where 50\% of the scores fall between 0 and 0.2, and over 75\% of the scores are below 0.6. The primary labels, however, maintain a similar distribution to the original, except that no scores are observed between 0.2 and 0.4.
-
-Both grading systems and Dice coefficients follow a similar pattern, with a marked decline in nodal label performance under perturbation. Scores above 0.6 generally align with higher grading levels (3- and 4-star ratings).
-
 \newpage
+Both grading systems and Dice coefficients follow a similar pattern, with a marked decline in nodal label performance under perturbation. Scores above 0.6 generally align with higher grading levels (3- and 4-star ratings).
+\vskip1em
 The following graphs illustrate the correlation among three metrics: the DICE coefficient, Hausdorff distance, and Jaccard index, 
 in relation to clinical evaluation gradings. The correlation analysis is conducted across both channels for the original 32 cases. 
 The Likert gradings are plotted on the x-axis, while the metrics are represented on the y-axis. In each plot, the correlation trend 
@@ -217,16 +237,18 @@ line is depicted in red, with the Pearson correlation coefficient displayed in t
     \label{fig:three_subfigures}
 \end{figure}
 
+For the first observer, the Jaccard index and DICE coefficient demonstrate similar behavior, with highly aligned trend lines and strong Pearson correlation coefficients. In contrast, the Hausdorff distance shows a weaker correlation, particularly for cases without ground truth data, which were excluded due to the sensitivity of this metric in such instances. Among the two most reliable metrics, the primary label exhibits stronger correlations, with values of 0.665 and 0.656, compared to the nodal channel, which yields lower correlations of 0.518 and 0.551.
+\vskip1em
+Additionally, there is a tendency for the range of DICE coefficients to contract at higher grading levels for nodal label. Interestingly, some cases rated with four stars exhibit low DICE coefficients. These cases were reviewed with clinical expert and identified as particularly challenging, where the image alone was insufficient for accurate evaluation without supplementary information.
+\newpage
+
 \begin{figure}[ht]
     \centering
     \includegraphics[width=1\textwidth]{images/Correlation_dice_eval_2.png}
     \caption{Observer 2 clinical evaluation correlation with DICE on original cases}
     \label{fig:three_subfigures}
 \end{figure}
-\newpage
-For the first observer, the Jaccard index and DICE coefficient demonstrate similar behavior, with highly aligned trend lines and strong Pearson correlation coefficients. In contrast, the Hausdorff distance shows a weaker correlation, particularly for cases without ground truth data, which were excluded due to the sensitivity of this metric in such instances. Among the two most reliable metrics, the primary label exhibits stronger correlations, with values of 0.665 and 0.656, compared to the nodal channel, which yields lower correlations of 0.518 and 0.551.
 
-Additionally, there is a tendency for the range of DICE coefficients to contract at higher grading levels for nodal label. Interestingly, some cases rated with four stars exhibit low DICE coefficients. These cases were reviewed with clinical experts and identified as particularly challenging, where the image alone was insufficient for accurate evaluation without supplementary information.
 
 In comparison to the second observer, the nodal label shows similar behavior, with comparable point distributions, reflected by close correlation coefficients. However, a notable difference arises in the Hausdorff distance, which here demonstrates a more representative and improved correlation. For the primary label, the second observer achieves significantly higher correlations with the DICE coefficient, around 0.85 compared to 0.65 for the first observer's DICE and Jaccard indices, and -0.55 compared to -0.37 for the Hausdorff distance. Additionally, the second observer shows less variability in the DICE range for higher gradings.
 \newpage
@@ -234,32 +256,32 @@ The following graph exhibit the correlation between the two physicians for the o
 \begin{figure}[ht]
     \centering
     \includegraphics[width=0.95\textwidth]{images/Physician_correlation.png}
-    \caption{Phyisician correlation in original cases}
+    \caption{Physician correlation in original cases}
     \label{fig:three_subfigures}
 \end{figure}
 
 For the nodal label, the majority of grades (22 out of 32) lie on the diagonal, indicating a strong level of agreement between observers. However, the second observer tends to assign slightly lower grades compared to the first observer. The correlation between the two observers for the nodal label is 0.635, which, while higher than the correlation between the DICE coefficient and the physician’s assessment (0.518 and 0.549), does not represent a significant increase.
-
+\vskip1em
 For the primary label, the inter-observer agreement is more dispersed, which accounts for the observed difference in correlation coefficients between the first and second observers (0.665 vs. 0.873). The correlation for the primary label (0.658) is similar to that for the nodal labels (0.635), as well as to the correlation between the first observer’s assessment and the DICE coefficient (0.665). However, this correlation is lower when compared to the second observer’s correlation with the DICE coefficient (0.873).\newpage  
-
+\vskip1em
 Here is the same graphs and analysis but for the 18 perturbed cases cases.
 \begin{figure}[ht]
     \centering
-    \includegraphics[width=0.97\textwidth]{images/Correlation_dice_eval_perturbed.png}
+    \includegraphics[width=0.95\textwidth]{images/Correlation_dice_eval_perturbed.png}
     \caption{Observer 1 clinical evaluation correlation with DICE on perturbed cases}
     \label{fig:three_subfigures}
 \end{figure}
 
 \begin{figure}[ht]
     \centering
-    \includegraphics[width=0.97\textwidth]{images/Correlation_dice_eval_perturbed_2.png}
+    \includegraphics[width=0.95\textwidth]{images/Correlation_dice_eval_perturbed_2.png}
     \caption{Observer 2 clinical evaluation correlation with DICE on perturbed cases}
     \label{fig:three_subfigures}
 \end{figure}
 
 
 The Hausdorff distance appears to be more representative, showing higher correlation values. However, the DICE and Jaccard indices remain more consistent across different cases and are less affected by the absence of ground truth in one label.
-
+\vskip1em
 For the first observer, the peak correlation is 0.901 for the nodal label. In contrast, for the second observer, the difference between nodal and primary labels is less pronounced, with correlations of 0.824 and 0.778, respectively, compared to 0.901 and 0.695 for the first observer. Overall, for both observers, the correlation values are higher compared to the original cases.
 In contrast to the original cases, the point distribution similarity between the two observers is less pronounced.
 
@@ -267,14 +289,14 @@ In contrast to the original cases, the point distribution similarity between the
 \begin{figure}[ht]
     \centering
     \includegraphics[width=1\textwidth]{images/Physician_correlation_perturbed.png}
-    \caption{Phyisician correlation in perturbed cases}
+    \caption{Physician correlation in perturbed cases}
     \label{fig:three_subfigures}
 \end{figure}
 
 The correlation for both channels is observed to be identical, with values of 0.825, closely matching the correlation seen with the DICE coefficient. As illustrated in the pie chart, the nodal label predominantly consists of lower grades. In contrast, the primary label exhibits a wider distribution of grades, with a higher proportion of elevated scores.
-
+\vskip1em
 For the nodal label, Observer 2 tends to assign lower grades for the same cases compared to Observer 1. However, for the primary label, the grades are more evenly distributed between the two observers.
-
+\vskip1em
 Compared to the original cases graph, the correlation is significantly higher with 0.825 against 0.635 for nodal and 0.825 against 0.658 for the primary tumors.
 
 

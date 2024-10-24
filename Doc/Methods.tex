@@ -43,7 +43,7 @@ Subsequently, after ensuring that all three imaging modalities (CT, PET, and lab
 For the cropping procedure, the center of the head was identified using the contours of the brain on the PET scan. Based on this central reference point, a subvolume of 
 200×200×[maximum of 310 pixels] was extracted. This approach minimizes the computational burden associated with background regions devoid of ground truth information. Additionally, the images underwent normalization via z-score clipping to mitigate the effects of outliers.
 \vskip1em
-The processed images were saved in NIfTI format following the above steps. Further preprocessing techniques were applied during the training phase, which will be detailed in subsequent sections. Aspects of the preprocessing procedure and further data augmentation were adapted from the methods employed by the winning team of the Hecktor Challenge 2022 \cite{Myronenko2023}
+The processed images were saved in NIfTI format following the above steps. Further preprocessing techniques were applied during the training phase, which will be detailed in subsequent sections. Aspects of the preprocessing procedure and further data augmentation were adapted from the methods employed by the winning team of the Hecktor Challenge 2022 \cite{Myronenko2023}.
 \begin{figure}[ht]
     \centering
     \subfloat[CT Scan]{\includegraphics[width=0.3\textwidth]{images/CT_ONLY_PP.png}}\hfill
@@ -54,7 +54,7 @@ The processed images were saved in NIfTI format following the above steps. Furth
 \end{figure}
 \newpage
 \subsection{Data augmentation}
-During the training process, data augmentation was applied to the original images using the Medical Open Network for Artificial Intelligence (MONAI) framework \cite{MONAI2024}. Spatial augmentations were applied to both imaging modalities, including random flipping, affine transformations (translation, rotation, and scaling). For the CT images, intensity augmentations were also incorporated, such as the addition of Gaussian noise, smoothing, contrast adjustment, and intensity shifting. All augmentations were applied with an occurence probability of 20\%.
+During the training process, data augmentation was applied to the original images using the Medical Open Network for Artificial Intelligence (MONAI) framework \cite{MONAI2024}. Spatial augmentations were applied to both imaging modalities, including random flipping, affine transformations (translation, rotation, and scaling). For the CT images, intensity augmentations were also incorporated, such as the addition of Gaussian noise, smoothing, contrast adjustment, and intensity shifting. All augmentations were applied with an occurrence probability of 20\%.
 \vskip1em
 Following augmentation, the images were randomly cropped into patches of size 192×192×192 voxels. Patches were centered based on labels, with a 10\% probability of being centered on background, 45\% on primary tumors, and 45\% on nodal tumors. In cases where only one tumor type was present, the sampling probability for that tumor was increased to 90\%.
 \vskip1em
@@ -107,7 +107,7 @@ Note that the background was included solely during the training process and was
 To enhance training performance, mixed precision training utilizing PyTorch has been implemented. This approach leverages both single-precision (32-bit) and half-precision (16-bit) floating-point formats during model training. By employing mixed precision, the training speed is significantly increased due to reduced computational overhead, while the memory footprint is minimized. This allows for the efficient use of hardware resources, facilitating larger batch sizes and improved model scalability without compromising numerical stability.
 The training process utilized approximately 30 GB of memory.
 \vskip1em
-Prior to training, additional preprocessing steps were applied to the images. Specifically, the CT images were min-max normalized to a range of 0 to 1, ensuring consistent scaling across the dataset. In contrast, PET images were normalized to have a zero mean, adjusting for intensity variations while preserving the relative distribution of values.
+Prior to training, additional preprocessing steps were applied to the images. Specifically, the CT images were min-max normalized to a range of 0 to 1, ensuring consistent scaling across the dataset. In contrast, PET images were normalized to a zero mean, adjusting for intensity variations while preserving the relative distribution of values.
 \vskip1em
 These normalization procedures were performed dynamically during the training phase, allowing the images to be stored in their original format in NIfTI files. This preserved the integrity of the original data, enabling direct computation of properties from the segmented regions in subsequent analyses.
 \vskip1em
@@ -240,7 +240,7 @@ Both physicians have evaluated the cases under the same conditions to avoid any 
 The 50 cases were categorized into two groups: one consisting of baseline images (without perturbations), representing 32 images, and the other comprising perturbed images influenced by the three most significant perturbations. For each perturbation and modality, three cases were selected, resulting in a total of six cases for each of the three perturbations, accounting for the final 18 cases.
 \vskip1em
 This approach allows us to analyze the impact of perturbations on real-case evaluations and to assess whether there is a correlation with the effects represented by the delta Dice score. 
-This analysis, enables us to evaluate the relevance of the geometrical metrics in predicting clinical outcomes. 
+This analysis enables us to evaluate the relevance of the geometrical metrics in predicting clinical outcomes. 
 \vskip1em
 The findings will contribute to understanding the robustness of the model, its practical applicability in clinical settings, 
 and the significance of geometrical metrics in enhancing model performance and decision-making in radiotherapy.
